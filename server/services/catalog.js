@@ -59,15 +59,15 @@ const ready = (async () => {
       ? "INTEGER PRIMARY KEY AUTO_INCREMENT"
       : "INTEGER PRIMARY KEY AUTOINCREMENT";
   const tables = [
-    `CREATE TABLE IF NOT EXISTS Data_Source (source_id INTEGER PRIMARY KEY, name VARCHAR(255) NOT NULL, note TEXT NOT NULL)`,
-    `CREATE TABLE IF NOT EXISTS Material_Category (category_id INTEGER PRIMARY KEY, name VARCHAR(80) UNIQUE NOT NULL)`,
-    `CREATE TABLE IF NOT EXISTS Material (material_id INTEGER PRIMARY KEY, name VARCHAR(255) NOT NULL, description TEXT, category_id INTEGER NOT NULL, source_id INTEGER NOT NULL, FOREIGN KEY(category_id) REFERENCES Material_Category(category_id), FOREIGN KEY(source_id) REFERENCES Data_Source(source_id))`,
-    `CREATE TABLE IF NOT EXISTS Property (property_id INTEGER PRIMARY KEY, property_key VARCHAR(80) UNIQUE NOT NULL, name VARCHAR(100) NOT NULL, unit VARCHAR(80) NOT NULL)`,
+    `CREATE TABLE IF NOT EXISTS Data_Source (source_id ${key}, name VARCHAR(255) NOT NULL, note TEXT NOT NULL)`,
+    `CREATE TABLE IF NOT EXISTS Material_Category (category_id ${key}, name VARCHAR(80) UNIQUE NOT NULL)`,
+    `CREATE TABLE IF NOT EXISTS Material (material_id ${key}, name VARCHAR(255) NOT NULL, description TEXT, category_id INTEGER NOT NULL, source_id INTEGER NOT NULL, FOREIGN KEY(category_id) REFERENCES Material_Category(category_id), FOREIGN KEY(source_id) REFERENCES Data_Source(source_id))`,
+    `CREATE TABLE IF NOT EXISTS Property (property_id ${key}, property_key VARCHAR(80) UNIQUE NOT NULL, name VARCHAR(100) NOT NULL, unit VARCHAR(80) NOT NULL)`,
     `CREATE TABLE IF NOT EXISTS Material_Property (material_id INTEGER NOT NULL, property_id INTEGER NOT NULL, numeric_value DOUBLE, text_value VARCHAR(100), PRIMARY KEY(material_id, property_id), FOREIGN KEY(material_id) REFERENCES Material(material_id), FOREIGN KEY(property_id) REFERENCES Property(property_id))`,
-    `CREATE TABLE IF NOT EXISTS Application (application_id INTEGER PRIMARY KEY, name VARCHAR(255) NOT NULL UNIQUE)`,
+    `CREATE TABLE IF NOT EXISTS Application (application_id ${key}, name VARCHAR(255) NOT NULL UNIQUE)`,
     `CREATE TABLE IF NOT EXISTS Application_Property (application_id INTEGER NOT NULL, property_id INTEGER NOT NULL, weight DOUBLE NOT NULL DEFAULT 1, PRIMARY KEY(application_id, property_id), FOREIGN KEY(application_id) REFERENCES Application(application_id), FOREIGN KEY(property_id) REFERENCES Property(property_id))`,
     `CREATE TABLE IF NOT EXISTS Material_Application (material_id INTEGER NOT NULL, application_id INTEGER NOT NULL, PRIMARY KEY(material_id, application_id), FOREIGN KEY(material_id) REFERENCES Material(material_id), FOREIGN KEY(application_id) REFERENCES Application(application_id))`,
-    `CREATE TABLE IF NOT EXISTS Manufacturing_Process (process_id INTEGER PRIMARY KEY, name VARCHAR(100) NOT NULL UNIQUE)`,
+    `CREATE TABLE IF NOT EXISTS Manufacturing_Process (process_id ${key}, name VARCHAR(100) NOT NULL UNIQUE)`,
     `CREATE TABLE IF NOT EXISTS Material_Process (material_id INTEGER NOT NULL, process_id INTEGER NOT NULL, PRIMARY KEY(material_id, process_id), FOREIGN KEY(material_id) REFERENCES Material(material_id), FOREIGN KEY(process_id) REFERENCES Manufacturing_Process(process_id))`,
     `CREATE TABLE IF NOT EXISTS Project_Requirement (project_id INTEGER NOT NULL, requirement_key VARCHAR(100) NOT NULL, value TEXT NOT NULL, PRIMARY KEY(project_id, requirement_key), FOREIGN KEY(project_id) REFERENCES Projects(project_id) ON DELETE CASCADE)`,
     `CREATE TABLE IF NOT EXISTS Recommendation (recommendation_id ${key}, project_id INTEGER NOT NULL, material_id INTEGER NOT NULL, score DOUBLE NOT NULL, explanation TEXT NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(project_id) REFERENCES Projects(project_id) ON DELETE CASCADE, FOREIGN KEY(material_id) REFERENCES Material(material_id))`,
@@ -92,10 +92,13 @@ const ready = (async () => {
       for (const [table, keyColumn] of [["Data_Source", "source_id"], ["Material_Category", "category_id"], ["Material", "material_id"], ["Application", "application_id"]]) {
         const [[column]] = await connection.execute("SELECT EXTRA FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME=? AND COLUMN_NAME=?", [table, keyColumn]);
         if (!column.EXTRA.includes("auto_increment")) {
-          // Only adds an allocator; existing IDs and referenced column types are preserved.
-          await connection.execute("SET FOREIGN_KEY_CHECKS=0");
-          await connection.execute(`ALTER TABLE ${table} MODIFY ${keyColumn} INTEGER NOT NULL AUTO_INCREMENT`);
-          await connection.execute("SET FOREIGN_KEY_CHECKS=1");
+          try {
+            await connection.execute("SET FOREIGN_KEY_CHECKS=0");
+            await connection.execute(`ALTER TABLE ${table} MODIFY ${keyColumn} INTEGER NOT NULL AUTO_INCREMENT`);
+            await connection.execute("SET FOREIGN_KEY_CHECKS=1");
+          } catch (e) {
+            console.warn(`Could not set AUTO_INCREMENT on ${table}.${keyColumn}:`, e.message);
+          }
         }
       }
     } finally { await connection.execute("SET FOREIGN_KEY_CHECKS=1"); connection.release(); }

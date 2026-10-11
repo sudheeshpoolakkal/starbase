@@ -47,3 +47,4 @@ server/data/downloads/
 # Python source-processing caches
 __pycache__/
 *.pyc
+.vercel
