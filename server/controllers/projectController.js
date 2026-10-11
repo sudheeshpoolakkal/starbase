@@ -41,9 +41,7 @@ const getDashboardStats = async (req, res) => {
     const [projectRows] = await db.execute(
       `SELECT p.project_id, p.owner_id
              FROM Projects p
-             LEFT JOIN Collaborators c ON p.project_id = c.project_id
-             WHERE p.owner_id = ? OR c.user_id = ?
-             GROUP BY p.project_id`,
+             WHERE p.owner_id = ? OR p.project_id IN (SELECT c.project_id FROM Collaborators c WHERE c.user_id = ?)`,
       [userId, userId],
     );
 
@@ -106,9 +104,7 @@ const getProjects = async (req, res) => {
                  END) as user_role
              FROM Projects p
              JOIN Users u ON p.owner_id = u.user_id
-             LEFT JOIN Collaborators col ON p.project_id = col.project_id
-             WHERE p.owner_id = ? OR col.user_id = ?
-             GROUP BY p.project_id
+             WHERE p.owner_id = ? OR p.project_id IN (SELECT c.project_id FROM Collaborators c WHERE c.user_id = ?)
              ORDER BY p.created_at DESC`,
       [userId, userId, userId, userId],
     );
