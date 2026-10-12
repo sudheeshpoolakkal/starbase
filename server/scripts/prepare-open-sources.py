@@ -330,12 +330,29 @@ def alexandria(directory):
     for path, entry in zip(files, acquisition['files']):
         if digest_files([path]) != entry['sha256']:
             raise ValueError('Alexandria archive checksum changed')
-    source = {'key':'alexandria-pbe','name':'Alexandria PBE crystal calculations','url':'https://alexandria.icams.rub.de/datasets.html',
-              'license':'CC BY 4.0','kind':'computed','version':'PBE 3D 2025.07.02 published archive set',
-              'checksum':hashlib.sha256(''.join(f['sha256'] for f in acquisition['files']).encode()).hexdigest(),
-              'note':'Complete published PBE three-dimensional archive set. These are computed crystal structures, not commercial material grades. Formation energy and indirect band gap are source DFT results. Density is derived from the relaxed unit-cell composition and volume using pymatgen atomic masses and the exact Avogadro constant; it is not a supplier measurement. Source structures remain in the downloaded archives. Cite the Alexandria database and retain its accessions and CC BY 4.0 attribution.'}
-    target = CACHE / 'alexandria-pbe.jsonl'
-    counts, coverage = 0, {}
+    shard_entries = [entry for entry in acquisition['files'] if entry['file'] != 'convex_hull.json.bz2']
+    hull_entry = next(entry for entry in acquisition['files'] if entry['file'] == 'convex_hull.json.bz2')
+    common_note = ('Computed crystal structures, not commercial material grades. Formation energy and indirect band gap are source DFT results. '
+                   'Density is derived from the relaxed unit-cell composition and volume using pymatgen atomic masses and the exact Avogadro constant; '
+                   'it is not a supplier measurement. Source structures remain in the downloaded archives. Cite Alexandria and retain its CC BY 4.0 attribution.')
+    sources = {
+        'alexandria-pbe': {
+            'key':'alexandria-pbe','name':'Alexandria PBE 3D calculations','url':'https://alexandria.icams.rub.de/datasets.html',
+            'license':'CC BY 4.0','kind':'computed','version':'PBE 3D 2025.07.02, 58 main shards',
+            'checksum':hashlib.sha256(''.join(entry['sha256'] for entry in shard_entries).encode()).hexdigest(),
+            'note':common_note + ' The publisher-provided convex-hull subset is retained as a separate source collection.'
+        },
+        'alexandria-pbe-hull': {
+            'key':'alexandria-pbe-hull','name':'Alexandria PBE convex-hull subset','url':'https://alexandria.icams.rub.de/datasets.html',
+            'license':'CC BY 4.0','kind':'computed','version':'PBE convex-hull subset 2025.07.02',
+            'checksum':hull_entry['sha256'],
+            'note':common_note + ' Publisher-provided convex-hull records are retained as a separate source collection. Accessions overlap the main PBE 3D archive, and source values may differ at the reported precision; records are not merged.'
+        }
+    }
+    targets = {'alexandria-pbe':CACHE / 'alexandria-pbe.jsonl',
+               'alexandria-pbe-hull':CACHE / 'alexandria-pbe-hull.jsonl'}
+    counts = {key: 0 for key in sources}
+    coverage = {key: {} for key in sources}
     masses = {str(e):float(e.atomic_mass) for e in Element}
     # CPU workers process bounded individual entries; downloaded archives are unchanged.
     import concurrent.futures
@@ -343,33 +360,63 @@ def alexandria(directory):
     import sqlite3
     from alexandria_reader import normalize_file
     results = {}
-    with concurrent.futures.ProcessPoolExecutor(max_workers=3) as executor:
-        futures = {executor.submit(normalize_file, (str(path), masses)): path for path in files}
-        for future in concurrent.futures.as_completed(futures):
-            result=future.result()
-            results[str(futures[future])]=result
-            print(f'Alexandria normalized {len(results)}/{len(files)} archives',flush=True)
+    missing = []
+    for path in files:
+        normalized = path.parent / 'normalized' / (path.stem + '.jsonl')
+        id_file = path.parent / 'normalized' / (path.stem + '.ids')
+        if not normalized.is_file() or not id_file.is_file():
+            missing.append(path)
+            continue
+        count, item_coverage = 0, {}
+        with normalized.open(encoding='utf-8') as records, id_file.open(encoding='utf-8') as accessions:
+            for record_line, accession_line in zip(records, accessions):
+                row = json.loads(record_line)
+                if row['externalId'] != accession_line.rstrip('\r\n'):
+                    raise ValueError(f'Alexandria normalized accession mismatch in {path.name}')
+                count += 1
+                for key in row['properties']:
+                    item_coverage[key] = item_coverage.get(key, 0) + 1
+            if next(records, None) is not None or next(accessions, None) is not None:
+                raise ValueError(f'Alexandria normalized count mismatch in {path.name}')
+        results[str(path)] = {'path':str(normalized),'ids':str(id_file),'count':count,'coverage':item_coverage}
+        print(f'Alexandria validated cached normalization {len(results)}/{len(files)} archives',flush=True)
+    if missing:
+        with concurrent.futures.ProcessPoolExecutor(max_workers=3) as executor:
+            futures = {executor.submit(normalize_file, (str(path), masses)): path for path in missing}
+            for future in concurrent.futures.as_completed(futures):
+                result=future.result()
+                results[str(futures[future])]=result
+                print(f'Alexandria normalized {len(results)}/{len(files)} archives',flush=True)
+    counts = {
+        'alexandria-pbe': sum(results[str(directory / entry['file'])]['count'] for entry in shard_entries),
+        'alexandria-pbe-hull': results[str(directory / hull_entry['file'])]['count']
+    }
     ids_path=directory/'normalization-ids.sqlite'
     if ids_path.exists(): ids_path.unlink()
     identifiers=sqlite3.connect(ids_path)
-    identifiers.execute('CREATE TABLE ids (accession TEXT PRIMARY KEY)')
-    counts=sum(result['count'] for result in results.values())
+    identifiers.execute('CREATE TABLE ids (dataset TEXT NOT NULL, accession TEXT NOT NULL, PRIMARY KEY (dataset,accession))')
     try:
-        with target.with_suffix('.partial').open('wb') as output:
-            output.write((json.dumps({'source':source,'records':counts})+'\n').encode())
+        outputs = {key: target.with_suffix('.partial').open('wb') for key, target in targets.items()}
+        for key, output in outputs.items():
+            output.write((json.dumps({'source':sources[key],'records':counts[key]})+'\n').encode())
+        try:
             for path in files:
                 result=results[str(path)]
-                with open(result['path'],'rb') as normalized: shutil.copyfileobj(normalized,output)
+                dataset = 'alexandria-pbe-hull' if path.name == 'convex_hull.json.bz2' else 'alexandria-pbe'
+                with open(result['path'],'rb') as normalized: shutil.copyfileobj(normalized,outputs[dataset])
                 batch=[]
                 with open(result['ids']) as accession_file:
                     for line in accession_file:
-                        batch.append((line.strip(),))
+                        batch.append((dataset,line.strip()))
                         if len(batch)==5000:
-                            identifiers.executemany('INSERT INTO ids VALUES (?)',batch);batch=[]
-                    if batch: identifiers.executemany('INSERT INTO ids VALUES (?)',batch)
+                            identifiers.executemany('INSERT INTO ids VALUES (?,?)',batch);batch=[]
+                    if batch: identifiers.executemany('INSERT INTO ids VALUES (?,?)',batch)
                 identifiers.commit()
-                for key,value in result['coverage'].items():coverage[key]=coverage.get(key,0)+value
-        target.with_suffix('.partial').replace(target)
+                for key,value in result['coverage'].items():coverage[dataset][key]=coverage[dataset].get(key,0)+value
+        finally:
+            for output in outputs.values(): output.close()
+        for dataset, target in targets.items():
+            target.with_suffix('.partial').replace(target)
     finally:
         identifiers.close()
     ids_path.unlink()
@@ -379,10 +426,15 @@ def alexandria(directory):
         Path(result['ids']).unlink()
     manifest_path = ROOT / 'data/open-sources-manifest.json'
     manifest = json.loads(manifest_path.read_text())
-    entry = {**source,'records':counts,'coverage':coverage,'normalizedSha256':digest_files([target]),'archiveFiles':len(files)}
-    manifest['sources'] = [s for s in manifest['sources'] if s['key'] != source['key']] + [entry]
+    entries = []
+    for dataset, target in targets.items():
+        archive_count = len(shard_entries) if dataset == 'alexandria-pbe' else 1
+        entries.append({**sources[dataset],'records':counts[dataset],'coverage':coverage[dataset],
+                        'normalizedSha256':digest_files([target]),'archiveFiles':archive_count})
+    manifest['sources'] = [s for s in manifest['sources'] if s['key'] not in sources] + entries
     manifest_path.write_text(json.dumps(manifest,indent=2)+'\n')
-    print(f'{target}: {counts:,} records',flush=True)
+    for dataset, target in targets.items():
+        print(f'{target}: {counts[dataset]:,} records',flush=True)
 
 
 if __name__ == '__main__':

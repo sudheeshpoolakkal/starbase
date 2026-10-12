@@ -1,4 +1,4 @@
-# Material data acquisition — 10 October 2026
+# Material data acquisition — 12 October 2026
 
 The existing six sources remain in place. New records are imported using their
 original accessions and source namespaces. They are observations or computed
@@ -13,10 +13,13 @@ with complete mechanical specifications.
 | Materials Project GNoME | Included in full summary snapshot | 116,948 | Separate source; non-commercial license retained |
 | AFLOW | Complete available AEL/AGL query union | 5,664 | 5,639 elastic / 5,653 thermal query entries, combined by AUID |
 | NOMAD | Complete public bulk/shear-modulus-tagged query | 120 | Published simulations, CC BY 4.0 verified per entry; original calculation and dataset IDs |
-| Alexandria | All 59 published PBE 3D compressed archives | In progress | Every source entry is being normalized and checked for unique accessions before import |
+| Alexandria PBE 3D | All 58 main shards | 5,777,914 | Computed crystal structures; formation energy and band gap from source, density derived from relaxed cell |
+| Alexandria PBE convex hull | Publisher hull archive | 174,601 | Separate source collection; accessions overlap the main PBE archive and are intentionally retained as separate records |
 
-The catalog before Alexandria contains **313,176 records across 12 sources**,
-including the existing 21,663 records. Raw files are in the ignored
+The catalog now contains **6,265,691 records across 14 sources**, including the
+existing 21,663 records. The two Alexandria collections contribute 5,952,515
+rows; 174,601 accessions occur in both and remain distinct because their source
+collection and reported values are preserved. Raw files are in the ignored
 `server/data/downloads/open-sources` directory. SHA-256 values, normalized counts
 and property coverage are recorded in
 `server/data/open-sources-manifest.json` and the acquisition manifests.
@@ -25,9 +28,14 @@ and property coverage are recorded in
 
 - Four TPSX detail pages repeatedly return HTTP 500: 1519, 773, 1051 and 1258.
   Their list entries and failures are recorded, and missing values are not invented.
-- Full JARVIS Figshare hosts are blocked by this machine's NextDNS filter. TLS
-  verification and the filter were not bypassed. The existing 19,335 pinned
-  JARVIS elastic benchmark records remain available.
+- Full JARVIS is not downloaded yet. The Figshare API request receives a
+  certificate for `blockpage.nextdns.io` when connecting to `api.figshare.com`.
+  Allowlist `api.figshare.com` and `ndownloader.figshare.com` for the API and
+  file transfer; `figshare.com` is the publisher page. The official NIST
+  OPTIMADE endpoint returned HTTP 403. TLS verification and DNS filtering were
+  not bypassed. The publisher lists the current 1.42 GB JARVIS-DFT 3D archive
+  as CC BY 4.0; the existing 19,335 pinned JARVIS elastic benchmark records
+  remain available.
 - NIST Cryogenic and NIST Alloy Data return HTTP 403 to the downloader. Public
   documentation was reviewed, but no correlation values were fabricated from it.
 - OQMD requests return HTTP 502. Its advertised 21.1 GB compressed SQL dump and

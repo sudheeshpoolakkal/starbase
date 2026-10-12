@@ -177,9 +177,9 @@ async function listMaterials(input = {}) {
   const offset = (page - 1) * limit;
   if (!Number.isSafeInteger(offset) || offset > 10000000) throw new Error("Enter a valid page.");
   const { where, params } = filters(input);
-  let total;
+  let total, summary;
   if (!input.q && !input.property) {
-    const summary=await getSummary();
+    summary=await getSummary();
     total=summary.sources.filter(s=>(!input.source||s.sourceKey===input.source)&&(!input.kind||s.dataKind===input.kind)&&(input.collection!=='engineering'||s.dataKind==='literature-extracted')&&(input.collection!=='research'||['computed','experimental'].includes(s.dataKind))).reduce((sum,s)=>sum+s.count,0);
     // Source/category intersections use the original SQL count, not the global category total.
     if(input.category) total=undefined;
@@ -191,9 +191,21 @@ async function listMaterials(input = {}) {
   if(!total) return {materials:[],total:0,page,limit,pages:0};
   const property = { density: ["density", "ASC"], strength: ["tensileStrength", "DESC"], bulk: ["bulkModulus", "DESC"] }[input.sort];
   const sortJoin = property ? "LEFT JOIN Material_Property sort_value ON sort_value.material_id=m.material_id AND sort_value.property_id=(SELECT property_id FROM Property WHERE property_key=?)" : "";
+  let sourcePageJoins=joins;
+  if (db.driver()==="mysql") {
+    if (input.source) {
+      summary ||= await getSummary();
+      const sourceCount=summary.sources.find(s=>s.sourceKey===input.source)?.count||0;
+      sourcePageJoins=sourceCount>summary.total*0.1
+        ? "FROM Material m FORCE INDEX(material_name_index) STRAIGHT_JOIN Material_Category c ON m.category_id=c.category_id STRAIGHT_JOIN Data_Source s ON m.source_id=s.source_id"
+        : "FROM Data_Source s FORCE INDEX(source_key_unique) STRAIGHT_JOIN Material m FORCE INDEX(material_external_unique) ON m.source_id=s.source_id STRAIGHT_JOIN Material_Category c ON m.category_id=c.category_id";
+    } else {
+      sourcePageJoins="FROM Material m FORCE INDEX(material_name_index) STRAIGHT_JOIN Material_Category c ON m.category_id=c.category_id STRAIGHT_JOIN Data_Source s ON m.source_id=s.source_id";
+    }
+  }
   const order = property ? `sort_value.numeric_value IS NULL, sort_value.numeric_value ${property[1]}, m.name, m.material_id` : "m.name, m.material_id";
   // Integers validated above are embedded because some MySQL prepared-statement versions reject LIMIT bindings.
-  const [rows] = await db.execute(`SELECT m.material_id ${joins} ${sortJoin} WHERE ${where} ORDER BY ${order} LIMIT ${limit} OFFSET ${offset}`, property ? [property[0], ...params] : params);
+  const [rows] = await db.execute(`SELECT m.material_id ${sourcePageJoins} ${sortJoin} WHERE ${where} ORDER BY ${order} LIMIT ${limit} OFFSET ${offset}`, property ? [property[0], ...params] : params);
   return { materials: await getCatalog(rows.map(r => r.material_id)), total, page, limit, pages: Math.ceil(total / limit) };
 }
 async function getSummary() {

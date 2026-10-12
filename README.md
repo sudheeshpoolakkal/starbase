@@ -4,6 +4,8 @@ An engineering material selection workspace backed by **MySQL**. The running app
 
 NASA, Materials Project, AFLOW, NOMAD and Alexandria acquisition status, exact imported scopes, licenses, source failures and repeatable commands are documented in [the acquisition report](docs/data-acquisition-report.md). Source record totals do not imply complete commercial-grade specifications.
 
+For the TiDB cloud transfer, use [the transfer guide](docs/tidb-transfer.md) and `npm run data:cloud`. The [teammate SQL review](docs/teammate-schema-review.md) preserves the contributed engineering records separately pending specific property and price citations.
+
 The public homepage at `/` introduces Starbase and leads into the workspace at `/materials`. The public pages at `/about` and `/brand` explain the product and provide the Starbase identity, downloadable SVG logos, and a brand kit. The workspace uses top navigation and responsive layouts for exploration, selection, comparison and projects. See [the product redesign record](docs/product-redesign.md) for visual changes, browser validation and the hero asset prompt.
 
 ## Run locally

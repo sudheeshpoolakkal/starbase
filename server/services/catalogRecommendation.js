@@ -80,7 +80,8 @@ async function recommendCatalog(input) {
     where.push(`(${value} IS NOT NULL AND ${value}>=?)`); params.push(resistanceRank[requirements.corrosionResistance]);
   }
   const priorityIds = [...new Set(Object.entries(factors).filter(([factor])=>requirements.weights[factor]>0).map(([,prop])=>ids[prop]))];
-  const eligibility = `JOIN (SELECT DISTINCT material_id FROM Material_Property WHERE property_id IN (${priorityIds.join(',')}) AND (numeric_value IS NOT NULL OR text_value IS NOT NULL)) eligible ON eligible.material_id=m.material_id`;
+  const eligibilityIndex=db.driver()==='mysql'?'FORCE INDEX (material_numeric_index)':'';
+  const eligibility = `JOIN (SELECT DISTINCT material_id FROM Material_Property ${eligibilityIndex} WHERE property_id IN (${priorityIds.join(',')}) AND (numeric_value IS NOT NULL OR text_value IS NOT NULL)) eligible ON eligible.material_id=m.material_id`;
   const joined = `${base} ${joins.join(' ')}`, ranked = `${base} ${eligibility} ${joins.join(' ')}`, predicate = where.join(' AND ');
   const [[totalRow]] = await db.execute(`SELECT COUNT(*) AS total FROM Material m JOIN Data_Source s ON s.source_id=m.source_id WHERE s.source_key IS NOT NULL AND COALESCE(s.import_state,'complete')='complete'`);
   const [[countRow]] = await db.execute(`SELECT COUNT(*) AS total ${ranked} WHERE s.source_key IS NOT NULL AND COALESCE(s.import_state,'complete')='complete' AND ${predicate}`,params);

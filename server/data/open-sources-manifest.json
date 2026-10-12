@@ -45,7 +45,7 @@
       "kind": "computed",
       "version": "2026-09-28",
       "checksum": "be5496ee686581a2b2051872ec19084c0be3b61745fce75a6f0961f1c689b872",
-      "note": "Materials Project public S3 summary and elasticity snapshot. Density, band gap, formation energy and moduli are calculated crystal properties, not measured commercial grades. Deprecated records are retained in the original snapshot but excluded from screening. Voigt and Voigt–Reuss–Hill moduli remain separate; property origins and source version are retained. Data normalized from original Parquet files. Cite Jain et al., APL Materials 1, 011002 (2013).",
+      "note": "Materials Project public S3 summary and elasticity snapshot. Density, band gap, formation energy and moduli are calculated crystal properties, not measured commercial grades. Deprecated records are retained in the original snapshot but excluded from screening. Voigt and Voigt\u2013Reuss\u2013Hill moduli remain separate; property origins and source version are retained. Data normalized from original Parquet files. Cite Jain et al., APL Materials 1, 011002 (2013).",
       "key": "materials-project-core",
       "name": "Materials Project core crystal properties",
       "license": "CC BY 4.0",
@@ -78,7 +78,7 @@
       "kind": "computed",
       "version": "2026-09-28",
       "checksum": "be5496ee686581a2b2051872ec19084c0be3b61745fce75a6f0961f1c689b872",
-      "note": "Materials Project public S3 summary and elasticity snapshot. Density, band gap, formation energy and moduli are calculated crystal properties, not measured commercial grades. Deprecated records are retained in the original snapshot but excluded from screening. Voigt and Voigt–Reuss–Hill moduli remain separate; property origins and source version are retained. Data normalized from original Parquet files. Cite Jain et al., APL Materials 1, 011002 (2013). GNoME-originated structures carry the separate non-commercial license.",
+      "note": "Materials Project public S3 summary and elasticity snapshot. Density, band gap, formation energy and moduli are calculated crystal properties, not measured commercial grades. Deprecated records are retained in the original snapshot but excluded from screening. Voigt and Voigt\u2013Reuss\u2013Hill moduli remain separate; property origins and source version are retained. Data normalized from original Parquet files. Cite Jain et al., APL Materials 1, 011002 (2013). GNoME-originated structures carry the separate non-commercial license.",
       "key": "materials-project-gnome",
       "name": "Materials Project GNoME crystal properties",
       "license": "CC BY-NC 4.0 (GNoME); non-commercial use only",
@@ -151,6 +151,42 @@
         "yieldStrength": 7,
         "youngModulus": 53
       }
+    },
+    {
+      "key": "alexandria-pbe",
+      "name": "Alexandria PBE 3D calculations",
+      "url": "https://alexandria.icams.rub.de/datasets.html",
+      "license": "CC BY 4.0",
+      "kind": "computed",
+      "version": "PBE 3D 2025.07.02, 58 main shards",
+      "checksum": "c3a524f900a4b5621b0d122858b64cada2867856291b7ec6b2fdeb376ba28050",
+      "note": "Computed crystal structures, not commercial material grades. Formation energy and indirect band gap are source DFT results. Density is derived from the relaxed unit-cell composition and volume using pymatgen atomic masses and the exact Avogadro constant; it is not a supplier measurement. Source structures remain in the downloaded archives. Cite Alexandria and retain its CC BY 4.0 attribution. The publisher-provided convex-hull subset is retained as a separate source collection.",
+      "records": 5777914,
+      "coverage": {
+        "formationEnergy": 5777912,
+        "bandGap": 5777914,
+        "density": 5777914
+      },
+      "normalizedSha256": "2ec71afe18fb10e55bc594f485977231e25a8d89e94c91ecaf63c532609d0d0c",
+      "archiveFiles": 58
+    },
+    {
+      "key": "alexandria-pbe-hull",
+      "name": "Alexandria PBE convex-hull subset",
+      "url": "https://alexandria.icams.rub.de/datasets.html",
+      "license": "CC BY 4.0",
+      "kind": "computed",
+      "version": "PBE convex-hull subset 2025.07.02",
+      "checksum": "8e3206c2f3623c0931ce5b0c3aa62ba83905b4838e4660fd6f2067c55c5bbb8e",
+      "note": "Computed crystal structures, not commercial material grades. Formation energy and indirect band gap are source DFT results. Density is derived from the relaxed unit-cell composition and volume using pymatgen atomic masses and the exact Avogadro constant; it is not a supplier measurement. Source structures remain in the downloaded archives. Cite Alexandria and retain its CC BY 4.0 attribution. Publisher-provided convex-hull records are retained as a separate source collection. Accessions overlap the main PBE 3D archive, and source values may differ at the reported precision; records are not merged.",
+      "records": 174601,
+      "coverage": {
+        "formationEnergy": 174601,
+        "bandGap": 174601,
+        "density": 174601
+      },
+      "normalizedSha256": "e413cd71ffd161c75a3ff442bf6009dff33d3f9b6397606fb45ab9bbd319033f",
+      "archiveFiles": 1
     }
   ]
 }

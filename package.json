@@ -18,6 +18,7 @@
     "data:registry": "python3 server/scripts/prepare-material-registry.py && node server/scripts/import-catalog.js server/data/downloads/material-registry/catalog.json",
     "data:open:acquire": "python3 server/scripts/acquire-open-sources.py",
     "data:open:prepare": ".runtime/data-tools/bin/python server/scripts/prepare-open-sources.py",
+    "data:cloud": "node server/scripts/transfer-tidb.js",
     "test:open-data": ".runtime/data-tools/bin/python server/tests/open-sources.test.py"
   },
   "dependencies": {

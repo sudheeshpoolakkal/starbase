@@ -1,0 +1,2093 @@
+{
+  "preparedDate": "2026-10-12",
+  "originalSqlFile": "docs/contributions/teammate-material-seed.original.sql",
+  "originalSqlSha256": "83819aaa125302d46fff14e3a36d5ffedcc7200ba0e080db443070b40300a952",
+  "status": "needs-citations",
+  "counts": {
+    "material_category": 5,
+    "data_source": 3,
+    "material": 37,
+    "material_property": 45,
+    "manufacturing_process": 7,
+    "material_process": 14,
+    "material_cost": 37
+  },
+  "sqliteReferentialCheck": [],
+  "materials": [
+    {
+      "material_id": 1,
+      "category_id": 1,
+      "data_source_id": 101,
+      "material_name": "Aluminum 6061-T6",
+      "material_code": "Al 6061-T6",
+      "density_g_cm3": 2.7,
+      "description": "Precipitation-hardened aluminum alloy containing magnesium and silicon",
+      "category": {
+        "category_id": 1,
+        "category_name": "Metals & Alloys",
+        "description": "Ferrous, non-ferrous, structural, and high-temperature alloys"
+      },
+      "claimedDataSource": {
+        "source_id": 101,
+        "source_name": "ASM Materials Information Database",
+        "publisher": "ASM International",
+        "publication_year": 2022,
+        "doi_or_url": "https://www.asminternational.org"
+      },
+      "properties": [
+        {
+          "property_id": 1,
+          "material_id": 1,
+          "property_type": "Mechanical",
+          "property_name": "Yield Strength",
+          "property_value": 276,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        },
+        {
+          "property_id": 2,
+          "material_id": 1,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 310,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        },
+        {
+          "property_id": 3,
+          "material_id": 1,
+          "property_type": "Thermal",
+          "property_name": "Thermal Conductivity",
+          "property_value": 167,
+          "unit": "W/m-K",
+          "test_condition": "25°C"
+        }
+      ],
+      "processes": [
+        {
+          "material_id": 1,
+          "process_id": 1,
+          "feasibility_score": 5,
+          "notes": "Highly machinable alloy",
+          "process": {
+            "process_id": 1,
+            "process_name": "CNC Milling / Machining",
+            "process_type": "Subtractive",
+            "description": "Precision computer-controlled metal cutting"
+          }
+        },
+        {
+          "material_id": 1,
+          "process_id": 3,
+          "feasibility_score": 4,
+          "notes": "Standard alloy for casting",
+          "process": {
+            "process_id": 3,
+            "process_name": "Investment Casting",
+            "process_type": "Casting",
+            "description": "Precision molten metal casting"
+          }
+        }
+      ],
+      "costs": [
+        {
+          "cost_id": 1,
+          "material_id": 1,
+          "cost_per_unit": 3.85,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "McMaster-Carr Supply Co."
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation.",
+        "The investment-casting mapping needs review against the stated 6061-T6 grade and product form."
+      ]
+    },
+    {
+      "material_id": 2,
+      "category_id": 1,
+      "data_source_id": 101,
+      "material_name": "Stainless Steel 304",
+      "material_code": "SS 304",
+      "density_g_cm3": 8,
+      "description": "Austenitic chromium-nickel stainless steel with high corrosion resistance",
+      "category": {
+        "category_id": 1,
+        "category_name": "Metals & Alloys",
+        "description": "Ferrous, non-ferrous, structural, and high-temperature alloys"
+      },
+      "claimedDataSource": {
+        "source_id": 101,
+        "source_name": "ASM Materials Information Database",
+        "publisher": "ASM International",
+        "publication_year": 2022,
+        "doi_or_url": "https://www.asminternational.org"
+      },
+      "properties": [
+        {
+          "property_id": 4,
+          "material_id": 2,
+          "property_type": "Mechanical",
+          "property_name": "Yield Strength",
+          "property_value": 215,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        },
+        {
+          "property_id": 5,
+          "material_id": 2,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 505,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        },
+        {
+          "property_id": 6,
+          "material_id": 2,
+          "property_type": "Thermal",
+          "property_name": "Thermal Conductivity",
+          "property_value": 16.2,
+          "unit": "W/m-K",
+          "test_condition": "100°C"
+        }
+      ],
+      "processes": [
+        {
+          "material_id": 2,
+          "process_id": 1,
+          "feasibility_score": 3,
+          "notes": "Requires rigid setups",
+          "process": {
+            "process_id": 1,
+            "process_name": "CNC Milling / Machining",
+            "process_type": "Subtractive",
+            "description": "Precision computer-controlled metal cutting"
+          }
+        }
+      ],
+      "costs": [
+        {
+          "cost_id": 2,
+          "material_id": 2,
+          "cost_per_unit": 4.9,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Ryerson Steel Distribution"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 3,
+      "category_id": 1,
+      "data_source_id": 102,
+      "material_name": "Titanium Ti-6Al-4V (Grade 5)",
+      "material_code": "Ti-6Al-4V",
+      "density_g_cm3": 4.43,
+      "description": "Alpha-beta titanium alloy with ultra-high strength-to-weight ratio",
+      "category": {
+        "category_id": 1,
+        "category_name": "Metals & Alloys",
+        "description": "Ferrous, non-ferrous, structural, and high-temperature alloys"
+      },
+      "claimedDataSource": {
+        "source_id": 102,
+        "source_name": "MatWeb Material Property Data",
+        "publisher": "MatWeb LLC",
+        "publication_year": 2023,
+        "doi_or_url": "https://www.matweb.com"
+      },
+      "properties": [
+        {
+          "property_id": 7,
+          "material_id": 3,
+          "property_type": "Mechanical",
+          "property_name": "Yield Strength",
+          "property_value": 880,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        },
+        {
+          "property_id": 8,
+          "material_id": 3,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 950,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [
+        {
+          "material_id": 3,
+          "process_id": 1,
+          "feasibility_score": 2,
+          "notes": "High tool wear",
+          "process": {
+            "process_id": 1,
+            "process_name": "CNC Milling / Machining",
+            "process_type": "Subtractive",
+            "description": "Precision computer-controlled metal cutting"
+          }
+        }
+      ],
+      "costs": [
+        {
+          "cost_id": 3,
+          "material_id": 3,
+          "cost_per_unit": 35.5,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "TIMET Aerospace Metals"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 4,
+      "category_id": 1,
+      "data_source_id": 101,
+      "material_name": "Copper C11000 (ETP)",
+      "material_code": "Cu-ETP",
+      "density_g_cm3": 8.89,
+      "description": "Electrolytic Tough Pitch copper with high thermal and electrical conductivity",
+      "category": {
+        "category_id": 1,
+        "category_name": "Metals & Alloys",
+        "description": "Ferrous, non-ferrous, structural, and high-temperature alloys"
+      },
+      "claimedDataSource": {
+        "source_id": 101,
+        "source_name": "ASM Materials Information Database",
+        "publisher": "ASM International",
+        "publication_year": 2022,
+        "doi_or_url": "https://www.asminternational.org"
+      },
+      "properties": [
+        {
+          "property_id": 9,
+          "material_id": 4,
+          "property_type": "Electrical",
+          "property_name": "Electrical Conductivity",
+          "property_value": 58,
+          "unit": "MS/m",
+          "test_condition": "20°C"
+        },
+        {
+          "property_id": 10,
+          "material_id": 4,
+          "property_type": "Thermal",
+          "property_name": "Thermal Conductivity",
+          "property_value": 391,
+          "unit": "W/m-K",
+          "test_condition": "20°C"
+        }
+      ],
+      "processes": [
+        {
+          "material_id": 4,
+          "process_id": 1,
+          "feasibility_score": 4,
+          "notes": "Easy to machine",
+          "process": {
+            "process_id": 1,
+            "process_name": "CNC Milling / Machining",
+            "process_type": "Subtractive",
+            "description": "Precision computer-controlled metal cutting"
+          }
+        }
+      ],
+      "costs": [
+        {
+          "cost_id": 4,
+          "material_id": 4,
+          "cost_per_unit": 9.2,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Luvata Copper Products"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 5,
+      "category_id": 1,
+      "data_source_id": 101,
+      "material_name": "Brass C36000 (Free-Cutting)",
+      "material_code": "CuZn39Pb3",
+      "density_g_cm3": 8.5,
+      "description": "Standard brass alloy optimized for high-speed automatic machining",
+      "category": {
+        "category_id": 1,
+        "category_name": "Metals & Alloys",
+        "description": "Ferrous, non-ferrous, structural, and high-temperature alloys"
+      },
+      "claimedDataSource": {
+        "source_id": 101,
+        "source_name": "ASM Materials Information Database",
+        "publisher": "ASM International",
+        "publication_year": 2022,
+        "doi_or_url": "https://www.asminternational.org"
+      },
+      "properties": [
+        {
+          "property_id": 11,
+          "material_id": 5,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 380,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [
+        {
+          "material_id": 5,
+          "process_id": 1,
+          "feasibility_score": 5,
+          "notes": "Free-cutting brass benchmark",
+          "process": {
+            "process_id": 1,
+            "process_name": "CNC Milling / Machining",
+            "process_type": "Subtractive",
+            "description": "Precision computer-controlled metal cutting"
+          }
+        }
+      ],
+      "costs": [
+        {
+          "cost_id": 5,
+          "material_id": 5,
+          "cost_per_unit": 7.5,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Midwest Metal Supply"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 6,
+      "category_id": 1,
+      "data_source_id": 101,
+      "material_name": "Inconel 718",
+      "material_code": "NC19FeNb",
+      "density_g_cm3": 8.19,
+      "description": "Nickel-chromium superalloy for extreme high-temperature aerospace environments",
+      "category": {
+        "category_id": 1,
+        "category_name": "Metals & Alloys",
+        "description": "Ferrous, non-ferrous, structural, and high-temperature alloys"
+      },
+      "claimedDataSource": {
+        "source_id": 101,
+        "source_name": "ASM Materials Information Database",
+        "publisher": "ASM International",
+        "publication_year": 2022,
+        "doi_or_url": "https://www.asminternational.org"
+      },
+      "properties": [
+        {
+          "property_id": 12,
+          "material_id": 6,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 1375,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        },
+        {
+          "property_id": 13,
+          "material_id": 6,
+          "property_type": "Thermal",
+          "property_name": "Max Operating Temp",
+          "property_value": 650,
+          "unit": "°C",
+          "test_condition": "Continuous"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 6,
+          "material_id": 6,
+          "cost_per_unit": 48,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Special Metals Corp"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 7,
+      "category_id": 1,
+      "data_source_id": 101,
+      "material_name": "Magnesium AZ31B",
+      "material_code": "AZ31B-H24",
+      "density_g_cm3": 1.77,
+      "description": "Ultra-lightweight wrought magnesium alloy with good formability",
+      "category": {
+        "category_id": 1,
+        "category_name": "Metals & Alloys",
+        "description": "Ferrous, non-ferrous, structural, and high-temperature alloys"
+      },
+      "claimedDataSource": {
+        "source_id": 101,
+        "source_name": "ASM Materials Information Database",
+        "publisher": "ASM International",
+        "publication_year": 2022,
+        "doi_or_url": "https://www.asminternational.org"
+      },
+      "properties": [
+        {
+          "property_id": 14,
+          "material_id": 7,
+          "property_type": "Mechanical",
+          "property_name": "Yield Strength",
+          "property_value": 200,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 7,
+          "material_id": 7,
+          "cost_per_unit": 5.1,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Luxfer MAG Metals"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 8,
+      "category_id": 1,
+      "data_source_id": 101,
+      "material_name": "Tool Steel D2",
+      "material_code": "AISI-D2",
+      "density_g_cm3": 7.7,
+      "description": "High-carbon, high-chromium cold-work tool steel with high wear resistance",
+      "category": {
+        "category_id": 1,
+        "category_name": "Metals & Alloys",
+        "description": "Ferrous, non-ferrous, structural, and high-temperature alloys"
+      },
+      "claimedDataSource": {
+        "source_id": 101,
+        "source_name": "ASM Materials Information Database",
+        "publisher": "ASM International",
+        "publication_year": 2022,
+        "doi_or_url": "https://www.asminternational.org"
+      },
+      "properties": [
+        {
+          "property_id": 15,
+          "material_id": 8,
+          "property_type": "Mechanical",
+          "property_name": "Hardness (Rockwell C)",
+          "property_value": 60,
+          "unit": "HRC",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 8,
+          "material_id": 8,
+          "cost_per_unit": 8.5,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Bohler Uddeholm"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 9,
+      "category_id": 1,
+      "data_source_id": 101,
+      "material_name": "Structural Steel A36",
+      "material_code": "ASTM-A36",
+      "density_g_cm3": 7.85,
+      "description": "Standard low-carbon structural steel used in construction and framing",
+      "category": {
+        "category_id": 1,
+        "category_name": "Metals & Alloys",
+        "description": "Ferrous, non-ferrous, structural, and high-temperature alloys"
+      },
+      "claimedDataSource": {
+        "source_id": 101,
+        "source_name": "ASM Materials Information Database",
+        "publisher": "ASM International",
+        "publication_year": 2022,
+        "doi_or_url": "https://www.asminternational.org"
+      },
+      "properties": [
+        {
+          "property_id": 16,
+          "material_id": 9,
+          "property_type": "Mechanical",
+          "property_name": "Yield Strength",
+          "property_value": 250,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 9,
+          "material_id": 9,
+          "cost_per_unit": 1.2,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "ArcelorMittal Steel"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 10,
+      "category_id": 1,
+      "data_source_id": 101,
+      "material_name": "Aluminum 7075-T6",
+      "material_code": "Al 7075-T6",
+      "density_g_cm3": 2.81,
+      "description": "Very high strength zinc-bearing aluminum alloy used in aerospace structures",
+      "category": {
+        "category_id": 1,
+        "category_name": "Metals & Alloys",
+        "description": "Ferrous, non-ferrous, structural, and high-temperature alloys"
+      },
+      "claimedDataSource": {
+        "source_id": 101,
+        "source_name": "ASM Materials Information Database",
+        "publisher": "ASM International",
+        "publication_year": 2022,
+        "doi_or_url": "https://www.asminternational.org"
+      },
+      "properties": [
+        {
+          "property_id": 17,
+          "material_id": 10,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 572,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 10,
+          "material_id": 10,
+          "cost_per_unit": 6.4,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Kaiser Aluminum"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 11,
+      "category_id": 1,
+      "data_source_id": 101,
+      "material_name": "Stainless Steel 316L",
+      "material_code": "SS 316L",
+      "density_g_cm3": 8,
+      "description": "Low-carbon molybdenum stainless steel with superior marine pitting resistance",
+      "category": {
+        "category_id": 1,
+        "category_name": "Metals & Alloys",
+        "description": "Ferrous, non-ferrous, structural, and high-temperature alloys"
+      },
+      "claimedDataSource": {
+        "source_id": 101,
+        "source_name": "ASM Materials Information Database",
+        "publisher": "ASM International",
+        "publication_year": 2022,
+        "doi_or_url": "https://www.asminternational.org"
+      },
+      "properties": [
+        {
+          "property_id": 18,
+          "material_id": 11,
+          "property_type": "Mechanical",
+          "property_name": "Yield Strength",
+          "property_value": 290,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 11,
+          "material_id": 11,
+          "cost_per_unit": 6.1,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Outokumpu Stainless"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 12,
+      "category_id": 1,
+      "data_source_id": 101,
+      "material_name": "Cast Iron G2500 (Gray)",
+      "material_code": "Class 35",
+      "density_g_cm3": 7.2,
+      "description": "Gray iron with excellent vibration damping and thermal conductivity",
+      "category": {
+        "category_id": 1,
+        "category_name": "Metals & Alloys",
+        "description": "Ferrous, non-ferrous, structural, and high-temperature alloys"
+      },
+      "claimedDataSource": {
+        "source_id": 101,
+        "source_name": "ASM Materials Information Database",
+        "publisher": "ASM International",
+        "publication_year": 2022,
+        "doi_or_url": "https://www.asminternational.org"
+      },
+      "properties": [
+        {
+          "property_id": 19,
+          "material_id": 12,
+          "property_type": "Mechanical",
+          "property_name": "Compressive Strength",
+          "property_value": 820,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 12,
+          "material_id": 12,
+          "cost_per_unit": 1.8,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Waupaca Foundry"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation.",
+        "Resolve the G2500 name and Class 35 code before identifying the grade."
+      ]
+    },
+    {
+      "material_id": 13,
+      "category_id": 2,
+      "data_source_id": 102,
+      "material_name": "Polyether Ether Ketone (PEEK)",
+      "material_code": "PEEK-1000",
+      "density_g_cm3": 1.32,
+      "description": "High-performance thermoplastic with extreme chemical and heat resistance",
+      "category": {
+        "category_id": 2,
+        "category_name": "Engineering Polymers",
+        "description": "Thermoplastics, thermosets, and high-performance polymers"
+      },
+      "claimedDataSource": {
+        "source_id": 102,
+        "source_name": "MatWeb Material Property Data",
+        "publisher": "MatWeb LLC",
+        "publication_year": 2023,
+        "doi_or_url": "https://www.matweb.com"
+      },
+      "properties": [
+        {
+          "property_id": 20,
+          "material_id": 13,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 100,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        },
+        {
+          "property_id": 21,
+          "material_id": 13,
+          "property_type": "Thermal",
+          "property_name": "Melting Point",
+          "property_value": 343,
+          "unit": "°C",
+          "test_condition": "1 atm"
+        }
+      ],
+      "processes": [
+        {
+          "material_id": 13,
+          "process_id": 1,
+          "feasibility_score": 4,
+          "notes": "Machinable high-temp polymer",
+          "process": {
+            "process_id": 1,
+            "process_name": "CNC Milling / Machining",
+            "process_type": "Subtractive",
+            "description": "Precision computer-controlled metal cutting"
+          }
+        },
+        {
+          "material_id": 13,
+          "process_id": 4,
+          "feasibility_score": 5,
+          "notes": "Requires elevated mold temps",
+          "process": {
+            "process_id": 4,
+            "process_name": "Injection Molding",
+            "process_type": "Molding",
+            "description": "High-volume pressure injection molding"
+          }
+        }
+      ],
+      "costs": [
+        {
+          "cost_id": 13,
+          "material_id": 13,
+          "cost_per_unit": 88,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Victrex Polymer Materials"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 14,
+      "category_id": 2,
+      "data_source_id": 102,
+      "material_name": "Polycarbonate",
+      "material_code": "PC-Lexan",
+      "density_g_cm3": 1.2,
+      "description": "Transparent engineering thermoplastic with high impact strength",
+      "category": {
+        "category_id": 2,
+        "category_name": "Engineering Polymers",
+        "description": "Thermoplastics, thermosets, and high-performance polymers"
+      },
+      "claimedDataSource": {
+        "source_id": 102,
+        "source_name": "MatWeb Material Property Data",
+        "publisher": "MatWeb LLC",
+        "publication_year": 2023,
+        "doi_or_url": "https://www.matweb.com"
+      },
+      "properties": [
+        {
+          "property_id": 22,
+          "material_id": 14,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 62,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 14,
+          "material_id": 14,
+          "cost_per_unit": 2.75,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Sabic Innovative Plastics"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 15,
+      "category_id": 2,
+      "data_source_id": 102,
+      "material_name": "Nylon 6/6 (PA 66)",
+      "material_code": "PA-66",
+      "density_g_cm3": 1.14,
+      "description": "Strong engineering plastic with high mechanical strength and rigidity",
+      "category": {
+        "category_id": 2,
+        "category_name": "Engineering Polymers",
+        "description": "Thermoplastics, thermosets, and high-performance polymers"
+      },
+      "claimedDataSource": {
+        "source_id": 102,
+        "source_name": "MatWeb Material Property Data",
+        "publisher": "MatWeb LLC",
+        "publication_year": 2023,
+        "doi_or_url": "https://www.matweb.com"
+      },
+      "properties": [
+        {
+          "property_id": 23,
+          "material_id": 15,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 85,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 15,
+          "material_id": 15,
+          "cost_per_unit": 3.2,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "BASF Performance Materials"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 16,
+      "category_id": 2,
+      "data_source_id": 102,
+      "material_name": "Acrylonitrile Butadiene Styrene",
+      "material_code": "ABS-Standard",
+      "density_g_cm3": 1.05,
+      "description": "Common thermoplastic polymer used for 3D printing and enclosures",
+      "category": {
+        "category_id": 2,
+        "category_name": "Engineering Polymers",
+        "description": "Thermoplastics, thermosets, and high-performance polymers"
+      },
+      "claimedDataSource": {
+        "source_id": 102,
+        "source_name": "MatWeb Material Property Data",
+        "publisher": "MatWeb LLC",
+        "publication_year": 2023,
+        "doi_or_url": "https://www.matweb.com"
+      },
+      "properties": [
+        {
+          "property_id": 24,
+          "material_id": 16,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 40,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [
+        {
+          "material_id": 16,
+          "process_id": 4,
+          "feasibility_score": 5,
+          "notes": "Excellent injection molding resin",
+          "process": {
+            "process_id": 4,
+            "process_name": "Injection Molding",
+            "process_type": "Molding",
+            "description": "High-volume pressure injection molding"
+          }
+        },
+        {
+          "material_id": 16,
+          "process_id": 6,
+          "feasibility_score": 5,
+          "notes": "Standard FDM filament",
+          "process": {
+            "process_id": 6,
+            "process_name": "Fused Deposition Modeling (FDM)",
+            "process_type": "Additive",
+            "description": "Standard filament-based 3D printing"
+          }
+        }
+      ],
+      "costs": [
+        {
+          "cost_id": 16,
+          "material_id": 16,
+          "cost_per_unit": 2.1,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "LG Chem Ltd."
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 17,
+      "category_id": 2,
+      "data_source_id": 102,
+      "material_name": "Polytetrafluoroethylene (PTFE)",
+      "material_code": "Teflon",
+      "density_g_cm3": 2.2,
+      "description": "Fluoropolymer with ultra-low friction coefficient and chemical inertness",
+      "category": {
+        "category_id": 2,
+        "category_name": "Engineering Polymers",
+        "description": "Thermoplastics, thermosets, and high-performance polymers"
+      },
+      "claimedDataSource": {
+        "source_id": 102,
+        "source_name": "MatWeb Material Property Data",
+        "publisher": "MatWeb LLC",
+        "publication_year": 2023,
+        "doi_or_url": "https://www.matweb.com"
+      },
+      "properties": [
+        {
+          "property_id": 25,
+          "material_id": 17,
+          "property_type": "Thermal",
+          "property_name": "Max Operating Temp",
+          "property_value": 260,
+          "unit": "°C",
+          "test_condition": "Continuous"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 17,
+          "material_id": 17,
+          "cost_per_unit": 18.5,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Chemours Teflon"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 18,
+      "category_id": 2,
+      "data_source_id": 102,
+      "material_name": "Polypropylene",
+      "material_code": "PP-Homopolymer",
+      "density_g_cm3": 0.9,
+      "description": "Low-density commodity thermoplastic with high fatigue and chemical resistance",
+      "category": {
+        "category_id": 2,
+        "category_name": "Engineering Polymers",
+        "description": "Thermoplastics, thermosets, and high-performance polymers"
+      },
+      "claimedDataSource": {
+        "source_id": 102,
+        "source_name": "MatWeb Material Property Data",
+        "publisher": "MatWeb LLC",
+        "publication_year": 2023,
+        "doi_or_url": "https://www.matweb.com"
+      },
+      "properties": [
+        {
+          "property_id": 26,
+          "material_id": 18,
+          "property_type": "Mechanical",
+          "property_name": "Yield Strength",
+          "property_value": 33,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 18,
+          "material_id": 18,
+          "cost_per_unit": 1.45,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "LyondellBasell Polymers"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 19,
+      "category_id": 2,
+      "data_source_id": 102,
+      "material_name": "Polyethylene Terephthalate",
+      "material_code": "PETG",
+      "density_g_cm3": 1.27,
+      "description": "Clear glycol-modified polyester with high toughness and chemical resistance",
+      "category": {
+        "category_id": 2,
+        "category_name": "Engineering Polymers",
+        "description": "Thermoplastics, thermosets, and high-performance polymers"
+      },
+      "claimedDataSource": {
+        "source_id": 102,
+        "source_name": "MatWeb Material Property Data",
+        "publisher": "MatWeb LLC",
+        "publication_year": 2023,
+        "doi_or_url": "https://www.matweb.com"
+      },
+      "properties": [
+        {
+          "property_id": 27,
+          "material_id": 19,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 50,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 19,
+          "material_id": 19,
+          "cost_per_unit": 2.3,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Eastman Chemical"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation.",
+        "Resolve the PET material name and PETG code/description before identifying the polymer."
+      ]
+    },
+    {
+      "material_id": 20,
+      "category_id": 2,
+      "data_source_id": 102,
+      "material_name": "Polyurethane Elastomer",
+      "material_code": "PU-Shore90A",
+      "density_g_cm3": 1.21,
+      "description": "Flexible thermoset elastomer with high abrasion resistance",
+      "category": {
+        "category_id": 2,
+        "category_name": "Engineering Polymers",
+        "description": "Thermoplastics, thermosets, and high-performance polymers"
+      },
+      "claimedDataSource": {
+        "source_id": 102,
+        "source_name": "MatWeb Material Property Data",
+        "publisher": "MatWeb LLC",
+        "publication_year": 2023,
+        "doi_or_url": "https://www.matweb.com"
+      },
+      "properties": [
+        {
+          "property_id": 28,
+          "material_id": 20,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 45,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 20,
+          "material_id": 20,
+          "cost_per_unit": 4.6,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Covestro Polyurethanes"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 21,
+      "category_id": 2,
+      "data_source_id": 102,
+      "material_name": "Polylactic Acid",
+      "material_code": "PLA-Standard",
+      "density_g_cm3": 1.24,
+      "description": "Biodegradable thermoplastic derived from renewable plant starch",
+      "category": {
+        "category_id": 2,
+        "category_name": "Engineering Polymers",
+        "description": "Thermoplastics, thermosets, and high-performance polymers"
+      },
+      "claimedDataSource": {
+        "source_id": 102,
+        "source_name": "MatWeb Material Property Data",
+        "publisher": "MatWeb LLC",
+        "publication_year": 2023,
+        "doi_or_url": "https://www.matweb.com"
+      },
+      "properties": [
+        {
+          "property_id": 29,
+          "material_id": 21,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 60,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [
+        {
+          "material_id": 21,
+          "process_id": 6,
+          "feasibility_score": 5,
+          "notes": "Easiest material for 3D printing",
+          "process": {
+            "process_id": 6,
+            "process_name": "Fused Deposition Modeling (FDM)",
+            "process_type": "Additive",
+            "description": "Standard filament-based 3D printing"
+          }
+        }
+      ],
+      "costs": [
+        {
+          "cost_id": 21,
+          "material_id": 21,
+          "cost_per_unit": 1.9,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "NatureWorks PLA"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 22,
+      "category_id": 2,
+      "data_source_id": 102,
+      "material_name": "Polyacetal (POM / Delrin)",
+      "material_code": "POM-H",
+      "density_g_cm3": 1.42,
+      "description": "High-rigidity engineering thermoplastic with low friction and dimensional stability",
+      "category": {
+        "category_id": 2,
+        "category_name": "Engineering Polymers",
+        "description": "Thermoplastics, thermosets, and high-performance polymers"
+      },
+      "claimedDataSource": {
+        "source_id": 102,
+        "source_name": "MatWeb Material Property Data",
+        "publisher": "MatWeb LLC",
+        "publication_year": 2023,
+        "doi_or_url": "https://www.matweb.com"
+      },
+      "properties": [
+        {
+          "property_id": 30,
+          "material_id": 22,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 70,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 22,
+          "material_id": 22,
+          "cost_per_unit": 3.8,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "DuPont Delrin"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 23,
+      "category_id": 3,
+      "data_source_id": 103,
+      "material_name": "Alumina Ceramic (99.5%)",
+      "material_code": "Al2O3-995",
+      "density_g_cm3": 3.89,
+      "description": "Technical ceramic with high hardness, dielectric strength, and wear resistance",
+      "category": {
+        "category_id": 3,
+        "category_name": "Technical Ceramics",
+        "description": "High-hardness, refractory, and dielectric ceramic materials"
+      },
+      "claimedDataSource": {
+        "source_id": 103,
+        "source_name": "CES EduPack Materials Handbook",
+        "publisher": "Ansys Granta",
+        "publication_year": 2021,
+        "doi_or_url": "https://www.ansys.com/products/materials"
+      },
+      "properties": [
+        {
+          "property_id": 31,
+          "material_id": 23,
+          "property_type": "Mechanical",
+          "property_name": "Compressive Strength",
+          "property_value": 2600,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [
+        {
+          "material_id": 23,
+          "process_id": 7,
+          "feasibility_score": 5,
+          "notes": "Standard ceramic press-sinter process",
+          "process": {
+            "process_id": 7,
+            "process_name": "Powder Metallurgy / Sintering",
+            "process_type": "Forming",
+            "description": "High-pressure compaction and thermal bonding of powders"
+          }
+        }
+      ],
+      "costs": [
+        {
+          "cost_id": 23,
+          "material_id": 23,
+          "cost_per_unit": 18.2,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "CoorsTek Technical Ceramics"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 24,
+      "category_id": 3,
+      "data_source_id": 103,
+      "material_name": "Silicon Carbide",
+      "material_code": "SSiC",
+      "density_g_cm3": 3.1,
+      "description": "Extremely hard ceramic with high thermal conductivity and thermal shock resistance",
+      "category": {
+        "category_id": 3,
+        "category_name": "Technical Ceramics",
+        "description": "High-hardness, refractory, and dielectric ceramic materials"
+      },
+      "claimedDataSource": {
+        "source_id": 103,
+        "source_name": "CES EduPack Materials Handbook",
+        "publisher": "Ansys Granta",
+        "publication_year": 2021,
+        "doi_or_url": "https://www.ansys.com/products/materials"
+      },
+      "properties": [
+        {
+          "property_id": 32,
+          "material_id": 24,
+          "property_type": "Thermal",
+          "property_name": "Thermal Conductivity",
+          "property_value": 120,
+          "unit": "W/m-K",
+          "test_condition": "25°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 24,
+          "material_id": 24,
+          "cost_per_unit": 42,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Saint-Gobain Ceramics"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 25,
+      "category_id": 3,
+      "data_source_id": 103,
+      "material_name": "Zirconia (Y-TZP)",
+      "material_code": "ZrO2-Y2O3",
+      "density_g_cm3": 6.05,
+      "description": "Yttria-stabilized zirconia with exceptional fracture toughness among ceramics",
+      "category": {
+        "category_id": 3,
+        "category_name": "Technical Ceramics",
+        "description": "High-hardness, refractory, and dielectric ceramic materials"
+      },
+      "claimedDataSource": {
+        "source_id": 103,
+        "source_name": "CES EduPack Materials Handbook",
+        "publisher": "Ansys Granta",
+        "publication_year": 2021,
+        "doi_or_url": "https://www.ansys.com/products/materials"
+      },
+      "properties": [
+        {
+          "property_id": 33,
+          "material_id": 25,
+          "property_type": "Mechanical",
+          "property_name": "Fracture Toughness",
+          "property_value": 8,
+          "unit": "MPa-m^1/2",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 25,
+          "material_id": 25,
+          "cost_per_unit": 55,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Toshiba Materials"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 26,
+      "category_id": 3,
+      "data_source_id": 103,
+      "material_name": "Silicon Nitride",
+      "material_code": "Si3N4-GasSintered",
+      "density_g_cm3": 3.25,
+      "description": "High-strength structural ceramic used in high-speed bearings and gas turbines",
+      "category": {
+        "category_id": 3,
+        "category_name": "Technical Ceramics",
+        "description": "High-hardness, refractory, and dielectric ceramic materials"
+      },
+      "claimedDataSource": {
+        "source_id": 103,
+        "source_name": "CES EduPack Materials Handbook",
+        "publisher": "Ansys Granta",
+        "publication_year": 2021,
+        "doi_or_url": "https://www.ansys.com/products/materials"
+      },
+      "properties": [
+        {
+          "property_id": 34,
+          "material_id": 26,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 800,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 26,
+          "material_id": 26,
+          "cost_per_unit": 65,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Kyocera Fine Ceramics"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 27,
+      "category_id": 3,
+      "data_source_id": 103,
+      "material_name": "Boron Carbide",
+      "material_code": "B4C-Armor",
+      "density_g_cm3": 2.52,
+      "description": "Third hardest material known; used in ballistic body armor and shielding",
+      "category": {
+        "category_id": 3,
+        "category_name": "Technical Ceramics",
+        "description": "High-hardness, refractory, and dielectric ceramic materials"
+      },
+      "claimedDataSource": {
+        "source_id": 103,
+        "source_name": "CES EduPack Materials Handbook",
+        "publisher": "Ansys Granta",
+        "publication_year": 2021,
+        "doi_or_url": "https://www.ansys.com/products/materials"
+      },
+      "properties": [
+        {
+          "property_id": 35,
+          "material_id": 27,
+          "property_type": "Mechanical",
+          "property_name": "Hardness (Vickers)",
+          "property_value": 2800,
+          "unit": "HV",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 27,
+          "material_id": 27,
+          "cost_per_unit": 120,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "3M Advanced Materials"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 28,
+      "category_id": 3,
+      "data_source_id": 103,
+      "material_name": "Aluminum Nitride",
+      "material_code": "AlN-Substrate",
+      "density_g_cm3": 3.26,
+      "description": "Ceramic with exceptionally high thermal conductivity and electrical insulation",
+      "category": {
+        "category_id": 3,
+        "category_name": "Technical Ceramics",
+        "description": "High-hardness, refractory, and dielectric ceramic materials"
+      },
+      "claimedDataSource": {
+        "source_id": 103,
+        "source_name": "CES EduPack Materials Handbook",
+        "publisher": "Ansys Granta",
+        "publication_year": 2021,
+        "doi_or_url": "https://www.ansys.com/products/materials"
+      },
+      "properties": [
+        {
+          "property_id": 36,
+          "material_id": 28,
+          "property_type": "Thermal",
+          "property_name": "Thermal Conductivity",
+          "property_value": 180,
+          "unit": "W/m-K",
+          "test_condition": "25°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 28,
+          "material_id": 28,
+          "cost_per_unit": 78,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Tokai Carbon"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 29,
+      "category_id": 4,
+      "data_source_id": 103,
+      "material_name": "Carbon Fiber Composite (Epoxy/CF 60%)",
+      "material_code": "CFRP-UD",
+      "density_g_cm3": 1.55,
+      "description": "Unidirectional carbon fiber reinforced polymer matrix composite",
+      "category": {
+        "category_id": 4,
+        "category_name": "Composites",
+        "description": "Fiber-reinforced polymers and structural laminates"
+      },
+      "claimedDataSource": {
+        "source_id": 103,
+        "source_name": "CES EduPack Materials Handbook",
+        "publisher": "Ansys Granta",
+        "publication_year": 2021,
+        "doi_or_url": "https://www.ansys.com/products/materials"
+      },
+      "properties": [
+        {
+          "property_id": 37,
+          "material_id": 29,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 1500,
+          "unit": "MPa",
+          "test_condition": "0° Fiber"
+        }
+      ],
+      "processes": [
+        {
+          "material_id": 29,
+          "process_id": 5,
+          "feasibility_score": 5,
+          "notes": "Aerospace autoclave curing",
+          "process": {
+            "process_id": 5,
+            "process_name": "Autoclave Curing",
+            "process_type": "Forming",
+            "description": "High-pressure thermal consolidation"
+          }
+        }
+      ],
+      "costs": [
+        {
+          "cost_id": 29,
+          "material_id": 29,
+          "cost_per_unit": 115,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Toray Composite Materials"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 30,
+      "category_id": 4,
+      "data_source_id": 103,
+      "material_name": "Fiberglass Composite (FR-4)",
+      "material_code": "FR4-Epoxy",
+      "density_g_cm3": 1.85,
+      "description": "Glass-reinforced epoxy laminate widely used in printed circuit boards",
+      "category": {
+        "category_id": 4,
+        "category_name": "Composites",
+        "description": "Fiber-reinforced polymers and structural laminates"
+      },
+      "claimedDataSource": {
+        "source_id": 103,
+        "source_name": "CES EduPack Materials Handbook",
+        "publisher": "Ansys Granta",
+        "publication_year": 2021,
+        "doi_or_url": "https://www.ansys.com/products/materials"
+      },
+      "properties": [
+        {
+          "property_id": 38,
+          "material_id": 30,
+          "property_type": "Electrical",
+          "property_name": "Dielectric Strength",
+          "property_value": 20,
+          "unit": "kV/mm",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 30,
+          "material_id": 30,
+          "cost_per_unit": 4.5,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Isola Group PCB"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 31,
+      "category_id": 4,
+      "data_source_id": 103,
+      "material_name": "Glass-Filled Nylon (PA66-GF30)",
+      "material_code": "PA66-GF30",
+      "density_g_cm3": 1.35,
+      "description": "30% glass fiber reinforced nylon with elevated stiffness and strength",
+      "category": {
+        "category_id": 4,
+        "category_name": "Composites",
+        "description": "Fiber-reinforced polymers and structural laminates"
+      },
+      "claimedDataSource": {
+        "source_id": 103,
+        "source_name": "CES EduPack Materials Handbook",
+        "publisher": "Ansys Granta",
+        "publication_year": 2021,
+        "doi_or_url": "https://www.ansys.com/products/materials"
+      },
+      "properties": [
+        {
+          "property_id": 39,
+          "material_id": 31,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 175,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [
+        {
+          "material_id": 31,
+          "process_id": 4,
+          "feasibility_score": 5,
+          "notes": "High strength glass-filled molding",
+          "process": {
+            "process_id": 4,
+            "process_name": "Injection Molding",
+            "process_type": "Molding",
+            "description": "High-volume pressure injection molding"
+          }
+        }
+      ],
+      "costs": [
+        {
+          "cost_id": 31,
+          "material_id": 31,
+          "cost_per_unit": 4.1,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "EMS-GRIVORY Polymers"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 32,
+      "category_id": 4,
+      "data_source_id": 103,
+      "material_name": "Kevlar Composite (Arimid/Epoxy)",
+      "material_code": "AFRP-Aramid",
+      "density_g_cm3": 1.38,
+      "description": "Aramid fiber composite offering high impact absorption and tensile strength",
+      "category": {
+        "category_id": 4,
+        "category_name": "Composites",
+        "description": "Fiber-reinforced polymers and structural laminates"
+      },
+      "claimedDataSource": {
+        "source_id": 103,
+        "source_name": "CES EduPack Materials Handbook",
+        "publisher": "Ansys Granta",
+        "publication_year": 2021,
+        "doi_or_url": "https://www.ansys.com/products/materials"
+      },
+      "properties": [
+        {
+          "property_id": 40,
+          "material_id": 32,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 1400,
+          "unit": "MPa",
+          "test_condition": "0° Fiber"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 32,
+          "material_id": 32,
+          "cost_per_unit": 95,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "DuPont Kevlar Systems"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation.",
+        "The material name spells aramid as Arimid; preserve the original and correct during review."
+      ]
+    },
+    {
+      "material_id": 33,
+      "category_id": 4,
+      "data_source_id": 103,
+      "material_name": "Carbon Fiber PEEK (CF30-PEEK)",
+      "material_code": "PEEK-CF30",
+      "density_g_cm3": 1.44,
+      "description": "30% carbon fiber reinforced PEEK for extreme mechanical and thermal environments",
+      "category": {
+        "category_id": 4,
+        "category_name": "Composites",
+        "description": "Fiber-reinforced polymers and structural laminates"
+      },
+      "claimedDataSource": {
+        "source_id": 103,
+        "source_name": "CES EduPack Materials Handbook",
+        "publisher": "Ansys Granta",
+        "publication_year": 2021,
+        "doi_or_url": "https://www.ansys.com/products/materials"
+      },
+      "properties": [
+        {
+          "property_id": 41,
+          "material_id": 33,
+          "property_type": "Mechanical",
+          "property_name": "Tensile Strength",
+          "property_value": 225,
+          "unit": "MPa",
+          "test_condition": "23°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 33,
+          "material_id": 33,
+          "cost_per_unit": 140,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Solvay Specialty Polymers"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 34,
+      "category_id": 5,
+      "data_source_id": 103,
+      "material_name": "Borosilicate Glass (Pyrex)",
+      "material_code": "Glass-Pyrex",
+      "density_g_cm3": 2.23,
+      "description": "Low thermal expansion glass resistant to thermal shock and chemical attack",
+      "category": {
+        "category_id": 5,
+        "category_name": "Glasses & Semiconductors",
+        "description": "Optical glasses, silica, and semiconductor substrates"
+      },
+      "claimedDataSource": {
+        "source_id": 103,
+        "source_name": "CES EduPack Materials Handbook",
+        "publisher": "Ansys Granta",
+        "publication_year": 2021,
+        "doi_or_url": "https://www.ansys.com/products/materials"
+      },
+      "properties": [
+        {
+          "property_id": 42,
+          "material_id": 34,
+          "property_type": "Thermal",
+          "property_name": "Max Operating Temp",
+          "property_value": 500,
+          "unit": "°C",
+          "test_condition": "Continuous"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 34,
+          "material_id": 34,
+          "cost_per_unit": 3.5,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Schott AG Glass"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 35,
+      "category_id": 5,
+      "data_source_id": 103,
+      "material_name": "Fused Silica (Quartz)",
+      "material_code": "SiO2-Fused",
+      "density_g_cm3": 2.2,
+      "description": "High-purity amorphous silica with ultra-high optical transparency",
+      "category": {
+        "category_id": 5,
+        "category_name": "Glasses & Semiconductors",
+        "description": "Optical glasses, silica, and semiconductor substrates"
+      },
+      "claimedDataSource": {
+        "source_id": 103,
+        "source_name": "CES EduPack Materials Handbook",
+        "publisher": "Ansys Granta",
+        "publication_year": 2021,
+        "doi_or_url": "https://www.ansys.com/products/materials"
+      },
+      "properties": [
+        {
+          "property_id": 43,
+          "material_id": 35,
+          "property_type": "Thermal",
+          "property_name": "Thermal Conductivity",
+          "property_value": 1.4,
+          "unit": "W/m-K",
+          "test_condition": "25°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 35,
+          "material_id": 35,
+          "cost_per_unit": 22,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "Corning Inc."
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 36,
+      "category_id": 5,
+      "data_source_id": 101,
+      "material_name": "Monocrystalline Silicon",
+      "material_code": "Si-Wafer",
+      "density_g_cm3": 2.33,
+      "description": "High-purity semiconductor substrate used in integrated circuits and solar cells",
+      "category": {
+        "category_id": 5,
+        "category_name": "Glasses & Semiconductors",
+        "description": "Optical glasses, silica, and semiconductor substrates"
+      },
+      "claimedDataSource": {
+        "source_id": 101,
+        "source_name": "ASM Materials Information Database",
+        "publisher": "ASM International",
+        "publication_year": 2022,
+        "doi_or_url": "https://www.asminternational.org"
+      },
+      "properties": [
+        {
+          "property_id": 44,
+          "material_id": 36,
+          "property_type": "Electrical",
+          "property_name": "Electrical Resistivity",
+          "property_value": 0.01,
+          "unit": "Ohm-cm",
+          "test_condition": "25°C"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 36,
+          "material_id": 36,
+          "cost_per_unit": 180,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "GlobalWafers Silicon"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    },
+    {
+      "material_id": 37,
+      "category_id": 5,
+      "data_source_id": 101,
+      "material_name": "Gallium Arsenide",
+      "material_code": "GaAs-Semi",
+      "density_g_cm3": 5.32,
+      "description": "Compound semiconductor with high electron mobility for RF microelectronics",
+      "category": {
+        "category_id": 5,
+        "category_name": "Glasses & Semiconductors",
+        "description": "Optical glasses, silica, and semiconductor substrates"
+      },
+      "claimedDataSource": {
+        "source_id": 101,
+        "source_name": "ASM Materials Information Database",
+        "publisher": "ASM International",
+        "publication_year": 2022,
+        "doi_or_url": "https://www.asminternational.org"
+      },
+      "properties": [
+        {
+          "property_id": 45,
+          "material_id": 37,
+          "property_type": "Electrical",
+          "property_name": "Electron Mobility",
+          "property_value": 8500,
+          "unit": "cm^2/V-s",
+          "test_condition": "300 K"
+        }
+      ],
+      "processes": [],
+      "costs": [
+        {
+          "cost_id": 37,
+          "material_id": 37,
+          "cost_per_unit": 450,
+          "currency": "USD",
+          "unit_of_measure": "kg",
+          "effective_date": "2026-02-01",
+          "supplier_name": "AXT Semiconductors"
+        }
+      ],
+      "evidenceStatus": "contributor-unverified",
+      "reviewNotes": [
+        "Publisher homepage is a claimed source; no property-level citation or page was supplied.",
+        "Supplier prices lack a quote URL, product form, order quantity and traceable quotation."
+      ]
+    }
+  ],
+  "notes": [
+    "This review export preserves contributed values; none are asserted as verified source measurements or supplier quotes.",
+    "Original SQL is an archival contribution, not a migration for the existing app.",
+    "Contribution_Review is excluded from the active Material/Data_Source catalog and recommendations.",
+    "The original source row IDs are local identifiers, not publisher accessions.",
+    "MySQL and TiDB do not enforce the original inline REFERENCES clauses; explicit FOREIGN KEY clauses are required for an executable relational schema."
+  ]
+}

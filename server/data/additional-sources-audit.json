@@ -99,11 +99,11 @@
       "datasetUrl": "https://figshare.com/articles/dataset/jdft_3d-7-7-2018_json/6815699",
       "access": "jarvis-tools downloads / Figshare / OPTIMADE; full archive not downloaded",
       "evidence": "Computed crystalline-material properties; engineering tensile strength and supplier condition are not implied",
-      "licenseStatus": "Figshare version 10 explicitly lists CC BY 4.0; version 11 (2026-05-09) is listed but its license metadata was not successfully retrieved. Reverify selected version before import.",
+      "licenseStatus": "Figshare version 11 (2026-05-09) lists CC BY 4.0 on its publisher page.",
       "adapterRequirements": "Potentially enrich existing JARVIS IDs with chemical identity and computed density; preserve per-property provenance and avoid duplicating existing benchmark entries.",
       "acquisitionStatus": "blocked_network",
       "importedRecords": 0,
-      "acquisitionResult": "Figshare hosts resolve to a NextDNS block page and fail TLS verification. TLS was not disabled and filtering was not bypassed. Existing 19,335 pinned JARVIS elastic benchmark records remain available."
+      "acquisitionResult": "The Figshare API host api.figshare.com resolves to a NextDNS block-page certificate (CN=blockpage.nextdns.io), so the verified API request fails. The file is served through ndownloader.figshare.com; figshare.com hosts the publisher page. Allowlist those exact hosts and retry. The official NIST OPTIMADE endpoint returned HTTP 403. TLS verification was not disabled and filtering was not bypassed. Existing 19,335 pinned JARVIS elastic benchmark records remain available."
     },
     {
       "key": "materials-project",
@@ -141,13 +141,13 @@
       "url": "https://alexandria.icams.rub.de/datasets.html",
       "licenseUrl": "https://alexandria.icams.rub.de/about.html",
       "access": "Public downloads and OPTIMADE interface; download directory 2025.07.02 verified",
-      "scale": "NIST JARVIS download documentation lists the 3D PBE collection at 5 million data points; not locally counted",
+      "scale": "5,777,914 main PBE 3D records plus 174,601 publisher convex-hull records, retained as separate source collections",
       "licenseStatus": "CC BY 4.0 explicitly stated by publisher",
       "properties": "DFT-relaxed inorganic crystal geometries, energies, convex hulls and selected phonon data",
       "adapterRequirements": "Suitable for crystal-discovery research; do not create tensile or service-temperature values from structure/energy data.",
-      "acquisitionStatus": "downloaded_normalizing",
-      "importedRecords": 0,
-      "acquisitionResult": "All 59 published PBE 3D archives downloaded and SHA-256 recorded. Normalization is in progress; full raw structures retained. Other PBEsol/SCAN/low-dimensional collections are not claimed downloaded."
+      "acquisitionStatus": "imported_property_subset",
+      "importedRecords": 5952515,
+      "acquisitionResult": "All 59 published PBE 3D archives downloaded and SHA-256 recorded. The main PBE collection (5,777,914 rows) and overlapping convex-hull subset (174,601 rows) are imported under separate source keys. Provenance and computed-property coverage are retained; source accessions are not merged across collections. Other PBEsol/SCAN/low-dimensional collections are not claimed downloaded."
     },
     {
       "key": "aflow",
