@@ -519,7 +519,7 @@ export default function Selection() {
                     <span>
                       {title}
                       <small>
-                        {i === 0 ? "Explore NIST computed elastic moduli" : i === 1 ? "Balance strength and mass" : i === 2 ? "Requires reported conductivity" : "Requires reported corrosion data"}
+                        {["Screen reported NASA vacuum-test values", "Explore computed elastic moduli", "Balance strength and mass", "Requires reported conductivity", "Requires reported corrosion data"][i]}
                       </small>
                     </span>
                     <Icon name="arrowUp" />

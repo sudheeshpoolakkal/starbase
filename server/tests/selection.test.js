@@ -77,12 +77,41 @@ test("filters do not change normalized scores for surviving candidates", () => {
 });
 test("SQL screening preserves in-memory ranking, global bounds and literal keyword behavior", async () => {
   const {recommendCatalog}=require('../services/catalogRecommendation');
-  for(const requirements of [{},{category:'Metal'},{keyword:'Titanium'},{maxDensity:4.6,minTensileStrength:250},{maxCost:'Low'},{weights:{strength:0,lightness:100,cost:0,thermal:0,stiffness:0,vacuum:0}},{process:'CNC machining'}]) {
+  for(const requirements of [{},{category:'Metal'},{keyword:'Titanium'},{maxDensity:4.6,minTensileStrength:250},{maxCost:'Low'},{weights:{strength:0,lightness:100,cost:0,thermal:0,stiffness:0,vacuum:0}},{process:'CNC machining'},{minTensileStrength:250,weights:{strength:0,lightness:100,cost:0,thermal:0,stiffness:0,vacuum:0}},{keyword:'%'},{category:'Metal',maxDensity:4.6,volume:100,maxWeight:0.3}]) {
     const expected=recommend(catalog,requirements),actual=await recommendCatalog(requirements);
     assert.equal(actual.count,expected.count);
     assert.equal(actual.total,expected.total);
     assert.equal(actual.excludedCount,expected.excluded.length);
     assert.deepEqual(actual.materials.map(m=>[m.id,m.score]),expected.materials.slice(0,50).map(m=>[m.id,m.score]));
+  }
+});
+test("large density-only partitions preserve rounded-score ties and sparse-priority ranking", async () => {
+  const { recommendCatalog } = require('../services/catalogRecommendation');
+  await db.execute("INSERT INTO Data_Source (source_id,name,note,source_key,data_kind) VALUES (98,?,?,?,?)", ['Ranking stress fixture', 'Synthetic test only', 'ranking-stress', 'computed']);
+  try {
+    // Lower density sorts opposite to ID, but these values share rounded scores.
+    // The top 50 must include the whole tie bucket before applying the ID tie-break.
+    for (let i = 1; i <= 1200; i++) {
+      const id = 10000 + i;
+      await db.execute("INSERT INTO Material (material_id,name,category_id,source_id) VALUES (?,?,1,98)", [id, `Density fixture ${i}`]);
+      await db.execute("INSERT INTO Material_Property VALUES (?,1,?,NULL)", [id, .1 + (1200-i) * .000001]);
+      if (i % 40 === 0) await db.execute("INSERT INTO Material_Property VALUES (?,2,?,NULL)", [id, i]);
+    }
+    const all = await getCatalog();
+    for (const weights of [
+      {strength:0,lightness:100,cost:0,thermal:0,stiffness:0,vacuum:0},
+      {strength:30,lightness:70,cost:0,thermal:0,stiffness:0,vacuum:0},
+      {strength:35,lightness:40,cost:25,thermal:0,stiffness:0,vacuum:0},
+    ]) {
+      const expected = recommend(all, {weights});
+      const actual = await recommendCatalog({weights});
+      assert.equal(actual.count, expected.count);
+      assert.deepEqual(actual.materials.map(m => [m.id,m.score]), expected.materials.slice(0,50).map(m => [m.id,m.score]));
+    }
+  } finally {
+    await db.execute("DELETE FROM Material_Property WHERE material_id>=10001 AND material_id<=11200");
+    await db.execute("DELETE FROM Material WHERE source_id=98");
+    await db.execute("DELETE FROM Data_Source WHERE source_id=98");
   }
 });
 test("vacuum screening keeps zero measurements, rejects unknown values and respects sample limits", () => {
