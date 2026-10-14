@@ -131,14 +131,15 @@ async function reconcileSource(db, snapshot, refreshSummary) {
   const actualCoverage = Object.fromEntries(summary.coverage.map(item => [item.propertyKey, Number(item.count)]));
   assert.deepEqual(actualCoverage, snapshot.coverage, `${snapshot.sourceKey}: property coverage mismatch.`);
   for (const sample of snapshot.samples) {
-    const [records] = await db.execute('SELECT m.material_id,m.name,m.description,m.source_url,m.metadata_json,m.search_terms FROM Material m JOIN Data_Source s USING(source_id) WHERE s.source_key=? AND m.external_id=?', [snapshot.sourceKey, sample.externalId]);
+    const [records] = await db.execute('SELECT m.material_id,m.name,m.description,m.external_id,m.source_url,m.metadata_json,m.search_terms,s.source_key FROM Material m JOIN Data_Source s USING(source_id) WHERE s.source_key=? AND m.external_id=?', [snapshot.sourceKey, sample.externalId]);
     assert.equal(records.length, 1, 'Sample accession missing or duplicated.');
     const record = records[0];
+    const decoded = require('../services/recordStorage').decodeRecord(record);
     assert.equal(record.name, sample.name);
-    assert.equal(record.description || '', sample.description || '');
-    assert.equal(record.source_url, sample.sourceUrl);
+    assert.equal(decoded.description || '', sample.description || '');
+    assert.equal(decoded.sourceUrl, sample.sourceUrl);
     assert.equal(record.search_terms || '', (sample.metadata?.searchAliases || []).join(' '));
-    assert.deepEqual(JSON.parse(record.metadata_json || '{}'), sample.metadata || {});
+    assert.deepEqual(decoded.metadata, sample.metadata || {});
     const [values] = await db.execute('SELECT p.property_key,mp.numeric_value,mp.text_value FROM Material_Property mp JOIN Property p USING(property_id) WHERE mp.material_id=?', [record.material_id]);
     const actual = Object.fromEntries(values.map(value => [value.property_key, value.numeric_value === null ? value.text_value : Number(value.numeric_value)]));
     const expected = Object.fromEntries(Object.entries(sample.properties || {}).filter(([, value]) => value !== null));
@@ -181,6 +182,36 @@ async function importSnapshot(db, snapshot, batchSize, importBundle, refreshSumm
   console.log(`${snapshot.sourceKey}: complete; counts, coverage and samples verified`);
 }
 
+async function consolidateCatalogIndexes(db) {
+  // The existing compound indexes cover these foreign-key prefixes. Keeping
+  // their single-column duplicates adds one index entry per material/property.
+  const removed = [];
+  for (const [table, column, replacement] of [
+    ['Material', 'source_id', 'material_external_unique'],
+    ['Material_Property', 'property_id', 'material_numeric_index'],
+  ]) {
+    const [rows] = await db.query(`SHOW INDEX FROM ${table}`);
+    const indexes = new Map();
+    for (const row of rows) {
+      if (!indexes.has(row.Key_name)) indexes.set(row.Key_name, []);
+      indexes.get(row.Key_name).push(row);
+    }
+    const covering = indexes.get(replacement)?.sort((a, b) => a.Seq_in_index - b.Seq_in_index);
+    if (!covering || covering[0].Column_name !== column || covering[0].Sub_part !== null) continue;
+    for (const [name, fields] of indexes) {
+      if (name === 'PRIMARY' || name === replacement || fields.length !== 1) continue;
+      const field = fields[0];
+      if (Number(field.Non_unique) !== 1 || field.Column_name !== column || field.Sub_part !== null || field.Expression) continue;
+      if (!/^[a-zA-Z0-9_]+$/.test(name)) throw new Error('Unexpected index identifier.');
+      // TiDB refuses the DROP if no alternative supporting FK index exists.
+      await db.query(`DROP INDEX \`${name}\` ON ${table}`);
+      removed.push({ table, index: name, coveredBy: replacement });
+      console.log(`${table}.${name}: removed duplicate index; ${replacement} still supports the foreign key`);
+    }
+  }
+  return removed;
+}
+
 async function stageContribution(db, filename) {
   const contribution = JSON.parse(await fsp.readFile(filename, 'utf8'));
   if (!/^[a-f0-9]{64}$/.test(contribution.originalSqlSha256) || !Array.isArray(contribution.materials) || !contribution.materials.length) throw new Error('Invalid contribution review file.');
@@ -218,7 +249,7 @@ function parseArgs(args) {
       else options[arg.slice(2)] = path.resolve(value);
     } else throw new Error(`Unknown option ${arg}.`);
   }
-  if (modes > 1 || !Number.isSafeInteger(options.batchSize) || options.batchSize < 1 || options.batchSize > 5000) throw new Error('Choose one mode and a batch size from 1 to 5000.');
+  if (modes > 1 || !Number.isSafeInteger(options.batchSize) || options.batchSize < 1 || options.batchSize > 10000) throw new Error('Choose one mode and a batch size from 1 to 10000.');
   if (options.contribution && options.mode !== 'import') throw new Error('--stage-teammate requires --import.');
   return options;
 }
@@ -255,6 +286,7 @@ async function main() {
     if (options.mode === 'check') return;
     const { ready } = require('../services/catalog');
     await ready;
+    await consolidateCatalogIndexes(db);
     const { importBundle } = require('./import-catalog');
     const { refreshSourceSummary } = require('../services/catalogSummary');
     await db.execute(`CREATE TABLE IF NOT EXISTS Catalog_Import_Progress (
@@ -268,4 +300,4 @@ async function main() {
 }
 
 if (require.main === module) main().catch(error => { console.error(error.message); process.exitCode = 1; });
-module.exports = { snapshotRows, inspectSnapshot, batches, transferBatches, inspectTarget, reconcileSource, importSnapshot, stageContribution, parseArgs };
+module.exports = { snapshotRows, inspectSnapshot, batches, transferBatches, inspectTarget, reconcileSource, importSnapshot, stageContribution, consolidateCatalogIndexes, parseArgs };
