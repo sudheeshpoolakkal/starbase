@@ -3,6 +3,7 @@ const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, "../.env"), quiet: true });
 const db = require("../config/db");
 const { ready, definitions } = require("../services/catalog");
+const { encodeRecord } = require('../services/recordStorage');
 const propertyIds = new Map(definitions.map(([key], i) => [key, i + 1]));
 function validate(bundle) {
   const s = bundle.source;
@@ -52,7 +53,10 @@ async function importBundleOnce(bundle, options = {}) {
     }
     for (let offset = 0; offset < materials.length; offset += 5000) {
       const batch = materials.slice(offset, offset + 5000);
-      await connection.query(`INSERT INTO Material (name,description,category_id,source_id,external_id,source_url,metadata_json,search_terms) VALUES ? ON DUPLICATE KEY UPDATE name=VALUES(name),description=VALUES(description),category_id=VALUES(category_id),source_url=VALUES(source_url),metadata_json=VALUES(metadata_json),search_terms=VALUES(search_terms)`, [batch.map(m => [m.name,m.description || "",categories.get(m.category),source.source_id,m.externalId,m.sourceUrl,JSON.stringify(m.metadata || {}),(m.metadata?.searchAliases || []).join(" ")])]);
+      await connection.query(`INSERT INTO Material (name,description,category_id,source_id,external_id,source_url,metadata_json,search_terms) VALUES ? ON DUPLICATE KEY UPDATE name=VALUES(name),description=VALUES(description),category_id=VALUES(category_id),source_url=VALUES(source_url),metadata_json=VALUES(metadata_json),search_terms=VALUES(search_terms)`, [batch.map(m => {
+        const stored = encodeRecord(m, s.key);
+        return [m.name,stored.description,categories.get(m.category),source.source_id,m.externalId,stored.sourceUrl,JSON.stringify(stored.metadata),(m.metadata?.searchAliases || []).join(" ")];
+      })]);
       const [rows] = await connection.query("SELECT material_id,external_id FROM Material WHERE source_id=? AND external_id IN (?)", [source.source_id,batch.map(m => m.externalId)]);
       const materialIds = new Map(rows.map(r => [r.external_id,r.material_id]));
       // Replace properties of these source records; never retain values absent in a refresh.

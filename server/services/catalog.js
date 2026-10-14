@@ -1,4 +1,5 @@
 const db = require("../config/db");
+const { decodeRecord, descriptionSql } = require('./recordStorage');
 const costRank = { Low: 1, Moderate: 2, Medium: 2, High: 3, "Very High": 4 };
 const resistanceRank = { Poor: 1, Fair: 2, Moderate: 2, Good: 3, Excellent: 4 };
 const definitions = [
@@ -126,7 +127,7 @@ function filters(input = {}) {
     if (input[key]) { where.push(`${column}=?`); params.push(String(input[key]).slice(0, 255)); }
   }
   if (input.q) {
-    where.push("(m.name LIKE ? ESCAPE '!' OR m.external_id LIKE ? ESCAPE '!' OR m.description LIKE ? ESCAPE '!' OR m.search_terms LIKE ? ESCAPE '!')");
+    where.push(`(m.name LIKE ? ESCAPE '!' OR m.external_id LIKE ? ESCAPE '!' OR ${descriptionSql()} LIKE ? ESCAPE '!' OR m.search_terms LIKE ? ESCAPE '!')`);
     const term = `%${String(input.q).slice(0, 255).replace(/[!%_]/g, '!$&')}%`;
     params.push(term, term, term, term);
   }
@@ -142,18 +143,21 @@ async function getCatalog(ids) {
   await ready;
   if (ids && !ids.length) return [];
   const scope = ids ? ` AND m.material_id IN (${ids.map(() => "?").join(",")})` : "";
-  const [rows] = await db.execute(`SELECT m.material_id, m.name, m.description, m.external_id, m.source_url, m.metadata_json, c.name AS category, s.name AS source, s.note AS source_note, s.url AS dataset_url, s.license, s.data_kind, s.version, s.imported_at, p.property_key, p.unit, mp.numeric_value, mp.text_value ${joins} LEFT JOIN Material_Property mp ON mp.material_id=m.material_id LEFT JOIN Property p ON p.property_id=mp.property_id WHERE ${active}${scope} ORDER BY m.material_id`, ids || []);
+  const [rows] = await db.execute(`SELECT m.material_id, m.name, m.description, m.external_id, m.source_url, m.metadata_json, c.name AS category, s.source_key, s.name AS source, s.note AS source_note, s.url AS dataset_url, s.license, s.data_kind, s.version, s.imported_at, p.property_key, p.unit, mp.numeric_value, mp.text_value ${joins} LEFT JOIN Material_Property mp ON mp.material_id=m.material_id LEFT JOIN Property p ON p.property_id=mp.property_id WHERE ${active}${scope} ORDER BY m.material_id`, ids || []);
   const materials = new Map();
   for (const row of rows) {
-    if (!materials.has(row.material_id)) materials.set(row.material_id, {
-      id: row.material_id, name: row.name, description: row.description,
-      category: row.category, externalId: row.external_id, source: row.source,
-      sourceNote: row.source_note, sourceUrl: row.source_url || row.dataset_url,
-      datasetUrl: row.dataset_url, license: row.license, dataKind: row.data_kind,
-      sourceVersion: row.version, importedAt: row.imported_at,
-      metadata: row.metadata_json ? JSON.parse(row.metadata_json) : {},
-      properties: {}, applications: [], processes: [],
-    });
+    if (!materials.has(row.material_id)) {
+      const decoded = decodeRecord(row);
+      materials.set(row.material_id, {
+        id: row.material_id, name: row.name, description: decoded.description,
+        category: row.category, externalId: row.external_id, source: row.source,
+        sourceNote: row.source_note, sourceUrl: decoded.sourceUrl || row.dataset_url,
+        datasetUrl: row.dataset_url, license: row.license, dataKind: row.data_kind,
+        sourceVersion: row.version, importedAt: row.imported_at,
+        metadata: decoded.metadata,
+        properties: {}, applications: [], processes: [],
+      });
+    }
     if (row.property_key) materials.get(row.material_id).properties[row.property_key] = row.numeric_value === null ? row.text_value : Number(row.numeric_value);
   }
   if (!materials.size) return [];
