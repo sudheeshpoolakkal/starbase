@@ -42,6 +42,18 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.json({ limit: "64kb" }));
+const build = path.join(__dirname, "../client/build");
+const hasBuild = fs.existsSync(path.join(build, "index.html"));
+if (hasBuild) {
+  app.use(express.static(build));
+  app.use((req, res, next) => {
+    if ((req.method === "GET" || req.method === "HEAD") && !req.path.startsWith("/api") && req.accepts("html")) {
+      return res.sendFile(path.join(build, "index.html"));
+    }
+    next();
+  });
+}
+
 const authRoutes = require("./routes/authRoutes");
 const selectionRoutes = require("./routes/selectionRoutes");
 const projectRoutes = require("./routes/projectRoutes");
@@ -69,16 +81,15 @@ app.get("/health", healthHandler);
 app.use("/api", (req, res) =>
   res.status(404).json({ message: "API endpoint not found." }),
 );
-const build = path.join(__dirname, "../client/build");
-if (fs.existsSync(path.join(build, "index.html"))) {
-  app.use(express.static(build));
+if (hasBuild) {
   app.use((req, res) => res.sendFile(path.join(build, "index.html")));
-} else
+} else {
   app.get("/", (req, res) =>
     res.send(
       "Starbase API. Run npm run dev from the project root to open the workspace.",
     ),
   );
+}
 app.use((err, req, res, next) =>
   res
     .status(err.status || 500)
