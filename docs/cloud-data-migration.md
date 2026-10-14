@@ -2,7 +2,7 @@
 
 Prepared 12 October 2026 for the Starbase Material Selection System.
 
-**Prepared only: no cloud connection or upload has been attempted.** TiDB has been selected. The teammate contribution is preserved and reviewed in [the schema review](teammate-schema-review.md); private connection details and the storage plan are still needed. See [the TiDB transfer guide](tidb-transfer.md) for the prepared loader.
+**All 14 collections containing 6,265,691 records are uploaded and reconciled in TiDB.** All 37 teammate materials are staged in `Contribution_Review`. The cloud-backed local API verifies the complete catalog. The dashboard reports 5.48 GiB row storage, exceeding the free 5 GiB allowance; no paid spending limit is enabled. See [the TiDB transfer guide](tidb-transfer.md) and [verification report](tidb-verification.json).
 
 ## Verified normalized snapshots
 
@@ -29,7 +29,7 @@ The normalized import files occupy 4.52 GB. The entire download cache contains 1
 
 ## Current transfer constraints
 
-The application and importer use MySQL. Local configuration points to 127.0.0.1:3307; no cloud target is configured in the inspected project environment. The local Alexandria main import is active and the convex-hull source is not yet present in the source table. A local database dump currently cannot represent all downloaded collections. The complete normalized files are available independently of local import progress.
+The application uses TiDB's MySQL protocol with verified TLS. Its private cloud configuration is saved in the Git-ignored `server/.env.tidb`; the local database configuration is retained separately. All normalized snapshots have been fully parsed and hash-verified. The two Alexandria streams were restored from their raw archives and match the original normalized SHA-256 values exactly. Lossless Alexandria packing removes 2.12 GB of repeated main-source fields, but final metered row storage still exceeds the free allowance.
 
 ## Transfer sequence
 
@@ -43,4 +43,4 @@ The application and importer use MySQL. Local configuration points to 127.0.0.1:
 
 Data not actually downloaded is outside this inventory. The JARVIS collection here is the elastic benchmark snapshot; the full JARVIS archive and unavailable vendor exports are not represented.
 
-No local files were removed, no import process was altered, and no cloud migration is claimed complete.
+Queryable catalog transfer and cloud-backed local API verification are complete. Raw archives remain local; a cloud object-storage destination was not supplied. Hosted backend cutover remains a separate deployment step. Capacity above the free allowance still needs resolution.

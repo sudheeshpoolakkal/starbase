@@ -18,7 +18,7 @@ numeric/text values in `Material_Property`; the attachment defines different
 columns under overlapping table names. Its hard-coded IDs also do not identify
 records in the downloaded sources.
 
-The TiDB transfer command can preserve all 37 records in a separate
+The TiDB transfer preserved all 37 records in a separate
 `Contribution_Review` table. This table is excluded from library queries and
 recommendations. Each staged record retains the original SQL digest, original
 IDs, density, properties with units/conditions, claimed source, processes with

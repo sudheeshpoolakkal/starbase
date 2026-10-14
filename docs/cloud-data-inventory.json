@@ -1,8 +1,8 @@
 {
   "preparedAt": "2026-10-12T08:22:02.621067+05:30",
   "project": "/home/sudheesh/Projects/Material Selection System",
-  "status": "prepared and verified; TiDB selected; private connection and storage plan pending",
-  "cloudTransferAttempted": false,
+  "status": "All 14 catalog collections uploaded and reconciled in TiDB; final row storage exceeds free allowance; hosted cutover pending",
+  "cloudTransferAttempted": true,
   "collections": 14,
   "totalExpectedSourceRecords": 6265691,
   "normalizedBytes": 4524340222,
@@ -11,12 +11,11 @@
   "notes": [
     "Source-record count includes distinct observations and overlapping collections; it is not a count of unique engineering materials.",
     "Alexandria main and convex-hull collections remain separate.",
-    "Local Alexandria main import was active during inspection; a dump of the local database would be incomplete.",
-    "The normalized full-file digests match the checked-in acquisition manifests. JSONL counts are header counts backed by the matching snapshot digest, not newly parsed row counts.",
-    "Downloaded snapshot file inventory includes normalized outputs, raw archives, publisher pages and source-audit inputs. Raw snapshot digests have not been reverified in this inventory.",
-    "TiDB is selected; engine version, storage quota, private connection configuration and current cloud schema remain to be inspected.",
     "Current application and importer use MySQL; other engines need a deliberate schema/driver migration.",
-    "The teammate SQL has been preserved and reviewed; its 37 materials remain contributor-unverified and are prepared for a separate staging table."
+    "Every normalized material row was parsed and each full-file SHA-256 checked before transfer. Alexandria streams restored from checksum-verified raw archives with exact original digests.",
+    "Private TLS connection and compatible TiDB v8.5.3-serverless schema verified. Free Starter has a 5 GiB row-storage allowance; no paid limit enabled.",
+    "Alexandria storage packs repeated metadata reversibly; complete original metadata and descriptions are restored by the app. Every Alexandria record was checked for exact round-trip equality.",
+    "All 14 sources totaling 6265691 records reconciled in TiDB, including full property coverage and source/sample checks. All 37 teammate materials remain staged with needs-citations status."
   ],
   "sources": [
     {
@@ -6938,12 +6937,55 @@
       "bytes": 475
     }
   ],
-  "cloudProvider": "TiDB",
+  "cloudProvider": "TiDB Cloud Starter",
   "teammateReviewFile": "docs/contributions/teammate-material-seed.review.json",
   "verificationUpdate": {
     "date": "2026-10-12",
     "method": "transfer-tidb.js --verify: all normalized file hashes matched, every JSON/JSONL material row was parsed, exact counts reconciled, per-source property coverage collected",
     "parsedRecords": 6265691,
     "collections": 14
+  },
+  "cloudPlan": "Free",
+  "cloudDatabase": "test",
+  "cloudConnectionVerified": {
+    "date": "2026-10-12T09:15:48.738916+05:30",
+    "tls": true,
+    "engineVersion": "v8.5.3-serverless",
+    "compatibleExistingTables": 18,
+    "baselineUsers": 2,
+    "baselineProjects": 1
+  },
+  "existingCloudSourceRepair": {
+    "oldKey": "test-fixture",
+    "newKey": "borg-mpea",
+    "records": 1545,
+    "recordsDifferingFromSourceBeforeRefresh": 16,
+    "existingMaterialIdsPreserved": true
+  },
+  "storageOptimization": {
+    "mainRepeatedFieldBytesBefore": 2504676306,
+    "mainRepeatedFieldBytesAfter": 388959840,
+    "mainRepeatedFieldBytesSaved": 2115716466,
+    "roundTripVerifiedAlexandriaRecords": 5952515,
+    "cloudPilotRecordsVerified": 5000,
+    "redundantIndexesRemoved": [
+      "Material.fk_2",
+      "Material_Property.fk_2"
+    ],
+    "foreignKeysRetained": true
+  },
+  "cloudFinalVerification": {
+    "collections": 14,
+    "records": 6265691,
+    "allSourceCheckpointsComplete": true,
+    "cloudBackedLocalHttpApiVerified": true,
+    "report": "docs/tidb-verification.json",
+    "dashboardRowGiB": 5.48,
+    "freeRowAllowanceGiB": 5,
+    "aboveFreeAllowance": true,
+    "dashboardRequestUnits": 13580000,
+    "paidSpendingLimitEnabled": false,
+    "hostedBackendCutoverPerformed": false,
+    "rawArchivesUploaded": false
   }
 }

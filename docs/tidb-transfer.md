@@ -1,8 +1,12 @@
 # Transfer Starbase's downloaded material sources to TiDB
 
-Prepared 12 October 2026. TiDB is the selected provider. Connection credentials,
-the instance's storage plan and the live target schema have not yet been supplied
-or inspected. **No cloud upload or application cutover has been performed.**
+Updated 12 October 2026. The private TiDB connection, encrypted transport and
+existing Starbase schema are verified. **All 14 collections containing 6,265,691
+records have been uploaded and reconciled.** All 37 teammate materials are preserved
+in the separate contribution review table. Hosted application cutover remains pending.
+The dashboard reports **5.48 GiB row storage**, above the **5 GiB free allowance**.
+No paid spending limit has been enabled; sufficient capacity must be arranged to
+avoid quota restrictions. The dashboard also shows 13.58 million request units.
 
 ## Transfer scope
 
@@ -25,10 +29,16 @@ Check the instance's storage and RU budget before the complete 6.27-million-reco
 load. No paid plan or spending limit has been enabled by this project. See
 [TiDB's plan documentation](https://docs.pingcap.com/tidbcloud/select-cluster-tier/).
 
-During this inspection, MySQL reported approximately 5.14 GiB of allocated data
-and indexes for the local `Material` and `Material_Property` tables alone, while
-the Alexandria import was still running. This is evidence for checking capacity,
-not an exact forecast of TiDB storage usage.
+To reduce storage, the loader removes two redundant single-column indexes already
+covered by compound indexes, retaining foreign-key constraints. Alexandria's repeated
+metadata keys, evidence strings, descriptions and URLs use a versioned reversible
+format in `metadata_json`; numeric property rows retain their existing representation.
+The API restores all original fields, and SQL keyword screening searches the restored
+description. Unknown metadata or evidence formats remain unpacked. Every one of the
+5,952,515 Alexandria main/hull records passed exact encode/decode comparisons. Main
+repeated fields shrink from 2,504,676,306 to 388,959,840 bytes; this is a payload saving,
+not a claim about TiDB's final metered storage. A 5,000-row cloud pilot verified stored
+values, stable IDs, full hull count and API hydration.
 
 ## Configure the private connection
 
@@ -70,7 +80,7 @@ inspects the target before initializing the app schema. Incompatible teammate
 tables cause an explicit stop; they are not replaced. Existing users/projects are
 not migrated from the local database by this catalog transfer.
 
-The default batch size is 1,000 materials; `--batch-size` accepts 1–5,000. Stable
+The default batch size is 1,000 materials; `--batch-size` accepts 1–10,000. Stable
 source keys and external IDs retain the app's upsert behavior. Each successful
 batch saves its file position and normalized digest in `Catalog_Import_Progress`.
 Rerun the same command after interruption. A batch committed before its checkpoint
@@ -114,15 +124,23 @@ verification and raw-archive preservation are complete.
 
 - `npm run data:cloud -- --verify`: all 14 normalized SHA-256 values matched;
   every JSON/JSONL material was parsed; exact counts reconciled to 6,265,691.
-- `npm test`: 23 passed, 0 failed, 1 existing opt-in MySQL test skipped. New tests
+- `npm test`: 27 passed, 0 failed, 1 existing opt-in MySQL test skipped. New tests
   cover certificate/hostname verification, corrupt/truncated files, zero values,
   checkpoint replay after a simulated connection loss, snapshot changes and
   rejection of incompatible schemas before catalog initialization.
 - The original contribution digest, all 37 material rows, all 45 property rows
   and all 37 price rows match the review export exactly.
 
-TiDB connectivity, DDL compatibility, actual cloud transactions, storage/RU
-usage, record reconciliation and live API behavior remain unverified until the
-private connection configuration is supplied. A disposable MySQL schema test
-was unavailable with the current local user's permissions; the local catalog
-was not used for synthetic transfer imports.
+The cloud target is TiDB v8.5.3-serverless over certificate- and hostname-verified
+TLS. All 14 collections passed exact counts, complete property-coverage
+totals, provenance and first/middle/last record checks. The pre-existing Borg test
+fixture was refreshed from the verified real snapshot, retaining its 1,545 material
+IDs. The catalog loader does not modify users or projects; account counts increased
+during concurrent application use. A local HTTP API connected to TiDB reports ready,
+all 6,265,691 records and 14 sources. Actual per-source database counts match the
+inventory. Pagination, details, citations and metadata passed for Alexandria main/hull,
+MaterialRegistry and Borg. See `tidb-verification.json` for the verification report.
+
+Further generic lossless compression was assessed offline and would save approximately
+224 MB of metadata, which is insufficient by itself to bring 5.48 GiB below 5 GiB.
+It was not applied. No data was deleted to reduce the count, and no paid plan enabled.

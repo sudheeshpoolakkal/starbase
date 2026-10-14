@@ -1,0 +1,293 @@
+{
+  "verifiedAt": "2026-10-12T11:29:29.417Z",
+  "provider": "TiDB Cloud Starter",
+  "database": "test",
+  "total": 6265691,
+  "sources": [
+    {
+      "sourceKey": "aflow-ael-agl",
+      "name": "AFLOW elastic and thermal calculations",
+      "url": "https://aflow.org/API/aflux/",
+      "note": "Complete union of accessible AEL Voigt bulk modulus and AGL 300 K conductivity queries. Duplicate AUIDs are one record. Calculated elastic properties are not tensile strengths. Conductivity is the AGL model at 300 K; Voigt and VRH moduli remain separate. AFLOW source terms restrict use to scientific, academic and non-commercial purposes. Cite AFLOW/AEL/AGL papers linked by the source schema.",
+      "dataKind": "computed",
+      "license": "AFLOW: scientific, academic and non-commercial use only",
+      "version": "AFLUX snapshot 2026-10-10",
+      "checksum": "13a223cdd3f87c049c763dbc98d6094ecda6ecd37ee18a60edd72b1a8f189fab",
+      "importedAt": "2026-10-11T22:08:00.000Z",
+      "count": 5664
+    },
+    {
+      "sourceKey": "alexandria-pbe",
+      "name": "Alexandria PBE 3D calculations",
+      "url": "https://alexandria.icams.rub.de/datasets.html",
+      "note": "Computed crystal structures, not commercial material grades. Formation energy and indirect band gap are source DFT results. Density is derived from the relaxed unit-cell composition and volume using pymatgen atomic masses and the exact Avogadro constant; it is not a supplier measurement. Source structures remain in the downloaded archives. Cite Alexandria and retain its CC BY 4.0 attribution. The publisher-provided convex-hull subset is retained as a separate source collection.",
+      "dataKind": "computed",
+      "license": "CC BY 4.0",
+      "version": "PBE 3D 2025.07.02, 58 main shards",
+      "checksum": "c3a524f900a4b5621b0d122858b64cada2867856291b7ec6b2fdeb376ba28050",
+      "importedAt": "2026-10-11T23:34:48.000Z",
+      "count": 5777914
+    },
+    {
+      "sourceKey": "alexandria-pbe-hull",
+      "name": "Alexandria PBE convex-hull subset",
+      "url": "https://alexandria.icams.rub.de/datasets.html",
+      "note": "Computed crystal structures, not commercial material grades. Formation energy and indirect band gap are source DFT results. Density is derived from the relaxed unit-cell composition and volume using pymatgen atomic masses and the exact Avogadro constant; it is not a supplier measurement. Source structures remain in the downloaded archives. Cite Alexandria and retain its CC BY 4.0 attribution. Publisher-provided convex-hull records are retained as a separate source collection. Accessions overlap the main PBE 3D archive, and source values may differ at the reported precision; records are not merged.",
+      "dataKind": "computed",
+      "license": "CC BY 4.0",
+      "version": "PBE convex-hull subset 2025.07.02",
+      "checksum": "8e3206c2f3623c0931ce5b0c3aa62ba83905b4838e4660fd6f2067c55c5bbb8e",
+      "importedAt": "2026-10-11T22:37:27.000Z",
+      "count": 174601
+    },
+    {
+      "sourceKey": "borg-mpea",
+      "name": "Borg et al. experimental MPEA alloys",
+      "url": "https://doi.org/10.1038/s41597-020-00768-9",
+      "note": "Literature-curated experimental alloy test records from Borg et al., Scientific Data 7, 430 (2020). Records are material/condition observations, not distinct commercial grades. Calculated density and modulus are marked computed per property. Compression strengths are never imported as tensile strengths. Test temperature is not a service-temperature rating; processing history is not a compatibility certification.",
+      "dataKind": "experimental",
+      "license": "Apache-2.0 (source repository)",
+      "version": "Published 2020; GitHub snapshot SHA-256 pinned",
+      "checksum": "c5504d93fd324d1be26cf814d0694ee9ee95578d68a0b38aba6813b939fa2c5d",
+      "importedAt": "2026-10-11T22:06:57.000Z",
+      "count": 1545
+    },
+    {
+      "sourceKey": "material-registry",
+      "name": "MaterialRegistry engineering references",
+      "url": "https://www.materialregistry.com/docs/api",
+      "note": "Registry reference values. The snapshot supplies no underlying property citations or test conditions; values are not identified as measured, typical or specified minima. Grade designations are registry cross-references, not a certification of interchangeability. Melting point is not a service-temperature rating. Elongation gauge length and elastic-modulus method are unspecified.",
+      "dataKind": "literature-extracted",
+      "license": "Publisher describes open data; project use authorized by owner confirmation 2026-10-10",
+      "version": "Public API snapshot 2026-10-10",
+      "checksum": "ab3ff68b295eab3a5d1e147d496f309744fc30085eab2f8cb03758c6d93e8153",
+      "importedAt": "2026-10-11T22:07:11.000Z",
+      "count": 702
+    },
+    {
+      "sourceKey": "materials-project-gnome",
+      "name": "Materials Project GNoME crystal properties",
+      "url": "https://doi.org/10.1063/1.4812323",
+      "note": "Materials Project public S3 summary and elasticity snapshot. Density, band gap, formation energy and moduli are calculated crystal properties, not measured commercial grades. Deprecated records are retained in the original snapshot but excluded from screening. Voigt and Voigt–Reuss–Hill moduli remain separate; property origins and source version are retained. Data normalized from original Parquet files. Cite Jain et al., APL Materials 1, 011002 (2013). GNoME-originated structures carry the separate non-commercial license.",
+      "dataKind": "computed",
+      "license": "CC BY-NC 4.0 (GNoME); non-commercial use only",
+      "version": "2026-09-28",
+      "checksum": "be5496ee686581a2b2051872ec19084c0be3b61745fce75a6f0961f1c689b872",
+      "importedAt": "2026-10-11T22:19:02.000Z",
+      "count": 116948
+    },
+    {
+      "sourceKey": "materials-project-core",
+      "name": "Materials Project core crystal properties",
+      "url": "https://doi.org/10.1063/1.4812323",
+      "note": "Materials Project public S3 summary and elasticity snapshot. Density, band gap, formation energy and moduli are calculated crystal properties, not measured commercial grades. Deprecated records are retained in the original snapshot but excluded from screening. Voigt and Voigt–Reuss–Hill moduli remain separate; property origins and source version are retained. Data normalized from original Parquet files. Cite Jain et al., APL Materials 1, 011002 (2013).",
+      "dataKind": "computed",
+      "license": "CC BY 4.0",
+      "version": "2026-09-28",
+      "checksum": "be5496ee686581a2b2051872ec19084c0be3b61745fce75a6f0961f1c689b872",
+      "importedAt": "2026-10-11T22:14:06.000Z",
+      "count": 154377
+    },
+    {
+      "sourceKey": "nasa-outgassing",
+      "name": "NASA Goddard vacuum outgassing tests",
+      "url": "https://data.nasa.gov/docs/legacy/Outgassing_Db/Outgassing_Db_rows.json",
+      "note": "NASA-published ASTM E595 vacuum outgassing observations. TML, CVCM and WVR are mass percentages, not mechanical properties. Duplicate sample IDs remain separate using original row accessions. Cure, usage and manufacturer codes are retained. The legacy snapshot is not a claim of live/current qualification.",
+      "dataKind": "experimental",
+      "license": "Public domain (NASA snapshot metadata)",
+      "version": "Legacy Socrata snapshot; rows dated 2015",
+      "checksum": "54338a86e1b50976a629fab54b0370b968493f57527fcf1e00f37a80ce1bd0db",
+      "importedAt": "2026-10-11T22:07:39.000Z",
+      "count": 12859
+    },
+    {
+      "sourceKey": "nasa-tpsx",
+      "name": "NASA TPSX thermal protection materials",
+      "url": "https://tpsx.arc.nasa.gov/",
+      "note": "NASA TPSX public material reference tables, including NASA and contributing databases. Standard-condition values retain source basis, uncertainty and STP annotations; original property pages link temperature curves and references. Isotropic and directional quantities remain separate. Unsupported source fields remain visible in original-property details. No blanket open-data license is claimed for industry-contributed data.",
+      "dataKind": "literature-extracted",
+      "license": "NASA TPSX reference data; underlying contributor rights retained",
+      "version": "Public SI standard-condition snapshot 2026-10-10",
+      "checksum": "bd9b00734ad3d16d861edb2ae601ee222967d90cbdb1b8c77a639ef7af26e6e0",
+      "importedAt": "2026-10-11T22:07:46.000Z",
+      "count": 1545
+    },
+    {
+      "sourceKey": "nist-jarvis-elastic",
+      "name": "NIST JARVIS-DFT elastic benchmarks",
+      "url": "https://pages.nist.gov/jarvis_leaderboard/AI/SinglePropertyPrediction/dft_3d_bulk_modulus_kv/",
+      "note": "NIST-published DFT calculations, not measured supplier-grade properties. Bulk and shear modulus are stiffness measures, not tensile strength. Missing density, prices, conductivity, applications and service limits are left unknown. Non-positive elastic moduli are excluded from selectable properties. Source: Choudhary et al., npj Computational Materials 6, 173 (2020), doi:10.1038/s41524-020-00440-1.",
+      "dataKind": "computed",
+      "license": "CC BY 4.0",
+      "version": "57afc55f94c8a6f4562f73a3173968cd4b2f83b1",
+      "checksum": "f430770fe683568587b6bb3bdaa2d84fa76fe9269195a8446d44429ee0b32885",
+      "importedAt": "2026-10-11T22:05:29.000Z",
+      "count": 19335
+    },
+    {
+      "sourceKey": "nomad-elastic",
+      "name": "NOMAD published elastic calculations",
+      "url": "https://nomad-lab.eu/prod/v1/api/v1/entries/query",
+      "note": "Complete public query for records tagged with bulk_modulus or shear_modulus. Original SI pressure units are converted to GPa; Voigt and VRH values remain separate. Source entries are calculation observations, not distinct commercial grades. Per-entry publication state, license, datasets and calculation methods were checked and retained. This is the mechanical-property subset, not the full multi-million-entry NOMAD archive.",
+      "dataKind": "computed",
+      "license": "CC BY 4.0 (verified per published entry)",
+      "version": "Public bulk/shear modulus query 2026-10-10",
+      "checksum": "b0c7990905bd8cf7cc3a8a725e61d0ca87f7d6ca21c3b4b32088f0994fa68782",
+      "importedAt": "2026-10-11T22:19:07.000Z",
+      "count": 120
+    },
+    {
+      "sourceKey": "outokumpu-core",
+      "name": "Outokumpu Core stainless steels",
+      "url": "https://www.outokumpu.com/-/media/files/products/core/outokumpu-core-range-datasheet.pdf",
+      "note": "Supplier datasheet values, kept separate by grade and product form. Tensile screening uses the lower published limit; full ranges, standards, source pages and property conditions are retained. Costs, generic corrosion ratings and service-temperature limits are not inferred. Project owner confirmed team authorization on 2026-10-10. Publisher copyright and applicable agreements remain in force.",
+      "dataKind": "literature-extracted",
+      "license": "Copyright Outokumpu; project use authorized by owner confirmation 2026-10-10",
+      "version": "Published supplier datasheet; SHA-256 pinned 2026-10-10",
+      "checksum": "91d2f4b1340562b0d692a3921a5b0ea2518ddcb6cbdcc9ec97a3d7ad886d7ad9",
+      "importedAt": "2026-10-11T22:07:01.000Z",
+      "count": 31
+    },
+    {
+      "sourceKey": "outokumpu-forta",
+      "name": "Outokumpu Forta stainless steels",
+      "url": "https://www.outokumpu.com/en/industries/-/media/files/products/forta/outokumpu-forta-range-datasheet.pdf",
+      "note": "Supplier datasheet values, kept separate by grade and product form. Tensile screening uses the lower published limit; full ranges, standards, source pages and property conditions are retained. Costs, generic corrosion ratings and service-temperature limits are not inferred. Project owner confirmed team authorization on 2026-10-10. Publisher copyright and applicable agreements remain in force.",
+      "dataKind": "literature-extracted",
+      "license": "Copyright Outokumpu; project use authorized by owner confirmation 2026-10-10",
+      "version": "Published supplier datasheet; SHA-256 pinned 2026-10-10",
+      "checksum": "3283f08f406a50b4bb833fa56a22134881a6df254b55f66ad40b3d895e51774d",
+      "importedAt": "2026-10-11T22:07:08.000Z",
+      "count": 28
+    },
+    {
+      "sourceKey": "outokumpu-supra",
+      "name": "Outokumpu Supra stainless steels",
+      "url": "https://www.outokumpu.com/-/media/files/products/supra/outokumpu-supra-range-datasheet.pdf",
+      "note": "Supplier datasheet values, kept separate by grade and product form. Tensile screening uses the lower published limit; full ranges, standards, source pages and property conditions are retained. Costs, generic corrosion ratings and service-temperature limits are not inferred. Project owner confirmed team authorization on 2026-10-10. Publisher copyright and applicable agreements remain in force.",
+      "dataKind": "literature-extracted",
+      "license": "Copyright Outokumpu; project use authorized by owner confirmation 2026-10-10",
+      "version": "Published supplier datasheet; SHA-256 pinned 2026-10-10",
+      "checksum": "39e9860f49003d5731eb005d30bb49c368dd9a02abc4609f1cdf1dcf14777f4a",
+      "importedAt": "2026-10-11T22:07:04.000Z",
+      "count": 22
+    }
+  ],
+  "progress": [
+    {
+      "source_key": "aflow-ael-agl",
+      "expected_records": 5664,
+      "processed_records": 5664,
+      "status": "complete"
+    },
+    {
+      "source_key": "alexandria-pbe",
+      "expected_records": 5777914,
+      "processed_records": 5777914,
+      "status": "complete"
+    },
+    {
+      "source_key": "alexandria-pbe-hull",
+      "expected_records": 174601,
+      "processed_records": 174601,
+      "status": "complete"
+    },
+    {
+      "source_key": "borg-mpea",
+      "expected_records": 1545,
+      "processed_records": 1545,
+      "status": "complete"
+    },
+    {
+      "source_key": "material-registry",
+      "expected_records": 702,
+      "processed_records": 702,
+      "status": "complete"
+    },
+    {
+      "source_key": "materials-project-core",
+      "expected_records": 154377,
+      "processed_records": 154377,
+      "status": "complete"
+    },
+    {
+      "source_key": "materials-project-gnome",
+      "expected_records": 116948,
+      "processed_records": 116948,
+      "status": "complete"
+    },
+    {
+      "source_key": "nasa-outgassing",
+      "expected_records": 12859,
+      "processed_records": 12859,
+      "status": "complete"
+    },
+    {
+      "source_key": "nasa-tpsx",
+      "expected_records": 1545,
+      "processed_records": 1545,
+      "status": "complete"
+    },
+    {
+      "source_key": "nist-jarvis-elastic",
+      "expected_records": 19335,
+      "processed_records": 19335,
+      "status": "complete"
+    },
+    {
+      "source_key": "nomad-elastic",
+      "expected_records": 120,
+      "processed_records": 120,
+      "status": "complete"
+    },
+    {
+      "source_key": "outokumpu-core",
+      "expected_records": 31,
+      "processed_records": 31,
+      "status": "complete"
+    },
+    {
+      "source_key": "outokumpu-forta",
+      "expected_records": 28,
+      "processed_records": 28,
+      "status": "complete"
+    },
+    {
+      "source_key": "outokumpu-supra",
+      "expected_records": 22,
+      "processed_records": 22,
+      "status": "complete"
+    }
+  ],
+  "encrypted": true,
+  "validation": [
+    "All 14 database source counts matched the inventory in the preceding final HTTP verification run.",
+    "Pagination, details, metadata and citations passed for Alexandria main/hull, MaterialRegistry and Borg in that run.",
+    "That run stopped only on the outdated assertion of exactly two users; current account count is higher. Catalog transfer never modifies Users or Projects.",
+    "Main-source repeat reconciliation passed counts, full property coverage, source provenance and first/middle/last values and metadata.",
+    "Cloud-backed HTTP health returns ready and all 14 sources."
+  ],
+  "accounts": {
+    "baselineUsers": 2,
+    "currentUsers": 3,
+    "baselineProjects": 1,
+    "currentProjects": 1,
+    "catalogTransferDoesNotModifyAccounts": true
+  },
+  "teammate": {
+    "staged": 37,
+    "status": "needs-citations"
+  },
+  "storage": {
+    "dashboardRowGiB": 5.48,
+    "dashboardRequestUnits": 13580000,
+    "paidSpendingLimitEnabled": false,
+    "freeRowAllowanceGiB": 5,
+    "overFreeAllowance": true
+  },
+  "limitations": [
+    "The row storage is above the free allowance; sufficient capacity must be arranged to avoid quota restrictions.",
+    "Hosted backend cutover was not performed.",
+    "Raw archives remain local; no object-storage bucket supplied."
+  ]
+}
