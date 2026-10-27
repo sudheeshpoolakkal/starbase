@@ -1256,6 +1256,26 @@ main {
   background: #e9ece7;
   color: #6f7c67;
 }
+.badge-metal {
+  background: #edf1e7;
+  color: #6c7e61;
+}
+.badge-elastomer {
+  background: #f1ecdc;
+  color: #84764e;
+}
+.badge-crystalline {
+  background: #e9eaf2;
+  color: #696f91;
+}
+.badge-spacecraft-materials {
+  background: #e3eff0;
+  color: #4f777a;
+}
+.badge-thermal-protection {
+  background: #eee8f1;
+  color: #785e83;
+}
 .material-code {
   font-size: 8px;
   color: #757a70;
@@ -1813,7 +1833,8 @@ input[type="range"] {
 .chart-legend {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 8px 16px;
   font-size: 11px;
   color: #747a67;
 }
@@ -1835,6 +1856,36 @@ input[type="range"] {
   letter-spacing: 1.2px;
   margin-bottom: 13px;
   padding: 0 3px;
+}
+.shortlist-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin: 16px 0 18px;
+}
+.shortlist-toolbar > span {
+  color: #717c67;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.shortlist-sort {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #717c67;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.shortlist-sort select {
+  max-width: 270px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--ink);
+  padding: 8px 28px 8px 10px;
+  font: inherit;
 }
 .result-card {
   background: white;
@@ -4743,3 +4794,17 @@ input[type="range"] {
 .property-basis { display: inline-block; color: #7a6b48; margin-left: 8px; font-size: 10px; }
 .source-links a { color: #4c6950; text-decoration: underline; overflow-wrap: anywhere; }
 @media (max-width: 600px) { .catalog-source-filters label { flex-direction: column; align-items: flex-start; } .catalog-source-filters select { max-width: 290px; } .catalog-pagination > div { gap: 8px; } }
+@media (max-width: 600px) {
+  .shortlist-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .shortlist-sort {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .shortlist-sort select {
+    flex: 1;
+    max-width: none;
+  }
+}

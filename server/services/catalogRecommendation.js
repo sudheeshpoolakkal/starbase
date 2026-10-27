@@ -9,6 +9,7 @@ const invert = new Set(['lightness', 'cost', 'vacuum']);
 const cost = alias => `CASE ${alias}.text_value WHEN 'Low' THEN 1 WHEN 'Moderate' THEN 2 WHEN 'Medium' THEN 2 WHEN 'High' THEN 3 WHEN 'Very High' THEN 4 ELSE NULL END`;
 const resistance = alias => `CASE ${alias}.text_value WHEN 'Poor' THEN 1 WHEN 'Fair' THEN 2 WHEN 'Moderate' THEN 2 WHEN 'Good' THEN 3 WHEN 'Excellent' THEN 4 ELSE NULL END`;
 const base = 'FROM Material m JOIN Material_Category c ON c.category_id=m.category_id JOIN Data_Source s ON s.source_id=m.source_id';
+const compareScores = (a, b) => Number(b.raw_score) - Number(a.raw_score) || Number(a.material_id) - Number(b.material_id);
 
 async function recommendCatalog(input) {
   const requirements = validateRequirements(input);
@@ -128,7 +129,7 @@ async function recommendCatalog(input) {
     // have a monotonic score, so the numeric index gives a safe score threshold.
     // This preserves exact counts and ranking without sorting millions of rows.
     const sparse = activeProperties.filter(p => p !== denseProperty);
-    const score = `ROUND(${scores.join('+')},1)`;
+    const score = `(${scores.join('+')})`;
     const denseFactor = Object.keys(factors).find(f => factors[f] === denseProperty);
     const denseValue = expression(denseProperty);
     const denseWeight = requirements.weights[denseFactor] / weightTotal * 100;
@@ -150,26 +151,26 @@ async function recommendCatalog(input) {
       const sparseWhere = `${scope} AND (${sparse.map(p => `${expression(p)} IS NOT NULL`).join(' OR ')})`;
       const [[row]] = await db.execute(`SELECT COUNT(*) AS total,COALESCE(SUM(${denseValue} IS NOT NULL),0) AS overlap ${sparseBase} WHERE ${sparseWhere}`);
       sparseCount = Number(row.total); overlap = Number(row.overlap);
-      [sparseTop] = await db.execute(`SELECT m.material_id,${score} AS score ${sparseBase} WHERE ${sparseWhere} ORDER BY score DESC,m.material_id LIMIT 50`);
+      [sparseTop] = await db.execute(`SELECT m.material_id,${score} AS raw_score ${sparseBase} WHERE ${sparseWhere} ORDER BY raw_score DESC,m.material_id LIMIT 50`);
     }
     const direction = invert.has(denseFactor) ? 'ASC' : 'DESC';
-    const [seed] = await db.execute(`SELECT m.material_id,${score} AS score ${denseBase} WHERE ${denseWhere} ORDER BY required_value.numeric_value ${direction} LIMIT 50`);
-    const finalists = [...sparseTop, ...seed].sort((a,b) => b.score-a.score || a.material_id-b.material_id).slice(0,50);
+    const [seed] = await db.execute(`SELECT m.material_id,${score} AS raw_score ${denseBase} WHERE ${denseWhere} ORDER BY required_value.numeric_value ${direction} LIMIT 50`);
+    const finalists = [...sparseTop, ...seed].sort(compareScores).slice(0,50);
     let denseTop = seed;
     if (seed.length && hi !== lo) {
-      const threshold = Number(finalists.at(-1).score);
-      // Include the entire rounded-score tie bucket, then break ties by ID.
-      const fraction = (threshold - 0.0500001) / denseWeight;
+      const threshold = Number(finalists.at(-1).raw_score);
+      // Keep a small floating-point margin, then rank by the unrounded score.
+      const fraction = Math.max(0, threshold - Math.max(1, Math.abs(threshold)) * 1e-12) / denseWeight;
       const cutoff = invert.has(denseFactor) ? hi - fraction*(hi-lo) : lo + fraction*(hi-lo);
-      [denseTop] = await db.execute(`SELECT m.material_id,${score} AS score ${denseBase} WHERE ${denseWhere}
-        AND required_value.numeric_value ${invert.has(denseFactor) ? '<=' : '>='} ? ORDER BY score DESC,m.material_id LIMIT 50`,[cutoff]);
+      [denseTop] = await db.execute(`SELECT m.material_id,${score} AS raw_score ${denseBase} WHERE ${denseWhere}
+        AND required_value.numeric_value ${invert.has(denseFactor) ? '<=' : '>='} ? ORDER BY raw_score DESC,m.material_id LIMIT 50`,[cutoff]);
     }
-    top = [...sparseTop, ...denseTop].sort((a,b) => b.score-a.score || a.material_id-b.material_id).slice(0,50);
+    top = [...sparseTop, ...denseTop].sort(compareScores).slice(0,50);
     count = sparseCount + coverage(denseProperty) - overlap;
   } else {
     const [[row]] = await db.execute(`SELECT COUNT(*) AS total ${ranked} WHERE ${scope} AND ${predicate}`,params);
     count = Number(row.total);
-    [top] = await db.execute(`SELECT m.material_id,ROUND(${scores.join('+')},1) AS score ${ranked} WHERE ${scope} AND ${predicate} ORDER BY score DESC,m.material_id LIMIT 50`,params);
+    [top] = await db.execute(`SELECT m.material_id,(${scores.join('+')}) AS raw_score ${ranked} WHERE ${scope} AND ${predicate} ORDER BY raw_score DESC,m.material_id LIMIT 50`,params);
   }
   // Explanations are a bounded sample, not a second full inverse catalog scan.
   // Evaluate them with the same JS rules so SQL NULL logic cannot hide missing data.

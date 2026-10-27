@@ -10,7 +10,7 @@ import {
 } from "../components/UI";
 import Icon from "../components/Icon";
 import MaterialDetail from "../components/MaterialDetail";
-import { propertyValue, materialProperties } from "../components/materialProperties";
+import { propertyValue, materialProperties, categoryClass } from "../components/materialProperties";
 const rows = [
   ["Density", "density", "g/cm³", "min"],
   ["Tensile strength", "tensileStrength", "MPa", "max"],
@@ -115,7 +115,7 @@ export default function Compare() {
                   </button>
                   <Swatch material={m} />
                   <span
-                    className={`family-badge badge-${m.category.toLowerCase()}`}
+                    className={`family-badge ${categoryClass(m.category)}`}
                   >
                     {m.category}
                   </span>

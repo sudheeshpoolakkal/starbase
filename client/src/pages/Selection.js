@@ -13,7 +13,119 @@ import {
   Modal,
 } from "../components/UI";
 import MaterialDetail from "../components/MaterialDetail";
-import { materialProperties, propertyValue, evidenceLabel } from "../components/materialProperties";
+import { materialProperties, propertyValue, evidenceLabel, categoryClass } from "../components/materialProperties";
+const shortlistSorts = [
+  ["score", "Preference score (highest first)"],
+  ["name", "Material name (A–Z)"],
+  ["tensileStrength", "Tensile strength (highest first)"],
+  ["density", "Density (lowest first)"],
+  ["cost", "Relative cost (lowest first)"],
+  ["thermalConductivity", "Thermal conductivity (highest first)"],
+  ["bulkModulus", "Bulk modulus (highest first)"],
+  ["collectedVolatileCondensableMaterial", "CVCM (lowest first)"],
+  ["estimatedMass", "Estimated mass (lowest first)"],
+];
+const costOrder = { Low: 1, Moderate: 2, Medium: 2, High: 3, "Very High": 4 };
+const sortDirections = {
+  tensileStrength: -1,
+  density: 1,
+  cost: 1,
+  thermalConductivity: -1,
+  bulkModulus: -1,
+  collectedVolatileCondensableMaterial: 1,
+  estimatedMass: 1,
+};
+const categoryColors = {
+  Metal: "#64796c",
+  Polymer: "#b59770",
+  Ceramic: "#ac827b",
+  Composite: "#373f4a",
+  Elastomer: "#9a885d",
+  Crystalline: "#7b82a2",
+  "Spacecraft materials": "#538589",
+  "Thermal protection": "#8a7095",
+};
+const nameCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
+
+function shortlistSortValue(material, sortBy) {
+  if (sortBy === "cost") return costOrder[material.properties?.cost];
+  if (sortBy === "estimatedMass") return material.estimatedMass;
+  return material.properties?.[sortBy];
+}
+
+function hasSortableValue(materials, sortBy) {
+  return materials.some((material) => Number.isFinite(shortlistSortValue(material, sortBy)));
+}
+
+function compareShortlist(a, b, sortBy) {
+  const preferRank = () =>
+    (a.rank ?? Number.MAX_SAFE_INTEGER) - (b.rank ?? Number.MAX_SAFE_INTEGER) ||
+    nameCollator.compare(a.name || "", b.name || "") ||
+    String(a.id).localeCompare(String(b.id), undefined, { numeric: true });
+  if (sortBy === "score") return preferRank();
+  if (sortBy === "name")
+    return nameCollator.compare(a.name || "", b.name || "") || preferRank();
+
+  let aValue = shortlistSortValue(a, sortBy);
+  let bValue = shortlistSortValue(b, sortBy);
+  if (!Number.isFinite(aValue)) aValue = null;
+  if (!Number.isFinite(bValue)) bValue = null;
+  if (aValue == null || bValue == null) {
+    if (aValue == null && bValue != null) return 1;
+    if (aValue != null && bValue == null) return -1;
+    return preferRank();
+  }
+  return (aValue - bValue) * sortDirections[sortBy] || preferRank();
+}
+
+function shortlistProperties(material, requirements) {
+  const priorityKeys = [
+    ["strength", "tensileStrength"],
+    ["lightness", "density"],
+    ["cost", "cost"],
+    ["thermal", "thermalConductivity"],
+    ["stiffness", "bulkModulus"],
+    ["vacuum", "collectedVolatileCondensableMaterial"],
+  ]
+    .filter(([weight]) => Number(requirements.weights?.[weight]) > 0)
+    .sort(([a], [b]) => requirements.weights[b] - requirements.weights[a])
+    .map(([, key]) => key);
+  const constrainedKeys = [
+    ["minTensileStrength", "tensileStrength"],
+    ["maxTotalMassLoss", "totalMassLoss"],
+    ["maxCVCM", "collectedVolatileCondensableMaterial"],
+    ["minBulkModulus", "bulkModulus"],
+    ["maxDensity", "density"],
+    ["minServiceTemp", "maxServiceTemp"],
+    ["minThermalConductivity", "thermalConductivity"],
+    ["corrosionResistance", "corrosionResistance"],
+    ["maxCost", "cost"],
+  ]
+    .filter(([requirement]) => requirements[requirement] !== "" && requirements[requirement] != null)
+    .map(([, key]) => key);
+  const orderedKeys = [...new Set([
+    ...priorityKeys,
+    ...constrainedKeys,
+    "density",
+    "tensileStrength",
+    "thermalConductivity",
+    "bulkModulus",
+    "youngModulus",
+  ])].filter((key) => material.properties?.[key] != null);
+  const properties = orderedKeys.slice(0, 3).map((key) => {
+    const definition = materialProperties.find((property) => property.key === key);
+    return {
+      key,
+      label: definition?.label || key,
+      value: propertyValue(material, key),
+      unit: definition?.unit || "",
+    };
+  });
+  if (material.estimatedMass != null)
+    properties.push({ key: "estimatedMass", label: "Estimated mass", value: material.estimatedMass, unit: "kg" });
+  return properties;
+}
+
 const templates = [
   ["Vacuum outgassing", { category: "Spacecraft materials", dataKind: "experimental", maxTotalMassLoss: 1, maxCVCM: 0.1, weights: { strength: 0, lightness: 0, cost: 0, thermal: 0, stiffness: 0, vacuum: 100 } }],
   ["Computed crystal stiffness", { category: "Crystalline", dataKind: "computed", minBulkModulus: 100, weights: { strength: 0, lightness: 0, cost: 0, thermal: 0, stiffness: 100 } }],
@@ -48,13 +160,7 @@ function TradeoffChart({ materials: candidates, onSelect }) {
       ...materials.map((m) => m.properties.tensileStrength),
       1000,
     );
-  const colors = {
-    Metal: "#64796c",
-    Polymer: "#b59770",
-    Ceramic: "#ac827b",
-    Composite: "#373f4a",
-    Elastomer: "#9a885d",
-  };
+  const categories = [...new Set(materials.map((material) => material.category))].sort(nameCollator.compare);
   return (
     <div className="tradeoff-chart">
       <div className="chart-heading">
@@ -134,7 +240,7 @@ function TradeoffChart({ materials: candidates, onSelect }) {
               cx={56 + (m.properties.density / maxX) * 540}
               cy={150 - (m.properties.tensileStrength / maxY) * 120}
               r="6"
-              fill={colors[m.category]}
+              fill={categoryColors[m.category] || "#777b71"}
               stroke="white"
               strokeWidth="2"
             />
@@ -146,10 +252,10 @@ function TradeoffChart({ materials: candidates, onSelect }) {
         ))}
       </svg>
       <div className="chart-legend">
-        {Object.entries(colors).map(([k, c]) => (
-          <span key={k}>
-            <i style={{ background: c }} />
-            {k}
+        {categories.map((category) => (
+          <span key={category}>
+            <i style={{ background: categoryColors[category] || "#777b71" }} />
+            {category}
           </span>
         ))}
       </div>
@@ -159,6 +265,7 @@ function TradeoffChart({ materials: candidates, onSelect }) {
 export default function Selection() {
   const {
     catalogSummary,
+    loading: catalogLoading,
     requirements: r,
     setRequirements,
     setNotice,
@@ -170,6 +277,7 @@ export default function Selection() {
   const projectId = params.get("project");
   const [project, setProject] = useState(null),
     [result, setResult] = useState(null),
+    [sortBy, setSortBy] = useState("score"),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
     [detail, setDetail] = useState(null),
@@ -179,6 +287,18 @@ export default function Selection() {
     [chosen, setChosen] = useState("");
   const navigate = useNavigate();
   const apps = Array.isArray(catalogSummary?.applications) ? catalogSummary.applications : [];
+  useEffect(() => {
+    if (!catalogLoading && r.application && !apps.includes(r.application)) {
+      setRequirements((current) =>
+        current.application === r.application
+          ? { ...current, application: "" }
+          : current,
+      );
+    }
+  }, [apps, catalogLoading, r.application, setRequirements]);
+  const displayedMaterials = result
+    ? [...result.materials].sort((a, b) => compareShortlist(a, b, sortBy))
+    : [];
   useEffect(() => {
     if (!projectId || !token) {
       setProject(null);
@@ -206,7 +326,10 @@ export default function Selection() {
           axios
             .post("/api/materials/recommend", saved)
             .then(({ data }) => {
-              if (active) setResult(data);
+              if (active) {
+                setSortBy("score");
+                setResult(data);
+              }
             })
             .catch(() => {
               if (active) setError("Could not evaluate saved requirements.");
@@ -233,7 +356,12 @@ export default function Selection() {
     setError("");
     setBusy(true);
     try {
-      const { data } = await axios.post("/api/materials/recommend", r);
+      const submitted = !catalogLoading && r.application && !apps.includes(r.application)
+        ? { ...r, application: "" }
+        : r;
+      if (submitted !== r) setRequirements(submitted);
+      const { data } = await axios.post("/api/materials/recommend", submitted);
+      setSortBy("score");
       setResult(data);
     } catch (e) {
       setError(
@@ -352,12 +480,22 @@ export default function Selection() {
           </div>
           <div className="requirement-section">
             <span className="eyebrow">Application</span>
-            <Field label="Intended application">
+            <Field
+              label="Intended application"
+              hint={catalogLoading
+                ? "Loading application options…"
+                : apps.length
+                  ? undefined
+                  : "No application tags are recorded in the active catalog, so this filter is unavailable."}
+            >
               <select
-                value={r.application}
+                value={apps.includes(r.application) ? r.application : ""}
+                disabled={catalogLoading || apps.length === 0}
                 onChange={(e) => update("application", e.target.value)}
               >
-                <option value="">Any application</option>
+                <option value="">
+                  {apps.length || catalogLoading ? "Any application" : "No application data available"}
+                </option>
                 {apps.map((a) => (
                   <option key={a}>{a}</option>
                 ))}
@@ -509,7 +647,11 @@ export default function Selection() {
                     key={title}
                     className="template-row"
                     onClick={() => {
-                      setRequirements({ ...defaults, ...values });
+                      setRequirements({
+                        ...defaults,
+                        ...values,
+                        weights: { ...defaults.weights, ...values.weights },
+                      });
                       setNotice(
                         "Scenario loaded. Adjust the requirements, then run your selection.",
                       );
@@ -548,7 +690,7 @@ export default function Selection() {
                     </span>
                   </h2>
                   <p>
-                    Showing the top {result.materials.length} of {result.count.toLocaleString()} matches. Missing weighted properties contribute zero; inspect each record’s evidence type and test conditions.
+                    Showing the top {result.materials.length} by preference score from {result.count.toLocaleString()} matches. Missing weighted properties contribute zero; inspect each record’s evidence type and test conditions.
                   </p>
                 </div>
                 <div className="results-actions">
@@ -556,7 +698,7 @@ export default function Selection() {
                     className="icon-button"
                     aria-label="Export selection as CSV"
                     disabled={!result.count}
-                    onClick={() => exportCSV(result.materials)}
+                    onClick={() => exportCSV(displayedMaterials)}
                   >
                     <Icon name="download" />
                   </button>
@@ -573,14 +715,35 @@ export default function Selection() {
               {result.count > 0 ? (
                 <>
                   <TradeoffChart
-                    materials={result.materials}
+                    materials={displayedMaterials}
                     onSelect={setDetail}
                   />
+                  <div className="shortlist-toolbar">
+                    <span>Reorder the displayed top {displayedMaterials.length}; preference ranks stay attached to each material.</span>
+                    <label className="shortlist-sort">
+                      Sort shortlist
+                      <select
+                        aria-label="Sort shortlist"
+                        value={sortBy}
+                        onChange={(event) => setSortBy(event.target.value)}
+                      >
+                        {shortlistSorts.map(([value, label]) => (
+                          <option
+                            key={value}
+                            value={value}
+                            disabled={!['score', 'name'].includes(value) && !hasSortableValue(displayedMaterials, value)}
+                          >
+                            {label}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                  </div>
                   <div className="ranking-labels">
-                    <span>RANK / MATERIAL</span>
+                    <span>PREFERENCE RANK / MATERIAL</span>
                     <span>PREFERENCE SCORE</span>
                   </div>
-                  {result.materials.map((m) => (
+                  {displayedMaterials.map((m) => (
                     <article
                       key={m.id}
                       className={`result-card ${m.rank === 1 ? "result-best" : ""}`}
@@ -592,7 +755,7 @@ export default function Selection() {
                         <div className="result-name">
                           <div>
                             <span
-                              className={`family-badge badge-${m.category.toLowerCase()}`}
+                              className={`family-badge ${categoryClass(m.category)}`}
                             >
                               {m.category}
                             </span>
@@ -616,17 +779,12 @@ export default function Selection() {
                         </div>
                       </div>
                       <div className="result-properties">
-                        {[
-                          ...["density", "tensileStrength", "thermalConductivity", "bulkModulus", "youngModulus"]
-                            .filter(key => m.properties[key] != null).slice(0, 3)
-                            .map(key => { const p = materialProperties.find(p => p.key === key); return [p.label, propertyValue(m, key), p.unit]; }),
-                          ...(m.estimatedMass != null ? [["Estimated mass", m.estimatedMass, "kg"]] : []),
-                        ].map(([k, v, u]) => (
-                          <div key={k}>
-                            <span>{k}</span>
+                        {shortlistProperties(m, r).map(({ key, label, value, unit }) => (
+                          <div key={key}>
+                            <span>{label}</span>
                             <strong>
-                              {v ?? "Not reported"}
-                              <small>{v != null ? u : ""}</small>
+                              {value ?? "Not reported"}
+                              <small>{value != null ? unit : ""}</small>
                             </strong>
                           </div>
                         ))}
@@ -642,7 +800,8 @@ export default function Selection() {
                         <button
                           className="compare-button"
                           onClick={() => toggleCompare(m.id)}
-                          aria-label={`Compare ${m.name}`}
+                          aria-label={`${compareIds.includes(m.id) ? "Remove" : "Add"} ${m.name} ${compareIds.includes(m.id) ? "from" : "to"} comparison`}
+                          aria-pressed={compareIds.includes(m.id)}
                         >
                           <Icon
                             name={compareIds.includes(m.id) ? "check" : "plus"}
@@ -660,7 +819,7 @@ export default function Selection() {
                   description={
                     r.process
                       ? "This catalog has no manufacturing compatibility data. Remove the process constraint to evaluate other properties."
-                      : "Try relaxing a limit or selecting a broader application. Your requirements have been kept."
+                      : `Try relaxing a limit${apps.length ? " or selecting a broader application" : ""}. Your requirements have been kept.`
                   }
                 >
                   <button

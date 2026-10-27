@@ -10,7 +10,7 @@ import {
   exportCSV,
 } from "../components/UI";
 import MaterialDetail from "../components/MaterialDetail";
-import { materialProperties, reportedProperties, propertyValue, evidenceLabel } from "../components/materialProperties";
+import { materialProperties, reportedProperties, propertyValue, evidenceLabel, categoryClass } from "../components/materialProperties";
 export default function Materials() {
   const { catalogSummary, error: summaryError, reload, compareIds, toggleCompare } = useWorkspace();
   const [query, setQuery] = useState(""),
@@ -31,6 +31,7 @@ export default function Materials() {
   const categories = Array.isArray(catalogSummary?.categories) ? catalogSummary.categories : [];
   const sources = Array.isArray(catalogSummary?.sources) ? catalogSummary.sources : [];
   const coverage = Array.isArray(catalogSummary?.coverage) ? catalogSummary.coverage : [];
+  const selectedProperty = coverage.find((item) => item.propertyKey === property);
   useEffect(() => {
     if (!initializedCollection.current && (catalogSummary?.total || 0) > 0) {
       initializedCollection.current = true;
@@ -143,6 +144,9 @@ export default function Materials() {
               <option value="density">Lowest density</option>
               <option value="strength">Highest tensile strength</option>
               <option value="bulk">Highest bulk modulus</option>
+              <option value="property" disabled={!property}>
+                Highest {selectedProperty?.name || "selected property"} first
+              </option>
             </select>
           </label>
           <div className="view-toggle">
@@ -174,7 +178,12 @@ export default function Materials() {
             {collection !== "engineering" && <><option value="experimental">Experimental</option><option value="computed">Computed</option></>}
             {collection !== "research" && <option value="literature-extracted">Supplier / reference</option>}
           </select></label>
-          <label>Reported property<select aria-label="Reported property" value={property} onChange={e => { setProperty(e.target.value); setPage(1); }}>
+          <label>Reported property<select aria-label="Reported property" value={property} onChange={e => {
+            const selected = e.target.value;
+            setProperty(selected);
+            setSort((current) => selected ? "property" : current === "property" ? "name" : current);
+            setPage(1);
+          }}>
             <option value="">Any property</option>
             {coverage.filter(p => p.count > 0).map(p => <option key={p.propertyKey} value={p.propertyKey}>{p.name}</option>)}
           </select></label>
@@ -222,7 +231,7 @@ export default function Materials() {
                 <div className="material-card-content">
                   <div className="material-meta">
                     <span
-                      className={`family-badge badge-${m.category.toLowerCase()}`}
+                      className={`family-badge ${categoryClass(m.category)}`}
                     >
                       {m.category}
                     </span>
@@ -291,7 +300,7 @@ export default function Materials() {
                     </td>
                     <td>
                       <span
-                        className={`family-badge badge-${m.category.toLowerCase()}`}
+                      className={`family-badge ${categoryClass(m.category)}`}
                       >
                         {m.category}
                       </span>

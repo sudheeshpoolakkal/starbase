@@ -62,3 +62,13 @@ export function propertyValue(material, key) {
 export function evidenceLabel(kind) {
   return kind === "computed" ? "Computed properties" : kind === "literature-extracted" ? "Supplier / reference data" : "Experimental source record";
 }
+
+export function categoryClass(category) {
+  const slug = String(category || "other")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+  return `badge-${slug || "other"}`;
+}

@@ -2,6 +2,11 @@ const db = require("../config/db");
 const { decodeRecord, descriptionSql } = require('./recordStorage');
 const costRank = { Low: 1, Moderate: 2, Medium: 2, High: 3, "Very High": 4 };
 const resistanceRank = { Poor: 1, Fair: 2, Moderate: 2, Good: 3, Excellent: 4 };
+const propertySortRanks = {
+  cost: "CASE sort_value.text_value WHEN 'Low' THEN 1 WHEN 'Moderate' THEN 2 WHEN 'Medium' THEN 2 WHEN 'High' THEN 3 WHEN 'Very High' THEN 4 END",
+  corrosionResistance: "CASE sort_value.text_value WHEN 'Poor' THEN 1 WHEN 'Fair' THEN 2 WHEN 'Moderate' THEN 2 WHEN 'Good' THEN 3 WHEN 'Excellent' THEN 4 END",
+  magnetizable: "CASE LOWER(sort_value.text_value) WHEN 'no' THEN 0 WHEN 'false' THEN 0 WHEN 'yes' THEN 1 WHEN 'true' THEN 1 END",
+};
 const definitions = [
   ["density", "Density", "g/cm³"],
   ["tensileStrength", "Tensile strength", "MPa"],
@@ -193,11 +198,25 @@ async function listMaterials(input = {}) {
     total=Number(count.total);
   }
   if(!total) return {materials:[],total:0,page,limit,pages:0};
-  const property = { density: ["density", "ASC"], strength: ["tensileStrength", "DESC"], bulk: ["bulkModulus", "DESC"] }[input.sort];
-  const sortJoin = property ? "LEFT JOIN Material_Property sort_value ON sort_value.material_id=m.material_id AND sort_value.property_id=(SELECT property_id FROM Property WHERE property_key=?)" : "";
+  const fixedSorts = { density: ["density", "ASC"], strength: ["tensileStrength", "DESC"], bulk: ["bulkModulus", "DESC"] };
+  if (input.sort === "property" && !definitions.some(([key]) => key === input.property))
+    throw new Error("Choose a reported property before sorting by property value.");
+  const sortPropertyKey = input.sort === "property"
+    ? input.property
+    : fixedSorts[input.sort]?.[0];
+  const sortDirection = input.sort === "property" ? "DESC" : fixedSorts[input.sort]?.[1];
+  const sortJoin = sortPropertyKey ? "LEFT JOIN Material_Property sort_value ON sort_value.material_id=m.material_id AND sort_value.property_id=(SELECT property_id FROM Property WHERE property_key=?)" : "";
+  const sortValue = sortPropertyKey
+    ? propertySortRanks[sortPropertyKey]
+      ? `COALESCE(${propertySortRanks[sortPropertyKey]}, sort_value.numeric_value)`
+      : "sort_value.numeric_value"
+    : null;
   let sourcePageJoins=joins;
   if (db.driver()==="mysql") {
-    if (input.source) {
+    if (input.collection === "engineering" && !input.source) {
+      // Keep the engineering subset small before sorting by trimmed name keys.
+      sourcePageJoins="FROM Data_Source s FORCE INDEX(source_key_unique) STRAIGHT_JOIN Material m FORCE INDEX(material_external_unique) ON m.source_id=s.source_id STRAIGHT_JOIN Material_Category c ON m.category_id=c.category_id";
+    } else if (input.source) {
       summary ||= await getSummary();
       const sourceCount=summary.sources.find(s=>s.sourceKey===input.source)?.count||0;
       sourcePageJoins=sourceCount>summary.total*0.1
@@ -207,9 +226,12 @@ async function listMaterials(input = {}) {
       sourcePageJoins="FROM Material m FORCE INDEX(material_name_index) STRAIGHT_JOIN Material_Category c ON m.category_id=c.category_id STRAIGHT_JOIN Data_Source s ON m.source_id=s.source_id";
     }
   }
-  const order = property ? `sort_value.numeric_value IS NULL, sort_value.numeric_value ${property[1]}, m.name, m.material_id` : "m.name, m.material_id";
+  const nameOrder = input.collection === "engineering" ? "TRIM(m.name)" : "m.name";
+  const order = sortPropertyKey
+    ? `${sortValue} IS NULL, ${sortValue} ${sortDirection}, ${nameOrder}, m.material_id`
+    : `${nameOrder}, m.material_id`;
   // Integers validated above are embedded because some MySQL prepared-statement versions reject LIMIT bindings.
-  const [rows] = await db.execute(`SELECT m.material_id ${sourcePageJoins} ${sortJoin} WHERE ${where} ORDER BY ${order} LIMIT ${limit} OFFSET ${offset}`, property ? [property[0], ...params] : params);
+  const [rows] = await db.execute(`SELECT m.material_id ${sourcePageJoins} ${sortJoin} WHERE ${where} ORDER BY ${order} LIMIT ${limit} OFFSET ${offset}`, sortPropertyKey ? [sortPropertyKey, ...params] : params);
   return { materials: await getCatalog(rows.map(r => r.material_id)), total, page, limit, pages: Math.ceil(total / limit) };
 }
 async function getSummary() {

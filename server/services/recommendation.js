@@ -11,6 +11,12 @@ const numericRules = {
   maxWeight: ["maxWeight", "max", 0],
 };
 const defaultWeights = { strength: 35, lightness: 40, cost: 25, thermal: 0, stiffness: 0, vacuum: 0 };
+function compareIds(a, b) {
+  const numeric = Number(a) - Number(b);
+  return Number.isFinite(numeric)
+    ? numeric
+    : String(a).localeCompare(String(b), undefined, { numeric: true });
+}
 function validateRequirements(input = {}) {
   if (!input || typeof input !== "object" || Array.isArray(input))
     throw new Error("Requirements must be an object.");
@@ -186,14 +192,15 @@ function recommend(materials, input, context = {}) {
     for (const [key, fn] of Object.entries(factors)) {
       const [lo, hi] = bounds[key],
         val = fn(m);
-      let normalized = Number.isFinite(val)
-        ? hi === lo
+      const minimizing = key === "lightness" || key === "cost" || key === "vacuum";
+      const normalized = !Number.isFinite(val)
+        ? 0
+        : hi === lo
           ? 1
-          : (val - lo) / (hi - lo)
-        : 0;
-      if ((key === "lightness" || key === "cost" || key === "vacuum") && Number.isFinite(val) && hi !== lo)
-        normalized = 1 - normalized;
-      const contribution = ((normalized * r.weights[key]) / weightTotal) * 100;
+          : minimizing
+            ? (hi - val) / (hi - lo)
+            : (val - lo) / (hi - lo);
+      const contribution = normalized * (r.weights[key] / weightTotal * 100);
       score += contribution;
       breakdown[key] = {
         value: Number.isFinite(val) ? val : null,
@@ -209,6 +216,7 @@ function recommend(materials, input, context = {}) {
     candidates.push({
       ...m,
       score: Number(score.toFixed(1)),
+      rawScore: score,
       missingPriorities: Object.keys(factors).filter(key => r.weights[key] > 0 && !Number.isFinite(factors[key](m))),
       breakdown,
       reasons,
@@ -216,9 +224,9 @@ function recommend(materials, input, context = {}) {
         estimatedMass === null ? null : Number(estimatedMass.toFixed(3)),
     });
   }
-  candidates.sort((a, b) => b.score - a.score || a.id - b.id);
+  candidates.sort((a, b) => b.rawScore - a.rawScore || compareIds(a.id, b.id));
   return {
-    materials: candidates.map((m, i) => ({ ...m, rank: i + 1 })),
+    materials: candidates.map(({ rawScore, ...m }, i) => ({ ...m, rank: i + 1 })),
     count: candidates.length,
     total: materials.length,
     excluded,
