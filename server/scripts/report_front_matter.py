@@ -12,28 +12,28 @@ def add_cover_page(doc):
     sec = doc.sections[0]
     sec.page_width = Inches(8.2677)
     sec.page_height = Inches(11.6929)
-    sec.left_margin = Inches(1.25)
+    sec.left_margin = Inches(1.0)
     sec.right_margin = Inches(1.0)
-    sec.top_margin = Inches(1.0)
-    sec.bottom_margin = Inches(1.0)
+    sec.top_margin = Inches(0.7)
+    sec.bottom_margin = Inches(0.7)
 
     # Crest / Emblem at top
     if CREST_PATH.exists():
         p_logo = doc.add_paragraph()
         p_logo.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p_logo.paragraph_format.space_before = Pt(0)
-        p_logo.paragraph_format.space_after = Pt(12)
-        p_logo.add_run().add_picture(str(CREST_PATH), width=Inches(1.15))
+        p_logo.paragraph_format.space_after = Pt(20)
+        p_logo.add_run().add_picture(str(CREST_PATH), width=Inches(1.6))
 
-    # PROJECT TITLE (Bold, Italic, 24pt, Uppercase)
+    # PROJECT TITLE (Bold, Italic, 22pt, Uppercase)
     p_title = doc.add_paragraph()
     p_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_title.paragraph_format.space_before = Pt(0)
-    p_title.paragraph_format.space_after = Pt(10)
-    p_title.paragraph_format.line_spacing = 1.15
-    r_title = p_title.add_run("STARBASE MATERIAL SELECTION SYSTEM")
+    p_title.paragraph_format.space_after = Pt(16)
+    p_title.paragraph_format.line_spacing = Pt(26)
+    r_title = p_title.add_run("STARBASE MATERIAL SELECTION\nSYSTEM")
     r_title.font.name = 'Times New Roman'
-    r_title.font.size = Pt(24)
+    r_title.font.size = Pt(22)
     r_title.bold = True
     r_title.italic = True
 
@@ -41,7 +41,7 @@ def add_cover_page(doc):
     p_sub = doc.add_paragraph()
     p_sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_sub.paragraph_format.space_before = Pt(0)
-    p_sub.paragraph_format.space_after = Pt(12)
+    p_sub.paragraph_format.space_after = Pt(16)
     r_sub = p_sub.add_run("PROJECT REPORT")
     r_sub.font.name = 'Times New Roman'
     r_sub.font.size = Pt(16)
@@ -51,7 +51,7 @@ def add_cover_page(doc):
     p_by = doc.add_paragraph()
     p_by.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_by.paragraph_format.space_before = Pt(0)
-    p_by.paragraph_format.space_after = Pt(10)
+    p_by.paragraph_format.space_after = Pt(16)
     r_by = p_by.add_run("Submitted by")
     r_by.font.name = 'Times New Roman'
     r_by.font.size = Pt(12)
@@ -69,8 +69,8 @@ def add_cover_page(doc):
         p_m = doc.add_paragraph()
         p_m.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p_m.paragraph_format.space_before = Pt(0)
-        p_m.paragraph_format.space_after = Pt(8)
-        p_m.paragraph_format.line_spacing = 1.15
+        p_m.paragraph_format.space_after = Pt(22)
+        p_m.paragraph_format.line_spacing = Pt(20)
 
         r_n = p_m.add_run(f"{name}\n")
         r_n.font.name = 'Times New Roman'
@@ -90,9 +90,9 @@ def add_cover_page(doc):
     # Affiliation block
     p_dept = doc.add_paragraph()
     p_dept.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_dept.paragraph_format.space_before = Pt(10)
-    p_dept.paragraph_format.space_after = Pt(12)
-    p_dept.paragraph_format.line_spacing = 1.15
+    p_dept.paragraph_format.space_before = Pt(28)
+    p_dept.paragraph_format.space_after = Pt(28)
+    p_dept.paragraph_format.line_spacing = Pt(20)
 
     r_deg = p_dept.add_run("B.Tech Electrical and Computer Engineering\n")
     r_deg.font.name = 'Times New Roman'

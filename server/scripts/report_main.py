@@ -33,10 +33,10 @@ def build_full_report(toc_map=None, lof_map=None, lot_map=None):
     sec1 = doc.sections[0]
     sec1.page_width = Inches(8.2677)
     sec1.page_height = Inches(11.6929)
-    sec1.left_margin = Inches(1.25)
+    sec1.left_margin = Inches(1.0)
     sec1.right_margin = Inches(1.0)
-    sec1.top_margin = Inches(1.0)
-    sec1.bottom_margin = Inches(1.0)
+    sec1.top_margin = Inches(0.7)
+    sec1.bottom_margin = Inches(0.7)
     add_cover_page(doc)
 
     # SECTION 2: Prelims (Certificate to List of Tables) with lowerRoman numbering
