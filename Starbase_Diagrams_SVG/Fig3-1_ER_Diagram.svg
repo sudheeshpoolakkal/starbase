@@ -83,7 +83,7 @@
 <text x="1215" y="245" font-size="14" font-weight="700">N</text>
 
 <!-- Direct Owner line -->
-<path d="M 210,390 L 210,430 L 990,430 L 990,380" stroke="#2a3846" stroke-width="2.2" stroke-dasharray="6,4"/>
+<path fill="none" d="M 210,390 L 210,430 L 990,430 L 990,380" stroke="#2a3846" stroke-width="2.2" stroke-dasharray="6,4"/>
 <text x="600" y="420" font-size="13" font-weight="700" fill="#566473" text-anchor="middle">Owns (1 : N)</text>
 
 <!-- ROW 2: SEARCH HISTORY, SELECTION REQUIREMENTS & RECOMMENDATIONS -->
@@ -166,7 +166,7 @@
 <text x="380" y="810" font-size="14" font-weight="700">1</text>
 <text x="495" y="810" font-size="14" font-weight="700">N</text>
 
-<path d="M 360,1050 L 440,1050 L 440,880 L 520,880" stroke="#2a3846" stroke-width="2.2"/>
+<path fill="none" d="M 360,1050 L 440,1050 L 440,880 L 520,880" stroke="#2a3846" stroke-width="2.2"/>
 <text x="380" y="1040" font-size="14" font-weight="700">1</text>
 <text x="495" y="870" font-size="14" font-weight="700">N</text>
 
@@ -259,7 +259,7 @@
 <text x="920" y="1540" font-size="13" font-weight="700">1</text>
 <text x="1035" y="1540" font-size="13" font-weight="700">N</text>
 
-<path d="M 1390,1020 L 1390,1440 L 1220,1440 L 1220,1480" stroke="#2a3846" stroke-width="2.0"/>
+<path fill="none" d="M 1390,1020 L 1390,1440 L 1220,1440 L 1220,1480" stroke="#2a3846" stroke-width="2.0"/>
 <text x="1400" y="1050" font-size="13" font-weight="700">1</text>
 <text x="1230" y="1465" font-size="13" font-weight="700">N</text>
 

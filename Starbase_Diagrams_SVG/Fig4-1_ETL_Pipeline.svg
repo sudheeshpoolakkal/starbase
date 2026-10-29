@@ -73,7 +73,7 @@
 <text x="95" y="645" font-size="14" fill="#1b2733">• Stream parser handles 100M+ lines</text>
 <text x="95" y="670" font-size="14" fill="#1b2733">• Zero-skip guaranteed on restart</text>
 
-<path d="M 385,615 L 450,615" stroke="#2a3846" stroke-width="2.8" marker-end="url(#etl_ah)"/>
+<path fill="none" d="M 385,615 L 450,615" stroke="#2a3846" stroke-width="2.8" marker-end="url(#etl_ah)"/>
 
 <!-- Atomic Transaction Block -->
 <rect x="460" y="535" width="580" height="160" rx="8" fill="#ffffff" stroke="#ff8f00" stroke-width="2.0"/>
@@ -83,7 +83,7 @@
 <text x="480" y="645" font-size="14" font-family="Courier New, monospace" fill="#1b2733">3. INSERT INTO Material_Property ... (Bulk payload);</text>
 <text x="480" y="670" font-size="14" font-family="Courier New, monospace" fill="#1b2733">4. COMMIT;  /* Rollback on network/data error */</text>
 
-<path d="M 1040,615 L 1105,615" stroke="#2a3846" stroke-width="2.8" marker-end="url(#etl_ah)"/>
+<path fill="none" d="M 1040,615 L 1105,615" stroke="#2a3846" stroke-width="2.8" marker-end="url(#etl_ah)"/>
 
 <rect x="1115" y="535" width="310" height="160" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.6"/>
 <text x="1270" y="565" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Checkpoint Logging</text>

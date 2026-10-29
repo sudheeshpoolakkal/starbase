@@ -46,7 +46,7 @@
 <text x="100" y="468" font-size="14" font-family="Courier New, monospace" fill="#1b2733">JOIN Material_Property v_ts ON ...</text>
 <text x="100" y="491" font-size="14" font-family="Courier New, monospace" fill="#1b2733">WHERE v_ts.numeric_value &gt;= ? ...</text>
 
-<path d="M 540,452 L 610,452" stroke="#2a3846" stroke-width="2.5" marker-end="url(#ah)"/>
+<path fill="none" d="M 540,452 L 610,452" stroke="#2a3846" stroke-width="2.5" marker-end="url(#ah)"/>
 
 <!-- Index Execution -->
 <rect x="620" y="385" width="410" height="135" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
@@ -55,7 +55,7 @@
 <text x="825" y="468" font-size="15" font-family="Courier New, monospace" fill="#1b2733">(property_id, numeric_value)</text>
 <text x="825" y="495" font-size="14" font-weight="700" fill="#2e7d32" text-anchor="middle">Fast B-Tree Range Scan (&lt; 5 ms latency)</text>
 
-<path d="M 1030,452 L 1090,452" stroke="#2a3846" stroke-width="2.5" marker-end="url(#ah)"/>
+<path fill="none" d="M 1030,452 L 1090,452" stroke="#2a3846" stroke-width="2.5" marker-end="url(#ah)"/>
 
 <!-- Decision Diamond -->
 <polygon points="1235,395 1365,452 1235,510 1105,452" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
@@ -63,14 +63,14 @@
 <text x="1235" y="468" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Constraints?</text>
 
 <!-- False branch -->
-<path d="M 1365,452 L 1420,452 L 1420,560 L 980,560" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#ah)"/>
+<path fill="none" d="M 1365,452 L 1420,452 L 1420,560 L 980,560" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#ah)"/>
 <text x="1390" y="442" font-size="15" font-weight="700" fill="#d32f2f">NO</text>
 
 <rect x="620" y="535" width="350" height="50" rx="8" fill="#ffebee" stroke="#d32f2f" stroke-width="1.8"/>
 <text x="795" y="565" font-size="15" font-weight="700" fill="#c62828" text-anchor="middle">Disqualify &amp; Record Exact Failure Reason</text>
 
 <!-- True branch -->
-<path d="M 1235,510 L 1235,605 L 750,605 L 750,630" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ah)"/>
+<path fill="none" d="M 1235,510 L 1235,605 L 750,605 L 750,630" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ah)"/>
 <text x="1245" y="535" font-size="15" font-weight="700" fill="#2e7d32">YES</text>
 
 <!-- Flow down arrow -->
@@ -86,13 +86,13 @@
 <text x="310" y="833" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Priority Properties?</text>
 
 <!-- Missing property -> Exclude -->
-<path d="M 310,875 L 310,925" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#ah)"/>
+<path fill="none" d="M 310,875 L 310,925" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#ah)"/>
 <text x="320" y="900" font-size="15" font-weight="700" fill="#d32f2f">NO (Missing Data)</text>
 <rect x="150" y="930" width="320" height="50" rx="8" fill="#ffebee" stroke="#d32f2f" stroke-width="1.8"/>
 <text x="310" y="960" font-size="14" font-weight="700" fill="#c62828" text-anchor="middle">Exclude Candidate (Zero-Imputation Prohibited)</text>
 
 <!-- Has property -> Normalize -->
-<path d="M 440,817 L 530,817" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ah)"/>
+<path fill="none" d="M 440,817 L 530,817" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ah)"/>
 <text x="475" y="805" font-size="15" font-weight="700" fill="#2e7d32">YES</text>
 
 <rect x="540" y="765" width="410" height="105" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
@@ -100,7 +100,7 @@
 <text x="745" y="825" font-size="15" fill="#1b2733" text-anchor="middle">Higher is better: s_norm = (x - x_min) / (x_max - x_min)</text>
 <text x="745" y="850" font-size="15" fill="#1b2733" text-anchor="middle">Lower is better: s_norm = (x_max - x) / (x_max - x_min)</text>
 
-<path d="M 950,817 L 1030,817" stroke="#2a3846" stroke-width="2.5" marker-end="url(#ah)"/>
+<path fill="none" d="M 950,817 L 1030,817" stroke="#2a3846" stroke-width="2.5" marker-end="url(#ah)"/>
 
 <rect x="1040" y="765" width="410" height="105" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
 <text x="1245" y="795" font-size="17" font-weight="700" fill="#1b2733" text-anchor="middle">Composite Weighted Scoring</text>

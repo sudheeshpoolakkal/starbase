@@ -67,7 +67,7 @@ def generate_fig2_4_selection_algorithm():
 <text x="100" y="468" font-size="14" font-family="Courier New, monospace" fill="#1b2733">JOIN Material_Property v_ts ON ...</text>
 <text x="100" y="491" font-size="14" font-family="Courier New, monospace" fill="#1b2733">WHERE v_ts.numeric_value &gt;= ? ...</text>
 
-<path d="M 540,452 L 610,452" stroke="#2a3846" stroke-width="2.5" marker-end="url(#ah)"/>
+<path fill="none" d="M 540,452 L 610,452" stroke="#2a3846" stroke-width="2.5" marker-end="url(#ah)"/>
 
 <!-- Index Execution -->
 <rect x="620" y="385" width="410" height="135" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
@@ -76,7 +76,7 @@ def generate_fig2_4_selection_algorithm():
 <text x="825" y="468" font-size="15" font-family="Courier New, monospace" fill="#1b2733">(property_id, numeric_value)</text>
 <text x="825" y="495" font-size="14" font-weight="700" fill="#2e7d32" text-anchor="middle">Fast B-Tree Range Scan (&lt; 5 ms latency)</text>
 
-<path d="M 1030,452 L 1090,452" stroke="#2a3846" stroke-width="2.5" marker-end="url(#ah)"/>
+<path fill="none" d="M 1030,452 L 1090,452" stroke="#2a3846" stroke-width="2.5" marker-end="url(#ah)"/>
 
 <!-- Decision Diamond -->
 <polygon points="1235,395 1365,452 1235,510 1105,452" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
@@ -84,14 +84,14 @@ def generate_fig2_4_selection_algorithm():
 <text x="1235" y="468" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Constraints?</text>
 
 <!-- False branch -->
-<path d="M 1365,452 L 1420,452 L 1420,560 L 980,560" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#ah)"/>
+<path fill="none" d="M 1365,452 L 1420,452 L 1420,560 L 980,560" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#ah)"/>
 <text x="1390" y="442" font-size="15" font-weight="700" fill="#d32f2f">NO</text>
 
 <rect x="620" y="535" width="350" height="50" rx="8" fill="#ffebee" stroke="#d32f2f" stroke-width="1.8"/>
 <text x="795" y="565" font-size="15" font-weight="700" fill="#c62828" text-anchor="middle">Disqualify &amp; Record Exact Failure Reason</text>
 
 <!-- True branch -->
-<path d="M 1235,510 L 1235,605 L 750,605 L 750,630" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ah)"/>
+<path fill="none" d="M 1235,510 L 1235,605 L 750,605 L 750,630" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ah)"/>
 <text x="1245" y="535" font-size="15" font-weight="700" fill="#2e7d32">YES</text>
 
 <!-- Flow down arrow -->
@@ -107,13 +107,13 @@ def generate_fig2_4_selection_algorithm():
 <text x="310" y="833" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Priority Properties?</text>
 
 <!-- Missing property -> Exclude -->
-<path d="M 310,875 L 310,925" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#ah)"/>
+<path fill="none" d="M 310,875 L 310,925" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#ah)"/>
 <text x="320" y="900" font-size="15" font-weight="700" fill="#d32f2f">NO (Missing Data)</text>
 <rect x="150" y="930" width="320" height="50" rx="8" fill="#ffebee" stroke="#d32f2f" stroke-width="1.8"/>
 <text x="310" y="960" font-size="14" font-weight="700" fill="#c62828" text-anchor="middle">Exclude Candidate (Zero-Imputation Prohibited)</text>
 
 <!-- Has property -> Normalize -->
-<path d="M 440,817 L 530,817" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ah)"/>
+<path fill="none" d="M 440,817 L 530,817" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ah)"/>
 <text x="475" y="805" font-size="15" font-weight="700" fill="#2e7d32">YES</text>
 
 <rect x="540" y="765" width="410" height="105" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
@@ -121,7 +121,7 @@ def generate_fig2_4_selection_algorithm():
 <text x="745" y="825" font-size="15" fill="#1b2733" text-anchor="middle">Higher is better: s_norm = (x - x_min) / (x_max - x_min)</text>
 <text x="745" y="850" font-size="15" fill="#1b2733" text-anchor="middle">Lower is better: s_norm = (x_max - x) / (x_max - x_min)</text>
 
-<path d="M 950,817 L 1030,817" stroke="#2a3846" stroke-width="2.5" marker-end="url(#ah)"/>
+<path fill="none" d="M 950,817 L 1030,817" stroke="#2a3846" stroke-width="2.5" marker-end="url(#ah)"/>
 
 <rect x="1040" y="765" width="410" height="105" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
 <text x="1245" y="795" font-size="17" font-weight="700" fill="#1b2733" text-anchor="middle">Composite Weighted Scoring</text>
@@ -256,10 +256,10 @@ def generate_fig3_2_relational_schema_map():
 <text x="480" y="430" font-size="14" fill="#1b2733">metadata_json: MEDIUMTEXT (Packed Codec)</text>
 
 <!-- Foreign Keys to Material -->
-<path d="M 360,250 L 460,250" stroke="#0066cc" stroke-width="2.5" marker-end="url(#fk_arr)"/>
+<path fill="none" d="M 360,250 L 460,250" stroke="#0066cc" stroke-width="2.5" marker-end="url(#fk_arr)"/>
 <text x="410" y="242" font-size="11" font-weight="700" fill="#0066cc" text-anchor="middle">RESTRICT</text>
 
-<path d="M 360,470 L 410,470 L 410,274 L 460,274" stroke="#0066cc" stroke-width="2.5" marker-end="url(#fk_arr)"/>
+<path fill="none" d="M 360,470 L 410,470 L 410,274 L 460,274" stroke="#0066cc" stroke-width="2.5" marker-end="url(#fk_arr)"/>
 <text x="410" y="462" font-size="11" font-weight="700" fill="#0066cc" text-anchor="middle">RESTRICT</text>
 
 <!-- Property Dictionary -->
@@ -286,10 +286,10 @@ def generate_fig3_2_relational_schema_map():
 <text x="480" y="1004" font-size="14" fill="#1b2733">is_estimated: TINYINT(1) DEFAULT 0</text>
 
 <!-- Cascades into Material_Property -->
-<path d="M 580,460 L 580,790" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
+<path fill="none" d="M 580,460 L 580,790" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
 <text x="590" y="500" font-size="11" font-weight="700" fill="#d32f2f">CASCADE</text>
 
-<path d="M 680,730 L 680,790" stroke="#0066cc" stroke-width="2.5" marker-end="url(#fk_arr)"/>
+<path fill="none" d="M 680,730 L 680,790" stroke="#0066cc" stroke-width="2.5" marker-end="url(#fk_arr)"/>
 <text x="690" y="755" font-size="11" font-weight="700" fill="#0066cc">RESTRICT</text>
 
 <!-- Material_Application -->
@@ -300,8 +300,8 @@ def generate_fig3_2_relational_schema_map():
 <text x="480" y="1154" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#ff8f00">PK </tspan><tspan font-weight="700" fill="#0277bd">FK </tspan>application_id: INT (Application)</text>
 <text x="480" y="1180" font-size="14" fill="#1b2733">suitability_score: DOUBLE DEFAULT 1.0</text>
 
-<path d="M 360,650 L 410,650 L 410,1154 L 460,1154" stroke="#0066cc" stroke-width="2.5" marker-end="url(#fk_arr)"/>
-<path d="M 460,350 L 430,350 L 430,1128 L 460,1128" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
+<path fill="none" d="M 360,650 L 410,650 L 410,1154 L 460,1154" stroke="#0066cc" stroke-width="2.5" marker-end="url(#fk_arr)"/>
+<path fill="none" d="M 460,350 L 430,350 L 430,1128 L 460,1128" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
 
 <!-- GROUP 3: WORKSPACE & COLLABORATION (RIGHT) -->
 <!-- Users -->
@@ -324,7 +324,7 @@ def generate_fig3_2_relational_schema_map():
 <text x="960" y="546" font-size="14" fill="#1b2733">description: TEXT</text>
 <text x="960" y="572" font-size="14" fill="#1b2733">status: ENUM('active','archived')</text>
 
-<path d="M 1030,350 L 1030,410" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
+<path fill="none" d="M 1030,350 L 1030,410" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
 <text x="1040" y="385" font-size="11" font-weight="700" fill="#d32f2f">CASCADE</text>
 
 <!-- Project_Collaborator (Junction) -->
@@ -336,8 +336,8 @@ def generate_fig3_2_relational_schema_map():
 <text x="1345" y="390" font-size="13" fill="#1b2733">permission: ENUM</text>
 <text x="1345" y="412" font-size="12" fill="#566473">('read','write','admin')</text>
 
-<path d="M 1290,260 L 1330,260 L 1330,364" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
-<path d="M 1290,460 L 1315,460 L 1315,338 L 1330,338" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
+<path fill="none" d="M 1290,260 L 1330,260 L 1330,364" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
+<path fill="none" d="M 1290,460 L 1315,460 L 1315,338 L 1330,338" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
 
 <!-- Saved_Selection -->
 <rect x="940" y="650" width="350" height="170" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
@@ -349,7 +349,7 @@ def generate_fig3_2_relational_schema_map():
 <text x="960" y="786" font-size="14" fill="#1b2733">title: VARCHAR(255)</text>
 <text x="960" y="810" font-size="14" fill="#1b2733">created_at: TIMESTAMP</text>
 
-<path d="M 1030,590 L 1030,650" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
+<path fill="none" d="M 1030,590 L 1030,650" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
 
 <!-- Selection_Requirement -->
 <rect x="940" y="880" width="350" height="170" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
@@ -361,8 +361,8 @@ def generate_fig3_2_relational_schema_map():
 <text x="960" y="1016" font-size="14" fill="#1b2733">min_value, max_value: DOUBLE</text>
 <text x="960" y="1040" font-size="14" fill="#1b2733">weight: DOUBLE, is_mandatory: BOOL</text>
 
-<path d="M 1030,820 L 1030,880" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
-<path d="M 840,650 L 890,650 L 890,990 L 940,990" stroke="#0066cc" stroke-width="2.5" marker-end="url(#fk_arr)"/>
+<path fill="none" d="M 1030,820 L 1030,880" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
+<path fill="none" d="M 840,650 L 890,650 L 890,990 L 940,990" stroke="#0066cc" stroke-width="2.5" marker-end="url(#fk_arr)"/>
 
 <!-- GROUP 4: CLOUD MIGRATION TABLES (BOTTOM) -->
 <rect x="50" y="1225" width="1500" height="95" rx="10" fill="#fafafa" stroke="#78909c" stroke-width="2.0"/>
@@ -454,7 +454,7 @@ def generate_fig4_1_etl_pipeline():
 <text x="95" y="645" font-size="14" fill="#1b2733">• Stream parser handles 100M+ lines</text>
 <text x="95" y="670" font-size="14" fill="#1b2733">• Zero-skip guaranteed on restart</text>
 
-<path d="M 385,615 L 450,615" stroke="#2a3846" stroke-width="2.8" marker-end="url(#etl_ah)"/>
+<path fill="none" d="M 385,615 L 450,615" stroke="#2a3846" stroke-width="2.8" marker-end="url(#etl_ah)"/>
 
 <!-- Atomic Transaction Block -->
 <rect x="460" y="535" width="580" height="160" rx="8" fill="#ffffff" stroke="#ff8f00" stroke-width="2.0"/>
@@ -464,7 +464,7 @@ def generate_fig4_1_etl_pipeline():
 <text x="480" y="645" font-size="14" font-family="Courier New, monospace" fill="#1b2733">3. INSERT INTO Material_Property ... (Bulk payload);</text>
 <text x="480" y="670" font-size="14" font-family="Courier New, monospace" fill="#1b2733">4. COMMIT;  /* Rollback on network/data error */</text>
 
-<path d="M 1040,615 L 1105,615" stroke="#2a3846" stroke-width="2.8" marker-end="url(#etl_ah)"/>
+<path fill="none" d="M 1040,615 L 1105,615" stroke="#2a3846" stroke-width="2.8" marker-end="url(#etl_ah)"/>
 
 <rect x="1115" y="535" width="310" height="160" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.6"/>
 <text x="1270" y="565" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Checkpoint Logging</text>
@@ -588,7 +588,7 @@ def generate_fig3_1_er_diagram():
 <text x="1215" y="245" font-size="14" font-weight="700">N</text>
 
 <!-- Direct Owner line -->
-<path d="M 210,390 L 210,430 L 990,430 L 990,380" stroke="#2a3846" stroke-width="2.2" stroke-dasharray="6,4"/>
+<path fill="none" d="M 210,390 L 210,430 L 990,430 L 990,380" stroke="#2a3846" stroke-width="2.2" stroke-dasharray="6,4"/>
 <text x="600" y="420" font-size="13" font-weight="700" fill="#566473" text-anchor="middle">Owns (1 : N)</text>
 
 <!-- ROW 2: SEARCH HISTORY, SELECTION REQUIREMENTS & RECOMMENDATIONS -->
@@ -671,7 +671,7 @@ def generate_fig3_1_er_diagram():
 <text x="380" y="810" font-size="14" font-weight="700">1</text>
 <text x="495" y="810" font-size="14" font-weight="700">N</text>
 
-<path d="M 360,1050 L 440,1050 L 440,880 L 520,880" stroke="#2a3846" stroke-width="2.2"/>
+<path fill="none" d="M 360,1050 L 440,1050 L 440,880 L 520,880" stroke="#2a3846" stroke-width="2.2"/>
 <text x="380" y="1040" font-size="14" font-weight="700">1</text>
 <text x="495" y="870" font-size="14" font-weight="700">N</text>
 
@@ -764,7 +764,7 @@ def generate_fig3_1_er_diagram():
 <text x="920" y="1540" font-size="13" font-weight="700">1</text>
 <text x="1035" y="1540" font-size="13" font-weight="700">N</text>
 
-<path d="M 1390,1020 L 1390,1440 L 1220,1440 L 1220,1480" stroke="#2a3846" stroke-width="2.0"/>
+<path fill="none" d="M 1390,1020 L 1390,1440 L 1220,1440 L 1220,1480" stroke="#2a3846" stroke-width="2.0"/>
 <text x="1400" y="1050" font-size="13" font-weight="700">1</text>
 <text x="1230" y="1465" font-size="13" font-weight="700">N</text>
 
