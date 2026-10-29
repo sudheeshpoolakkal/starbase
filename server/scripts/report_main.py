@@ -120,13 +120,16 @@ def build_full_report(toc_map=None, lof_map=None, lot_map=None):
 
     lof_entries = [
         ("Figure 2.1 — Starbase three-tier system architecture and offline ingestion pipeline", f("Figure 2.1", "6")),
-        ("Figure 2.2 — Level 0 Data Flow Diagram (Context Analysis)", f("Figure 2.2", "8")),
-        ("Figure 2.3 — Level 1 Data Flow Diagram (Decomposed Functional Modules)", f("Figure 2.3", "9")),
-        ("Figure 3.1 — Entity–Relationship (ER) diagram for Starbase material catalog", f("Figure 3.1", "11")),
-        ("Figure 5.1 — Starbase Desktop Landing and Overview Interface", f("Figure 5.1", "26")),
-        ("Figure 5.2 — Responsive Mobile Material Exploration Interface", f("Figure 5.2", "27")),
+        ("Figure 2.2 — Multi-criteria screening and weighted priority ranking algorithm flowchart", f("Figure 2.2", "8")),
+        ("Figure 2.3 — Level 0 Data Flow Diagram (Context Analysis)", f("Figure 2.3", "9")),
+        ("Figure 2.4 — Level 1 Data Flow Diagram (Decomposed Functional Modules)", f("Figure 2.4", "10")),
+        ("Figure 3.1 — Conceptual and logical Entity–Relationship (ER) diagram for Starbase material catalog and workspace", f("Figure 3.1", "12")),
+        ("Figure 3.2 — Relational schema dependency and foreign key map across the core database tables", f("Figure 3.2", "14")),
+        ("Figure 4.1 — Transactional batch ETL pipeline and ingestion architecture across 14 material repositories", f("Figure 4.1", "21")),
+        ("Figure 5.1 — Starbase Desktop Landing and Overview Interface", f("Figure 5.1", "25")),
+        ("Figure 5.2 — Responsive Mobile Material Exploration Interface", f("Figure 5.2", "26")),
         ("Figure 5.3 — Material Library with Property-Value Sorting and Provenance Tracking", f("Figure 5.3", "27")),
-        ("Figure 5.4 — Multi-Attribute Selection Studio with Ranked Recommendations", f("Figure 5.4", "28")),
+        ("Figure 5.4 — Multi-Attribute Selection Studio with Ranked Candidate Recommendations", f("Figure 5.4", "27")),
     ]
     add_list_of_figures(doc, lof_entries)
 

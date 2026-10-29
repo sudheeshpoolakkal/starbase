@@ -87,6 +87,12 @@ def add_chapter_3(doc):
     add_bullet(doc, "Saved_Selection", "(selection_id, project_id, user_id, title, notes, created_at)")
     add_bullet(doc, "Selection_Requirement", "(requirement_id, selection_id, property_id, min_value, max_value, target_value, weight, is_mandatory)")
 
+    add_p(doc, "Figure 3.2 illustrates the physical relational schema dependency and foreign key map across the active database tables, designating primary keys, foreign key constraints, cascade rules, and entity groupings.")
+
+    fig_schema_map = DIAGRAMS_DIR / "Fig3-2_Relational_Schema_Map.png"
+    if fig_schema_map.exists():
+        add_figure(doc, fig_schema_map, "Figure 3.2 — Relational schema dependency and foreign key map across the core database tables.", width_in=6.0)
+
     add_h3(doc, "Formal Third Normal Form (3NF) Normalization Proof")
     add_p(doc, "To ensure optimal data consistency and prevent update, insertion, and deletion anomalies, the Starbase relational design was systematically normalized to Third Normal Form (3NF) [14, 15]. The proof proceeds through functional dependency (FD) analysis across the core entities:")
 

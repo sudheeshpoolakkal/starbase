@@ -1,256 +1,272 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="1790" viewBox="0 0 1560 1790" font-family="Carlito, Calibri, Arial, sans-serif" role="img" aria-label="Starbase entity-relationship diagram">
-<title>Starbase entity-relationship diagram</title>
-<desc>Twelve entities in three groups with thirteen relationships; many-to-many relationships are resolved by association tables.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1850" viewBox="0 0 1600 1850" font-family="Carlito, Calibri, Arial, sans-serif" role="img" aria-label="Starbase complete entity-relationship diagram">
+<title>Starbase Enhanced Entity-Relationship Diagram</title>
+<desc>Conceptual and logical ER diagram showing core entities, associative tables with attributes (Material_Property, Project_Collaborator), and cardinality ratios.</desc>
 <defs>
-<marker id="ah" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto">
-<path d="M1,1 L11,6 L1,11 Z" fill="#2a3846"/></marker>
-<marker id="ahs" viewBox="0 0 12 12" refX="1" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
-<path d="M1,1 L11,6 L1,11 Z" fill="#2a3846"/></marker>
+  <marker id="er_ah" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto">
+    <path d="M1,1 L11,6 L1,11 Z" fill="#2a3846"/>
+  </marker>
 </defs>
-<rect width="1560" height="1790" fill="#ffffff"/>
-<rect x="30.0" y="30.0" width="290.0" height="266.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
-<path d="M 30,76 L 30,30 L 320,30 L 320,76 Z" fill="#c5d5ea" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="30.0" y1="76.0" x2="320.0" y2="76.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
-<text x="175.0" y="62.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Users</text>
-<text x="48.0" y="110.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">user_id</text>
-<line x1="48.0" y1="112.9" x2="120.4" y2="112.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
-<text x="48.0" y="144.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">name</text>
-<text x="48.0" y="178.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">email</text>
-<text x="48.0" y="212.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">password_hash</text>
-<text x="48.0" y="246.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">role</text>
-<text x="48.0" y="280.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">created_at</text>
-<rect x="635.0" y="30.0" width="290.0" height="198.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
-<path d="M 635,76 L 635,30 L 925,30 L 925,76 Z" fill="#c5d5ea" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="635.0" y1="76.0" x2="925.0" y2="76.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
-<text x="780.0" y="62.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Projects</text>
-<text x="653.0" y="110.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">project_id</text>
-<line x1="653.0" y1="112.9" x2="752.2" y2="112.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
-<text x="653.0" y="144.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">name</text>
-<text x="653.0" y="178.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">application</text>
-<text x="653.0" y="212.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">created_at</text>
-<rect x="1240.0" y="30.0" width="290.0" height="198.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
-<path d="M 1240,76 L 1240,30 L 1530,30 L 1530,76 Z" fill="#c5d5ea" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="1240.0" y1="76.0" x2="1530.0" y2="76.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
-<text x="1385.0" y="62.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Material_Specs</text>
-<text x="1258.0" y="110.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">spec_id</text>
-<line x1="1258.0" y1="112.9" x2="1332.2" y2="112.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
-<text x="1258.0" y="144.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">max_weight</text>
-<text x="1258.0" y="178.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">target_cost</text>
-<text x="1258.0" y="212.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">created_at</text>
-<rect x="30.0" y="480.0" width="290.0" height="198.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
-<path d="M 30,526 L 30,480 L 320,480 L 320,526 Z" fill="#efdcae" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="30.0" y1="526.0" x2="320.0" y2="526.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
-<text x="175.0" y="512.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Search_History</text>
-<text x="48.0" y="560.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">search_id</text>
-<line x1="48.0" y1="562.9" x2="141.7" y2="562.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
-<text x="48.0" y="594.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">requirements</text>
-<text x="48.0" y="628.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">result_count</text>
-<text x="48.0" y="662.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">created_at</text>
-<rect x="635.0" y="480.0" width="290.0" height="130.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
-<path d="M 635,526 L 635,480 L 925,480 L 925,526 Z" fill="#efdcae" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="635.0" y1="526.0" x2="925.0" y2="526.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
-<text x="780.0" y="512.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Project_Requirement</text>
-<text x="653.0" y="560.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">requirement_key</text>
-<line x1="653.0" y1="562.9" x2="820.0" y2="562.9" stroke="#1b2733" stroke-width="1.5" stroke-dasharray="5 3" stroke-linecap="round"/>
-<text x="653.0" y="594.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">value</text>
-<rect x="628.0" y="473.0" width="304.0" height="144.0" rx="0" fill="none" stroke="#2a3846" stroke-width="2.6" />
-<rect x="1240.0" y="480.0" width="290.0" height="198.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
-<path d="M 1240,526 L 1240,480 L 1530,480 L 1530,526 Z" fill="#efdcae" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="1240.0" y1="526.0" x2="1530.0" y2="526.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
-<text x="1385.0" y="512.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Recommendation</text>
-<text x="1258.0" y="560.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">recommendation_id</text>
-<line x1="1258.0" y1="562.9" x2="1456.1" y2="562.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
-<text x="1258.0" y="594.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">score</text>
-<text x="1258.0" y="628.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">explanation</text>
-<text x="1258.0" y="662.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">created_at</text>
-<rect x="30.0" y="740.0" width="290.0" height="130.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
-<path d="M 30,786 L 30,740 L 320,740 L 320,786 Z" fill="#c6e0cf" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="30.0" y1="786.0" x2="320.0" y2="786.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
-<text x="175.0" y="772.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Material_Category</text>
-<text x="48.0" y="820.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">category_id</text>
-<line x1="48.0" y1="822.9" x2="162.2" y2="822.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
-<text x="48.0" y="854.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">name</text>
-<rect x="30.0" y="950.0" width="290.0" height="470.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
-<path d="M 30,996 L 30,950 L 320,950 L 320,996 Z" fill="#c6e0cf" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="30.0" y1="996.0" x2="320.0" y2="996.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
-<text x="175.0" y="982.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Data_Source</text>
-<text x="48.0" y="1030.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">source_id</text>
-<line x1="48.0" y1="1032.9" x2="142.9" y2="1032.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
-<text x="48.0" y="1064.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">source_key</text>
-<text x="48.0" y="1098.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">name</text>
-<text x="48.0" y="1132.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">note</text>
-<text x="48.0" y="1166.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">url</text>
-<text x="48.0" y="1200.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">license</text>
-<text x="48.0" y="1234.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">data_kind</text>
-<text x="48.0" y="1268.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">version</text>
-<text x="48.0" y="1302.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">checksum</text>
-<text x="48.0" y="1336.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">imported_at</text>
-<text x="48.0" y="1370.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">summary_json</text>
-<text x="48.0" y="1404.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">import_state</text>
-<rect x="635.0" y="810.0" width="290.0" height="300.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
-<path d="M 635,856 L 635,810 L 925,810 L 925,856 Z" fill="#c6e0cf" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="635.0" y1="856.0" x2="925.0" y2="856.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
-<text x="780.0" y="842.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Material</text>
-<text x="653.0" y="890.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">material_id</text>
-<line x1="653.0" y1="892.9" x2="764.2" y2="892.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
-<text x="653.0" y="924.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">name</text>
-<text x="653.0" y="958.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">description</text>
-<text x="653.0" y="992.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">external_id</text>
-<text x="653.0" y="1026.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">source_url</text>
-<text x="653.0" y="1060.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">metadata_json</text>
-<text x="653.0" y="1094.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">search_terms</text>
-<rect x="1240.0" y="850.0" width="290.0" height="130.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
-<path d="M 1240,896 L 1240,850 L 1530,850 L 1530,896 Z" fill="#c6e0cf" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="1240.0" y1="896.0" x2="1530.0" y2="896.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
-<text x="1385.0" y="882.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Manufacturing_Process</text>
-<text x="1258.0" y="930.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">process_id</text>
-<line x1="1258.0" y1="932.9" x2="1362.2" y2="932.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
-<text x="1258.0" y="964.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">name</text>
-<rect x="1240.0" y="1030.0" width="290.0" height="130.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
-<path d="M 1240,1076 L 1240,1030 L 1530,1030 L 1530,1076 Z" fill="#c6e0cf" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="1240.0" y1="1076.0" x2="1530.0" y2="1076.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
-<text x="1385.0" y="1062.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Application</text>
-<text x="1258.0" y="1110.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">application_id</text>
-<line x1="1258.0" y1="1112.9" x2="1395.7" y2="1112.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
-<text x="1258.0" y="1144.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">name</text>
-<rect x="635.0" y="1320.0" width="290.0" height="198.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
-<path d="M 635,1366 L 635,1320 L 925,1320 L 925,1366 Z" fill="#c6e0cf" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<line x1="635.0" y1="1366.0" x2="925.0" y2="1366.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
-<text x="780.0" y="1352.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Property</text>
-<text x="653.0" y="1400.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">property_id</text>
-<line x1="653.0" y1="1402.9" x2="768.2" y2="1402.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
-<text x="653.0" y="1434.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">property_key</text>
-<text x="653.0" y="1468.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">name</text>
-<text x="653.0" y="1502.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">unit</text>
-<polygon points="477.5,38.0 542.5,80.0 477.5,122.0 412.5,80.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
-<text x="477.5" y="81.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">owns</text>
-<path d="M 320.0,80.0 L 412.5,80.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 542.5,80.0 L 635.0,80.0" fill="none" stroke="#2a3846" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 542.5,80.0 L 635.0,80.0" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
-<text x="338.0" y="70.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">1</text>
-<text x="615.0" y="70.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
-<polygon points="477.5,173.0 577.5,215.0 477.5,257.0 377.5,215.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
-<text x="477.5" y="216.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">collaborates</text>
-<path d="M 320.0,215.0 L 377.5,215.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 577.5,215.0 L 635.0,215.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<text x="338.0" y="205.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">M</text>
-<text x="615.0" y="205.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
-<path d="M 477.5,257.0 L 477.5,311.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<ellipse cx="477.5" cy="337.0" rx="97.4" ry="26.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
-<text x="477.5" y="338.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">permission_level</text>
-<text x="489.5" y="290.0" font-size="19" font-weight="400" font-style="italic" fill="#566473" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">via Collaborators</text>
-<polygon points="175.0,347.0 240.0,389.0 175.0,431.0 110.0,389.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
-<text x="175.0" y="390.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">has</text>
-<path d="M 175.0,296.0 L 175.0,347.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 175.0,431.0 L 175.0,480.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<text x="187.0" y="320.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">1</text>
-<text x="187.0" y="470.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
-<polygon points="1082.5,88.0 1147.5,130.0 1082.5,172.0 1017.5,130.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
-<text x="1082.5" y="131.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">has</text>
-<path d="M 925.0,130.0 L 1017.5,130.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 1147.5,130.0 L 1240.0,130.0" fill="none" stroke="#2a3846" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 1147.5,130.0 L 1240.0,130.0" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
-<text x="943.0" y="120.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">1</text>
-<text x="1220.0" y="120.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
-<polygon points="780.0,313.0 855.0,355.0 780.0,397.0 705.0,355.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
-<polygon points="780.0,321.0 840.7,355.0 780.0,389.0 719.3,355.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
-<text x="780.0" y="356.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">has</text>
-<path d="M 780.0,228.0 L 780.0,313.0" fill="none" stroke="#2a3846" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 780.0,228.0 L 780.0,313.0" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 780.0,397.0 L 780.0,473.0" fill="none" stroke="#2a3846" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 780.0,397.0 L 780.0,473.0" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
-<text x="794.0" y="254.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">1</text>
-<text x="794.0" y="462.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
-<polygon points="1082.5,528.0 1147.5,570.0 1082.5,612.0 1017.5,570.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
-<text x="1082.5" y="571.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">has</text>
-<path d="M 925.0,215.0 L 960.0,215.0 L 960.0,570.0 L 1017.5,570.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 1147.5,570.0 L 1240.0,570.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<text x="943.0" y="205.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">1</text>
-<text x="1220.0" y="560.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
-<polygon points="1385.0,726.0 1480.0,768.0 1385.0,810.0 1290.0,768.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
-<text x="1385.0" y="769.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">appears in</text>
-<path d="M 1385.0,678.0 L 1385.0,726.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 1290.0,768.0 L 780.0,768.0 L 780.0,810.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<text x="1399.0" y="704.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
-<text x="794.0" y="798.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">1</text>
-<polygon points="477.5,788.0 552.5,830.0 477.5,872.0 402.5,830.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
-<text x="477.5" y="831.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">groups</text>
-<path d="M 320.0,830.0 L 402.5,830.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 552.5,830.0 L 635.0,830.0" fill="none" stroke="#2a3846" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 552.5,830.0 L 635.0,830.0" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
-<text x="338.0" y="820.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">1</text>
-<text x="615.0" y="820.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
-<polygon points="477.5,958.0 557.5,1000.0 477.5,1042.0 397.5,1000.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
-<text x="477.5" y="1001.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">supplies</text>
-<path d="M 320.0,1000.0 L 397.5,1000.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 557.5,1000.0 L 635.0,1000.0" fill="none" stroke="#2a3846" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 557.5,1000.0 L 635.0,1000.0" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
-<text x="338.0" y="990.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">1</text>
-<text x="615.0" y="990.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
-<polygon points="780.0,1174.0 845.0,1216.0 780.0,1258.0 715.0,1216.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
-<text x="780.0" y="1217.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">has</text>
-<path d="M 780.0,1110.0 L 780.0,1174.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 780.0,1258.0 L 780.0,1320.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<text x="794.0" y="1136.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">M</text>
-<text x="766.0" y="1308.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="end" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
-<ellipse cx="605.0" cy="1216.0" rx="88.2" ry="26.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
-<text x="605.0" y="1217.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">numeric_value</text>
-<path d="M 685.0,1216.0 L 715.0,1216.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<ellipse cx="943.7" cy="1216.0" rx="68.7" ry="26.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
-<text x="943.7" y="1217.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">text_value</text>
-<path d="M 845.0,1216.0 L 875.0,1216.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<text x="792.0" y="1300.0" font-size="19" font-weight="400" font-style="italic" fill="#566473" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">via Material_Property</text>
-<polygon points="1082.5,1048.0 1142.5,1090.0 1082.5,1132.0 1022.5,1090.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
-<text x="1082.5" y="1091.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">suits</text>
-<path d="M 925.0,1090.0 L 1022.5,1090.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 1142.5,1090.0 L 1240.0,1090.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<text x="943.0" y="1080.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">M</text>
-<text x="1220.0" y="1080.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
-<text x="1082.5" y="1156.0" font-size="19" font-weight="400" font-style="italic" fill="#566473" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">via Material_Application</text>
-<polygon points="1082.5,874.0 1142.5,916.0 1082.5,958.0 1022.5,916.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
-<text x="1082.5" y="917.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path d="M 925.0,916.0 L 1022.5,916.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 1142.5,916.0 L 1240.0,916.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<text x="943.0" y="906.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">M</text>
-<text x="1220.0" y="906.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
-<text x="1082.5" y="982.0" font-size="19" font-weight="400" font-style="italic" fill="#566473" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">via Material_Process</text>
-<polygon points="1082.5,1378.0 1157.5,1420.0 1082.5,1462.0 1007.5,1420.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
-<text x="1082.5" y="1421.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">weights</text>
-<path d="M 1385.0,1160.0 L 1385.0,1420.0 L 1157.5,1420.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 1007.5,1420.0 L 925.0,1420.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<text x="1399.0" y="1186.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">M</text>
-<text x="943.0" y="1410.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
-<path d="M 1082.5,1378.0 L 1082.5,1360.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
-<ellipse cx="1082.5" cy="1335.0" rx="52.3" ry="26.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
-<text x="1082.5" y="1336.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">weight</text>
-<text x="1082.5" y="1486.0" font-size="19" font-weight="400" font-style="italic" fill="#566473" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">via Application_Property</text>
-<rect x="20.0" y="1590.0" width="1520.0" height="176.0" rx="10" fill="#f7f8fa" stroke="#b8c0c8" stroke-width="1.6" />
-<rect x="44.0" y="1610.0" width="52.0" height="34.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.2" />
-<text x="110.0" y="1635.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Entity</text>
-<rect x="189.0" y="1606.0" width="60.0" height="42.0" rx="0" fill="none" stroke="#2a3846" stroke-width="2" />
-<rect x="193.0" y="1610.0" width="52.0" height="34.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
-<text x="263.0" y="1635.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Weak entity</text>
-<polygon points="426.4,1609.0 456.4,1627.0 426.4,1645.0 396.4,1627.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.2" stroke-linejoin="round"/>
-<text x="470.4" y="1635.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Relationship</text>
-<polygon points="636.5,1609.0 666.5,1627.0 636.5,1645.0 606.5,1627.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.2" stroke-linejoin="round"/>
-<polygon points="636.5,1614.0 658.1,1627.0 636.5,1640.0 614.8,1627.0" fill="none" stroke="#2a3846" stroke-width="2.2" stroke-linejoin="round"/>
-<text x="680.5" y="1635.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Identifying relationship</text>
-<ellipse cx="934.0" cy="1627.0" rx="30.0" ry="17.0" fill="#ffffff" stroke="#2a3846" stroke-width="2"/>
-<text x="978.0" y="1635.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Relationship attribute</text>
-<text x="44.0" y="1684.0" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">user_id</text>
-<line x1="44.0" y1="1686.4" x2="104.3" y2="1686.4" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
-<text x="124.0" y="1684.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Primary key</text>
-<text x="259.4" y="1684.0" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">requirement_key</text>
-<line x1="259.4" y1="1686.4" x2="398.6" y2="1686.4" stroke="#1b2733" stroke-width="1.5" stroke-dasharray="5 3" stroke-linecap="round"/>
-<text x="410.6" y="1684.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Partial key of a weak entity</text>
-<path d="M 668.4,1674.0 L 724.4,1674.0" fill="none" stroke="#2a3846" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" />
-<path d="M 668.4,1674.0 L 724.4,1674.0" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
-<text x="738.4" y="1684.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Total participation (NOT NULL foreign key)</text>
-<rect x="44.0" y="1712.0" width="36.0" height="24.0" rx="0" fill="#c5d5ea" stroke="#2a3846" stroke-width="2" />
-<text x="92.0" y="1731.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Accounts and collaboration</text>
-<rect x="348.7" y="1712.0" width="36.0" height="24.0" rx="0" fill="#c6e0cf" stroke="#2a3846" stroke-width="2" />
-<text x="396.7" y="1731.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Material catalog</text>
-<rect x="564.1" y="1712.0" width="36.0" height="24.0" rx="0" fill="#efdcae" stroke="#2a3846" stroke-width="2" />
-<text x="612.1" y="1731.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Selections</text>
-<text x="730.3" y="1731.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">1, N, M: cardinality.  Foreign keys are implied by the relationships (Section 3.4).</text>
+<rect width="1600" height="1850" fill="#ffffff"/>
+
+<!-- Title -->
+<text x="800" y="45" font-size="28" font-weight="700" fill="#1b2733" text-anchor="middle">Starbase Entity–Relationship (ER) Diagram</text>
+<text x="800" y="75" font-size="18" font-weight="400" fill="#566473" text-anchor="middle">Enhanced logical entity model with associative tables, payload attributes, and cardinality constraints</text>
+
+<!-- Legend -->
+<rect x="50" y="95" width="1500" height="42" rx="8" fill="#f8f9fa" stroke="#b0b8c1" stroke-width="1.5"/>
+<text x="80" y="122" font-size="15" font-weight="700" fill="#1b2733">Notation Legend:</text>
+<rect x="210" y="106" width="30" height="20" rx="4" fill="#c5d5ea" stroke="#2a3846" stroke-width="1.2"/>
+<text x="250" y="122" font-size="14" fill="#1b2733">= Regular Entity</text>
+
+<rect x="400" y="106" width="30" height="20" rx="4" fill="#fae3cf" stroke="#2a3846" stroke-width="1.2"/>
+<text x="440" y="122" font-size="14" fill="#1b2733">= Associative Entity (M:N with Attributes)</text>
+
+<rect x="740" y="106" width="30" height="20" rx="4" fill="#f2daf0" stroke="#2a3846" stroke-width="1.2"/>
+<text x="780" y="122" font-size="14" fill="#1b2733">= Workspace / User Entity</text>
+
+<text x="1100" y="122" font-size="14" font-weight="700" fill="#1b2733">Cardinalities: 1:N (One-to-Many), M:N (Many-to-Many)</text>
+
+<!-- ROW 1: USERS & PROJECTS (TOP) -->
+<!-- Users -->
+<rect x="60" y="160" width="300" height="230" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="60" y="160" width="300" height="38" rx="10" fill="#f2daf0" stroke="none"/>
+<text x="210" y="186" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Users</text>
+<text x="78" y="218" font-size="14" fill="#1b2733"><tspan text-decoration="underline" font-weight="700">user_id</tspan> (PK)</text>
+<text x="78" y="244" font-size="14" fill="#1b2733">email (Unique)</text>
+<text x="78" y="270" font-size="14" fill="#1b2733">password_hash</text>
+<text x="78" y="296" font-size="14" fill="#1b2733">full_name</text>
+<text x="78" y="322" font-size="14" fill="#1b2733">role ('user', 'admin')</text>
+<text x="78" y="348" font-size="14" fill="#1b2733">created_at</text>
+<text x="78" y="374" font-size="14" fill="#1b2733">last_login</text>
+
+<!-- Project_Collaborator (Associative Entity) -->
+<rect x="460" y="180" width="280" height="170" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="460" y="180" width="280" height="38" rx="10" fill="#fae3cf" stroke="none"/>
+<text x="600" y="206" font-size="17" font-weight="700" fill="#1b2733" text-anchor="middle">Project_Collaborator</text>
+<text x="478" y="238" font-size="14" fill="#1b2733"><tspan text-decoration="underline" font-weight="700">project_id</tspan> (FK, PK)</text>
+<text x="478" y="264" font-size="14" fill="#1b2733"><tspan text-decoration="underline" font-weight="700">user_id</tspan> (FK, PK)</text>
+<text x="478" y="290" font-size="14" font-weight="700" fill="#b78103">permission ('read','write','admin')</text>
+<text x="478" y="316" font-size="14" fill="#1b2733">invited_at</text>
+
+<!-- Projects -->
+<rect x="840" y="160" width="300" height="220" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="840" y="160" width="300" height="38" rx="10" fill="#f2daf0" stroke="none"/>
+<text x="990" y="186" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Projects</text>
+<text x="858" y="218" font-size="14" fill="#1b2733"><tspan text-decoration="underline" font-weight="700">project_id</tspan> (PK)</text>
+<text x="858" y="244" font-size="14" fill="#1b2733">owner_id (FK -> Users)</text>
+<text x="858" y="270" font-size="14" fill="#1b2733">name</text>
+<text x="858" y="296" font-size="14" fill="#1b2733">description</text>
+<text x="858" y="322" font-size="14" fill="#1b2733">status ('active','archived')</text>
+<text x="858" y="348" font-size="14" fill="#1b2733">created_at, updated_at</text>
+
+<!-- Saved_Selection -->
+<rect x="1240" y="160" width="300" height="190" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="1240" y="160" width="300" height="38" rx="10" fill="#f2daf0" stroke="none"/>
+<text x="1390" y="186" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Saved_Selection</text>
+<text x="1258" y="218" font-size="14" fill="#1b2733"><tspan text-decoration="underline" font-weight="700">selection_id</tspan> (PK)</text>
+<text x="1258" y="244" font-size="14" fill="#1b2733">project_id (FK -> Projects)</text>
+<text x="1258" y="270" font-size="14" fill="#1b2733">user_id (FK -> Users)</text>
+<text x="1258" y="296" font-size="14" fill="#1b2733">title, notes</text>
+<text x="1258" y="322" font-size="14" fill="#1b2733">created_at</text>
+
+<!-- Relationship lines Row 1 -->
+<line x1="360" y1="265" x2="460" y2="265" stroke="#2a3846" stroke-width="2.2"/>
+<text x="380" y="255" font-size="14" font-weight="700">1</text>
+<text x="435" y="255" font-size="14" font-weight="700">N</text>
+
+<line x1="740" y1="265" x2="840" y2="265" stroke="#2a3846" stroke-width="2.2"/>
+<text x="760" y="255" font-size="14" font-weight="700">N</text>
+<text x="815" y="255" font-size="14" font-weight="700">1</text>
+
+<line x1="1140" y1="255" x2="1240" y2="255" stroke="#2a3846" stroke-width="2.2"/>
+<text x="1160" y="245" font-size="14" font-weight="700">1</text>
+<text x="1215" y="245" font-size="14" font-weight="700">N</text>
+
+<!-- Direct Owner line -->
+<path d="M 210,390 L 210,430 L 990,430 L 990,380" stroke="#2a3846" stroke-width="2.2" stroke-dasharray="6,4"/>
+<text x="600" y="420" font-size="13" font-weight="700" fill="#566473" text-anchor="middle">Owns (1 : N)</text>
+
+<!-- ROW 2: SEARCH HISTORY, SELECTION REQUIREMENTS & RECOMMENDATIONS -->
+<!-- Search_History -->
+<rect x="60" y="470" width="300" height="150" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.0"/>
+<rect x="60" y="470" width="300" height="34" rx="10" fill="#f2daf0" stroke="none"/>
+<text x="210" y="493" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Search_History</text>
+<text x="78" y="522" font-size="13" fill="#1b2733"><tspan text-decoration="underline" font-weight="700">search_id</tspan> (PK)</text>
+<text x="78" y="546" font-size="13" fill="#1b2733">user_id (FK -> Users)</text>
+<text x="78" y="570" font-size="13" fill="#1b2733">requirements (JSON)</text>
+<text x="78" y="594" font-size="13" fill="#1b2733">result_count, created_at</text>
+
+<line x1="210" y1="390" x2="210" y2="470" stroke="#2a3846" stroke-width="2.0"/>
+<text x="220" y="445" font-size="13" font-weight="700">1:N</text>
+
+<!-- Selection_Requirement -->
+<rect x="1240" y="410" width="300" height="190" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.0"/>
+<rect x="1240" y="410" width="300" height="34" rx="10" fill="#f2daf0" stroke="none"/>
+<text x="1390" y="433" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Selection_Requirement</text>
+<text x="1258" y="462" font-size="13" fill="#1b2733"><tspan text-decoration="underline" font-weight="700">requirement_id</tspan> (PK)</text>
+<text x="1258" y="486" font-size="13" fill="#1b2733">selection_id (FK -> Saved_Selection)</text>
+<text x="1258" y="510" font-size="13" fill="#1b2733">property_id (FK -> Property)</text>
+<text x="1258" y="534" font-size="13" fill="#1b2733">min_value, max_value</text>
+<text x="1258" y="558" font-size="13" fill="#1b2733">target_value, weight</text>
+<text x="1258" y="582" font-size="13" fill="#1b2733">is_mandatory (BOOL)</text>
+
+<line x1="1390" y1="350" x2="1390" y2="410" stroke="#2a3846" stroke-width="2.0"/>
+<text x="1400" y="385" font-size="13" font-weight="700">1:N</text>
+
+<!-- Recommendation -->
+<rect x="840" y="470" width="300" height="150" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.0"/>
+<rect x="840" y="470" width="300" height="34" rx="10" fill="#f2daf0" stroke="none"/>
+<text x="990" y="493" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Recommendation</text>
+<text x="858" y="522" font-size="13" fill="#1b2733"><tspan text-decoration="underline" font-weight="700">recommendation_id</tspan> (PK)</text>
+<text x="858" y="546" font-size="13" fill="#1b2733">project_id (FK -> Projects)</text>
+<text x="858" y="570" font-size="13" fill="#1b2733">material_id (FK -> Material)</text>
+<text x="858" y="594" font-size="13" fill="#1b2733">score, explanation, created_at</text>
+
+<line x1="990" y1="380" x2="990" y2="470" stroke="#2a3846" stroke-width="2.0"/>
+<text x="1000" y="445" font-size="13" font-weight="700">1:N</text>
+
+<!-- ROW 3: CATALOG CORE (CENTER) -->
+<!-- Data_Source -->
+<rect x="60" y="700" width="300" height="240" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="60" y="700" width="300" height="38" rx="10" fill="#c5d5ea" stroke="none"/>
+<text x="210" y="726" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Data_Source (14 Sources)</text>
+<text x="78" y="758" font-size="14" fill="#1b2733"><tspan text-decoration="underline" font-weight="700">source_id</tspan> (PK)</text>
+<text x="78" y="784" font-size="14" fill="#1b2733">source_key (Unique)</text>
+<text x="78" y="810" font-size="14" fill="#1b2733">name, url, note</text>
+<text x="78" y="836" font-size="14" fill="#1b2733">data_kind ('computed',...)</text>
+<text x="78" y="862" font-size="14" fill="#1b2733">license (CC-BY, Public)</text>
+<text x="78" y="888" font-size="14" fill="#1b2733">version, checksum</text>
+<text x="78" y="914" font-size="14" fill="#1b2733">imported_at, summary_json</text>
+
+<!-- Material_Category -->
+<rect x="60" y="990" width="300" height="130" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="60" y="990" width="300" height="38" rx="10" fill="#c5d5ea" stroke="none"/>
+<text x="210" y="1016" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Material_Category</text>
+<text x="78" y="1048" font-size="14" fill="#1b2733"><tspan text-decoration="underline" font-weight="700">category_id</tspan> (PK)</text>
+<text x="78" y="1074" font-size="14" fill="#1b2733">name (Unique)</text>
+<text x="78" y="1100" font-size="14" fill="#1b2733">description</text>
+
+<!-- Material (Core Entity) -->
+<rect x="520" y="700" width="380" height="310" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.8"/>
+<rect x="520" y="700" width="380" height="42" rx="10" fill="#c6e0cf" stroke="none"/>
+<text x="710" y="728" font-size="20" font-weight="700" fill="#1b2733" text-anchor="middle">Material (6,265,691 Records)</text>
+<text x="540" y="762" font-size="14" fill="#1b2733"><tspan text-decoration="underline" font-weight="700">material_id</tspan> (PK)</text>
+<text x="540" y="788" font-size="14" fill="#1b2733">source_id (FK -> Data_Source)</text>
+<text x="540" y="814" font-size="14" fill="#1b2733">category_id (FK -> Material_Category)</text>
+<text x="540" y="840" font-size="14" fill="#1b2733">external_id (Unique per source)</text>
+<text x="540" y="866" font-size="14" fill="#1b2733">name (Chemical formula / Trade name)</text>
+<text x="540" y="892" font-size="14" fill="#1b2733">description</text>
+<text x="540" y="918" font-size="14" fill="#1b2733">formula, crystal_system, space_group</text>
+<text x="540" y="944" font-size="14" fill="#1b2733">is_active (TINYINT default 1)</text>
+<text x="540" y="970" font-size="14" fill="#1b2733">metadata_json (Packed Binary Codec)</text>
+<text x="540" y="996" font-size="14" fill="#1b2733">created_at, updated_at</text>
+
+<!-- Connections to Material -->
+<line x1="360" y1="820" x2="520" y2="820" stroke="#2a3846" stroke-width="2.2"/>
+<text x="380" y="810" font-size="14" font-weight="700">1</text>
+<text x="495" y="810" font-size="14" font-weight="700">N</text>
+
+<path d="M 360,1050 L 440,1050 L 440,880 L 520,880" stroke="#2a3846" stroke-width="2.2"/>
+<text x="380" y="1040" font-size="14" font-weight="700">1</text>
+<text x="495" y="870" font-size="14" font-weight="700">N</text>
+
+<line x1="710" y1="700" x2="880" y2="620" stroke="#2a3846" stroke-width="2.0"/>
+<text x="735" y="660" font-size="13" font-weight="700">1 : N</text>
+
+<!-- Manufacturing_Process -->
+<rect x="1240" y="690" width="300" height="130" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.0"/>
+<rect x="1240" y="690" width="300" height="34" rx="10" fill="#c5d5ea" stroke="none"/>
+<text x="1390" y="713" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Manufacturing_Process</text>
+<text x="1258" y="742" font-size="13" fill="#1b2733"><tspan text-decoration="underline" font-weight="700">process_id</tspan> (PK)</text>
+<text x="1258" y="766" font-size="13" fill="#1b2733">name (Unique)</text>
+<text x="1258" y="790" font-size="13" fill="#1b2733">description</text>
+
+<!-- Application -->
+<rect x="1240" y="880" width="300" height="140" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.0"/>
+<rect x="1240" y="880" width="300" height="34" rx="10" fill="#c5d5ea" stroke="none"/>
+<text x="1390" y="903" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Application</text>
+<text x="1258" y="932" font-size="13" fill="#1b2733"><tspan text-decoration="underline" font-weight="700">application_id</tspan> (PK)</text>
+<text x="1258" y="956" font-size="13" fill="#1b2733">name (Unique)</text>
+<text x="1258" y="980" font-size="13" fill="#1b2733">category, description</text>
+
+<!-- Material_Process (Associative) -->
+<rect x="960" y="690" width="220" height="120" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
+<rect x="960" y="690" width="220" height="30" rx="8" fill="#fae3cf" stroke="none"/>
+<text x="1070" y="711" font-size="14" font-weight="700" fill="#1b2733" text-anchor="middle">Material_Process</text>
+<text x="975" y="738" font-size="12" fill="#1b2733"><tspan text-decoration="underline">material_id</tspan> (FK, PK)</text>
+<text x="975" y="760" font-size="12" fill="#1b2733"><tspan text-decoration="underline">process_id</tspan> (FK, PK)</text>
+<text x="975" y="782" font-size="12" fill="#1b2733">notes</text>
+
+<line x1="900" y1="750" x2="960" y2="750" stroke="#2a3846" stroke-width="2.0"/>
+<line x1="1180" y1="750" x2="1240" y2="750" stroke="#2a3846" stroke-width="2.0"/>
+
+<!-- Material_Application (Associative) -->
+<rect x="960" y="880" width="220" height="130" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
+<rect x="960" y="880" width="220" height="30" rx="8" fill="#fae3cf" stroke="none"/>
+<text x="1070" y="901" font-size="14" font-weight="700" fill="#1b2733" text-anchor="middle">Material_Application</text>
+<text x="975" y="928" font-size="12" fill="#1b2733"><tspan text-decoration="underline">material_id</tspan> (FK, PK)</text>
+<text x="975" y="950" font-size="12" fill="#1b2733"><tspan text-decoration="underline">application_id</tspan> (FK, PK)</text>
+<text x="975" y="972" font-size="12" fill="#1b2733">suitability_score</text>
+<text x="975" y="994" font-size="12" fill="#1b2733">notes</text>
+
+<line x1="900" y1="940" x2="960" y2="940" stroke="#2a3846" stroke-width="2.0"/>
+<line x1="1180" y1="940" x2="1240" y2="940" stroke="#2a3846" stroke-width="2.0"/>
+
+<!-- ROW 4: PROPERTY & MATERIAL_PROPERTY (CORE DICTIONARY PAYLOAD) -->
+<!-- Material_Property (The central associative entity with measurement attributes!) -->
+<rect x="520" y="1120" width="380" height="260" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.8"/>
+<rect x="520" y="1120" width="380" height="42" rx="10" fill="#fae3cf" stroke="none"/>
+<text x="710" y="1148" font-size="19" font-weight="700" fill="#1b2733" text-anchor="middle">Material_Property (Associative Payload)</text>
+<text x="540" y="1182" font-size="14" fill="#1b2733"><tspan text-decoration="underline" font-weight="700">material_id</tspan> (FK, PK -> Material)</text>
+<text x="540" y="1208" font-size="14" fill="#1b2733"><tspan text-decoration="underline" font-weight="700">property_id</tspan> (FK, PK -> Property)</text>
+<text x="540" y="1234" font-size="15" font-weight="700" fill="#2e7d32">numeric_value: DOUBLE (Composite Indexed)</text>
+<text x="540" y="1260" font-size="14" fill="#1b2733">text_value: VARCHAR(100)</text>
+<text x="540" y="1286" font-size="14" fill="#1b2733">uncertainty: DOUBLE</text>
+<text x="540" y="1312" font-size="14" fill="#1b2733">test_conditions: VARCHAR(255) ('293 K, 1 atm')</text>
+<text x="540" y="1338" font-size="14" fill="#1b2733">is_estimated: TINYINT(1) DEFAULT 0</text>
+<text x="540" y="1364" font-size="14" fill="#566473">Enforces non-imputation: Missing != 0</text>
+
+<line x1="710" y1="1010" x2="710" y2="1120" stroke="#2a3846" stroke-width="2.5"/>
+<text x="720" y="1035" font-size="14" font-weight="700">1</text>
+<text x="720" y="1105" font-size="14" font-weight="700">N</text>
+
+<!-- Property Entity -->
+<rect x="520" y="1480" width="380" height="230" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="520" y="1480" width="380" height="38" rx="10" fill="#c5d5ea" stroke="none"/>
+<text x="710" y="1506" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Property (Dictionary Entity)</text>
+<text x="540" y="1538" font-size="14" fill="#1b2733"><tspan text-decoration="underline" font-weight="700">property_id</tspan> (PK)</text>
+<text x="540" y="1564" font-size="14" fill="#1b2733">property_key: VARCHAR(80) UNIQUE</text>
+<text x="540" y="1590" font-size="14" fill="#1b2733">name: VARCHAR(100)</text>
+<text x="540" y="1616" font-size="14" fill="#1b2733">unit: VARCHAR(80) (Standardized SI)</text>
+<text x="540" y="1642" font-size="14" fill="#1b2733">data_type: ENUM('numeric','text','boolean')</text>
+<text x="540" y="1668" font-size="14" fill="#1b2733">category: ('Mechanical','Thermal','Space')</text>
+<text x="540" y="1694" font-size="14" fill="#1b2733">is_active: TINYINT(1) DEFAULT 1</text>
+
+<line x1="710" y1="1380" x2="710" y2="1480" stroke="#2a3846" stroke-width="2.5"/>
+<text x="720" y="1405" font-size="14" font-weight="700">N</text>
+<text x="720" y="1465" font-size="14" font-weight="700">1</text>
+
+<!-- Application_Property (Associative) -->
+<rect x="1060" y="1480" width="320" height="150" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.0"/>
+<rect x="1060" y="1480" width="320" height="34" rx="10" fill="#fae3cf" stroke="none"/>
+<text x="1220" y="1503" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Application_Property</text>
+<text x="1078" y="1532" font-size="13" fill="#1b2733"><tspan text-decoration="underline">application_id</tspan> (FK, PK)</text>
+<text x="1078" y="1556" font-size="13" fill="#1b2733"><tspan text-decoration="underline">property_id</tspan> (FK, PK)</text>
+<text x="1078" y="1580" font-size="13" fill="#1b2733">weight: DOUBLE DEFAULT 1.0</text>
+<text x="1078" y="1604" font-size="13" fill="#1b2733">notes</text>
+
+<line x1="900" y1="1550" x2="1060" y2="1550" stroke="#2a3846" stroke-width="2.0"/>
+<text x="920" y="1540" font-size="13" font-weight="700">1</text>
+<text x="1035" y="1540" font-size="13" font-weight="700">N</text>
+
+<path d="M 1390,1020 L 1390,1440 L 1220,1440 L 1220,1480" stroke="#2a3846" stroke-width="2.0"/>
+<text x="1400" y="1050" font-size="13" font-weight="700">1</text>
+<text x="1230" y="1465" font-size="13" font-weight="700">N</text>
+
+<!-- ROW 5: NOTES & INTEGRITY CHECKS (BOTTOM) -->
+<rect x="50" y="1740" width="1500" height="85" rx="8" fill="#f8f9fa" stroke="#b0b8c1" stroke-width="1.5"/>
+<text x="70" y="1770" font-size="15" font-weight="700" fill="#37474f">Relational Integrity &amp; Normalization Rules:</text>
+<text x="70" y="1795" font-size="14" fill="#455a64">• All many-to-many relationships (Material-Property, Material-Application, User-Project) are formally resolved via associative entities with payload attributes.</text>
+<text x="70" y="1815" font-size="14" fill="#455a64">• Enforces 3NF: No repeating groups (1NF), no partial key dependencies (2NF), and zero transitive non-prime dependencies (3NF).</text>
+
 </svg>

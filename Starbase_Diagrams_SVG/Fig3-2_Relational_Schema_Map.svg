@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1350" viewBox="0 0 1600 1350" font-family="Carlito, Calibri, Arial, sans-serif" role="img" aria-label="Starbase relational schema and foreign key dependency map">
+<title>Starbase Relational Schema &amp; Foreign Key Dependency Map</title>
+<desc>Detailed physical table schemas with primary keys (PK), foreign keys (FK), and referential integrity constraints across the 18 active schema tables.</desc>
+<defs>
+  <marker id="fk_arr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto">
+    <path d="M1,1 L11,6 L1,11 Z" fill="#0066cc"/>
+  </marker>
+  <marker id="casc_arr" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto">
+    <path d="M1,1 L11,6 L1,11 Z" fill="#d32f2f"/>
+  </marker>
+</defs>
+<rect width="1600" height="1350" fill="#ffffff"/>
+
+<!-- Title -->
+<text x="800" y="45" font-size="28" font-weight="700" fill="#1b2733" text-anchor="middle">Starbase Relational Schema &amp; Foreign Key Dependency Architecture</text>
+<text x="800" y="75" font-size="18" font-weight="400" fill="#566473" text-anchor="middle">Physical table schemas, primary keys (PK), foreign keys (FK), and referential cascade constraints across core catalog &amp; workspace entities</text>
+
+<!-- Legend -->
+<rect x="50" y="95" width="1500" height="42" rx="8" fill="#f8f9fa" stroke="#b0b8c1" stroke-width="1.5"/>
+<rect x="80" y="106" width="36" height="20" rx="4" fill="#ffecb3" stroke="#ff8f00" stroke-width="1.2"/>
+<text x="98" y="121" font-size="12" font-weight="700" fill="#b78103" text-anchor="middle">PK</text>
+<text x="125" y="121" font-size="14" fill="#1b2733">= Primary Key</text>
+
+<rect x="240" y="106" width="36" height="20" rx="4" fill="#e1f5fe" stroke="#0288d1" stroke-width="1.2"/>
+<text x="258" y="121" font-size="12" font-weight="700" fill="#0277bd" text-anchor="middle">FK</text>
+<text x="285" y="121" font-size="14" fill="#1b2733">= Foreign Key</text>
+
+<line x1="420" y1="116" x2="470" y2="116" stroke="#0066cc" stroke-width="2.5" marker-end="url(#fk_arr)"/>
+<text x="480" y="121" font-size="14" fill="#0066cc" font-weight="700">RESTRICT (Prevents orphaned children)</text>
+
+<line x1="820" y1="116" x2="870" y2="116" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
+<text x="880" y="121" font-size="14" fill="#d32f2f" font-weight="700">CASCADE (Deletes child tuples on parent delete)</text>
+
+<!-- GROUP 1: CATALOG REFERENCE TABLES (LEFT) -->
+<!-- Data_Source -->
+<rect x="50" y="160" width="310" height="220" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="50" y="160" width="310" height="38" rx="10" fill="#c5d5ea" stroke="none"/>
+<text x="205" y="186" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Data_Source</text>
+<text x="65" y="218" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#ff8f00">PK </tspan>source_id: INT AUTO_INCREMENT</text>
+<text x="65" y="242" font-size="14" fill="#1b2733">source_key: VARCHAR(64) UNIQUE</text>
+<text x="65" y="266" font-size="14" fill="#1b2733">name: VARCHAR(255)</text>
+<text x="65" y="290" font-size="14" fill="#1b2733">url: VARCHAR(500)</text>
+<text x="65" y="314" font-size="14" fill="#1b2733">data_kind: ENUM(...)</text>
+<text x="65" y="338" font-size="14" fill="#1b2733">license: VARCHAR(255)</text>
+<text x="65" y="362" font-size="14" fill="#1b2733">checksum: VARCHAR(128)</text>
+
+<!-- Material_Category -->
+<rect x="50" y="420" width="310" height="130" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="50" y="420" width="310" height="38" rx="10" fill="#c5d5ea" stroke="none"/>
+<text x="205" y="446" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Material_Category</text>
+<text x="65" y="478" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#ff8f00">PK </tspan>category_id: INT AUTO_INCREMENT</text>
+<text x="65" y="504" font-size="14" fill="#1b2733">name: VARCHAR(80) UNIQUE</text>
+<text x="65" y="530" font-size="14" fill="#1b2733">description: TEXT</text>
+
+<!-- Application -->
+<rect x="50" y="590" width="310" height="130" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="50" y="590" width="310" height="38" rx="10" fill="#c5d5ea" stroke="none"/>
+<text x="205" y="616" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Application</text>
+<text x="65" y="648" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#ff8f00">PK </tspan>application_id: INT AUTO_INCREMENT</text>
+<text x="65" y="674" font-size="14" fill="#1b2733">name: VARCHAR(255) UNIQUE</text>
+<text x="65" y="700" font-size="14" fill="#1b2733">category: VARCHAR(64)</text>
+
+<!-- Manufacturing_Process -->
+<rect x="50" y="760" width="310" height="130" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="50" y="760" width="310" height="38" rx="10" fill="#c5d5ea" stroke="none"/>
+<text x="205" y="786" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Manufacturing_Process</text>
+<text x="65" y="818" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#ff8f00">PK </tspan>process_id: INT AUTO_INCREMENT</text>
+<text x="65" y="844" font-size="14" fill="#1b2733">name: VARCHAR(100) UNIQUE</text>
+<text x="65" y="870" font-size="14" fill="#1b2733">description: TEXT</text>
+
+<!-- GROUP 2: CORE MATERIAL CATALOG ENTITIES (CENTER) -->
+<!-- Material (Core Table) -->
+<rect x="460" y="160" width="380" height="300" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.8"/>
+<rect x="460" y="160" width="380" height="42" rx="10" fill="#c6e0cf" stroke="none"/>
+<text x="650" y="188" font-size="20" font-weight="700" fill="#1b2733" text-anchor="middle">Material (6.26M Records)</text>
+<text x="480" y="222" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#ff8f00">PK </tspan>material_id: INT AUTO_INCREMENT</text>
+<text x="480" y="248" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#0277bd">FK </tspan>source_id: INT (Data_Source)</text>
+<text x="480" y="274" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#0277bd">FK </tspan>category_id: INT (Material_Category)</text>
+<text x="480" y="300" font-size="14" fill="#1b2733">external_id: VARCHAR(128)</text>
+<text x="480" y="326" font-size="14" fill="#1b2733">name: VARCHAR(255) [INDEXED]</text>
+<text x="480" y="352" font-size="14" fill="#1b2733">description: TEXT</text>
+<text x="480" y="378" font-size="14" fill="#1b2733">formula: VARCHAR(128)</text>
+<text x="480" y="404" font-size="14" fill="#1b2733">is_active: TINYINT(1) DEFAULT 1</text>
+<text x="480" y="430" font-size="14" fill="#1b2733">metadata_json: MEDIUMTEXT (Packed Codec)</text>
+
+<!-- Foreign Keys to Material -->
+<path d="M 360,250 L 460,250" stroke="#0066cc" stroke-width="2.5" marker-end="url(#fk_arr)"/>
+<text x="410" y="242" font-size="11" font-weight="700" fill="#0066cc" text-anchor="middle">RESTRICT</text>
+
+<path d="M 360,470 L 410,470 L 410,274 L 460,274" stroke="#0066cc" stroke-width="2.5" marker-end="url(#fk_arr)"/>
+<text x="410" y="462" font-size="11" font-weight="700" fill="#0066cc" text-anchor="middle">RESTRICT</text>
+
+<!-- Property Dictionary -->
+<rect x="460" y="520" width="380" height="210" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="460" y="520" width="380" height="38" rx="10" fill="#c5d5ea" stroke="none"/>
+<text x="650" y="546" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Property (Dictionary Entity)</text>
+<text x="480" y="578" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#ff8f00">PK </tspan>property_id: INT AUTO_INCREMENT</text>
+<text x="480" y="604" font-size="14" fill="#1b2733">property_key: VARCHAR(80) UNIQUE NOT NULL</text>
+<text x="480" y="630" font-size="14" fill="#1b2733">name: VARCHAR(100) NOT NULL</text>
+<text x="480" y="656" font-size="14" fill="#1b2733">unit: VARCHAR(80) NOT NULL (SI base)</text>
+<text x="480" y="682" font-size="14" fill="#1b2733">data_type: ENUM('numeric','text','boolean')</text>
+<text x="480" y="708" font-size="14" fill="#1b2733">category: VARCHAR(64) ('Mechanical','Thermal')</text>
+
+<!-- Material_Property (Junction Table with Payload) -->
+<rect x="460" y="790" width="380" height="230" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.5"/>
+<rect x="460" y="790" width="380" height="38" rx="10" fill="#fae3cf" stroke="none"/>
+<text x="650" y="816" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Material_Property (Associative Payload)</text>
+<text x="480" y="848" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#ff8f00">PK </tspan><tspan font-weight="700" fill="#0277bd">FK </tspan>material_id: INT (Material)</text>
+<text x="480" y="874" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#ff8f00">PK </tspan><tspan font-weight="700" fill="#0277bd">FK </tspan>property_id: INT (Property)</text>
+<text x="480" y="900" font-size="14" font-weight="700" fill="#2e7d32">numeric_value: DOUBLE [COMPOSITE INDEXED]</text>
+<text x="480" y="926" font-size="14" fill="#1b2733">text_value: VARCHAR(100)</text>
+<text x="480" y="952" font-size="14" fill="#1b2733">uncertainty: DOUBLE</text>
+<text x="480" y="978" font-size="14" fill="#1b2733">test_conditions: VARCHAR(255) ('293 K, 1 atm')</text>
+<text x="480" y="1004" font-size="14" fill="#1b2733">is_estimated: TINYINT(1) DEFAULT 0</text>
+
+<!-- Cascades into Material_Property -->
+<path d="M 580,460 L 580,790" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
+<text x="590" y="500" font-size="11" font-weight="700" fill="#d32f2f">CASCADE</text>
+
+<path d="M 680,730 L 680,790" stroke="#0066cc" stroke-width="2.5" marker-end="url(#fk_arr)"/>
+<text x="690" y="755" font-size="11" font-weight="700" fill="#0066cc">RESTRICT</text>
+
+<!-- Material_Application -->
+<rect x="460" y="1070" width="380" height="130" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="460" y="1070" width="380" height="38" rx="10" fill="#fae3cf" stroke="none"/>
+<text x="650" y="1096" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Material_Application</text>
+<text x="480" y="1128" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#ff8f00">PK </tspan><tspan font-weight="700" fill="#0277bd">FK </tspan>material_id: INT (Material)</text>
+<text x="480" y="1154" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#ff8f00">PK </tspan><tspan font-weight="700" fill="#0277bd">FK </tspan>application_id: INT (Application)</text>
+<text x="480" y="1180" font-size="14" fill="#1b2733">suitability_score: DOUBLE DEFAULT 1.0</text>
+
+<path d="M 360,650 L 410,650 L 410,1154 L 460,1154" stroke="#0066cc" stroke-width="2.5" marker-end="url(#fk_arr)"/>
+<path d="M 460,350 L 430,350 L 430,1128 L 460,1128" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
+
+<!-- GROUP 3: WORKSPACE & COLLABORATION (RIGHT) -->
+<!-- Users -->
+<rect x="940" y="160" width="350" height="190" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.5"/>
+<rect x="940" y="160" width="350" height="38" rx="10" fill="#f2daf0" stroke="none"/>
+<text x="1115" y="186" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Users (Account Entity)</text>
+<text x="960" y="218" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#ff8f00">PK </tspan>user_id: INT AUTO_INCREMENT</text>
+<text x="960" y="244" font-size="14" fill="#1b2733">email: VARCHAR(255) UNIQUE NOT NULL</text>
+<text x="960" y="270" font-size="14" fill="#1b2733">password_hash: VARCHAR(255) (bcrypt)</text>
+<text x="960" y="296" font-size="14" fill="#1b2733">full_name: VARCHAR(255)</text>
+<text x="960" y="322" font-size="14" fill="#1b2733">role: ENUM('user','admin') DEFAULT 'user'</text>
+
+<!-- Projects -->
+<rect x="940" y="410" width="350" height="180" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.5"/>
+<rect x="940" y="410" width="350" height="38" rx="10" fill="#f2daf0" stroke="none"/>
+<text x="1115" y="436" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Projects (Workspace Entity)</text>
+<text x="960" y="468" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#ff8f00">PK </tspan>project_id: INT AUTO_INCREMENT</text>
+<text x="960" y="494" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#0277bd">FK </tspan>owner_id: INT (Users)</text>
+<text x="960" y="520" font-size="14" fill="#1b2733">name: VARCHAR(255) NOT NULL</text>
+<text x="960" y="546" font-size="14" fill="#1b2733">description: TEXT</text>
+<text x="960" y="572" font-size="14" fill="#1b2733">status: ENUM('active','archived')</text>
+
+<path d="M 1030,350 L 1030,410" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
+<text x="1040" y="385" font-size="11" font-weight="700" fill="#d32f2f">CASCADE</text>
+
+<!-- Project_Collaborator (Junction) -->
+<rect x="1330" y="280" width="240" height="150" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="1330" y="280" width="240" height="38" rx="10" fill="#f2daf0" stroke="none"/>
+<text x="1450" y="306" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Project_Collaborator</text>
+<text x="1345" y="338" font-size="13" fill="#1b2733"><tspan font-weight="700" fill="#ff8f00">PK </tspan><tspan font-weight="700" fill="#0277bd">FK </tspan>project_id: INT</text>
+<text x="1345" y="364" font-size="13" fill="#1b2733"><tspan font-weight="700" fill="#ff8f00">PK </tspan><tspan font-weight="700" fill="#0277bd">FK </tspan>user_id: INT</text>
+<text x="1345" y="390" font-size="13" fill="#1b2733">permission: ENUM</text>
+<text x="1345" y="412" font-size="12" fill="#566473">('read','write','admin')</text>
+
+<path d="M 1290,260 L 1330,260 L 1330,364" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
+<path d="M 1290,460 L 1315,460 L 1315,338 L 1330,338" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
+
+<!-- Saved_Selection -->
+<rect x="940" y="650" width="350" height="170" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="940" y="650" width="350" height="38" rx="10" fill="#f2daf0" stroke="none"/>
+<text x="1115" y="676" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Saved_Selection</text>
+<text x="960" y="708" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#ff8f00">PK </tspan>selection_id: INT AUTO_INCREMENT</text>
+<text x="960" y="734" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#0277bd">FK </tspan>project_id: INT (Projects)</text>
+<text x="960" y="760" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#0277bd">FK </tspan>user_id: INT (Users)</text>
+<text x="960" y="786" font-size="14" fill="#1b2733">title: VARCHAR(255)</text>
+<text x="960" y="810" font-size="14" fill="#1b2733">created_at: TIMESTAMP</text>
+
+<path d="M 1030,590 L 1030,650" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
+
+<!-- Selection_Requirement -->
+<rect x="940" y="880" width="350" height="170" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="940" y="880" width="350" height="38" rx="10" fill="#f2daf0" stroke="none"/>
+<text x="1115" y="906" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Selection_Requirement</text>
+<text x="960" y="938" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#ff8f00">PK </tspan>requirement_id: INT AUTO_INCREMENT</text>
+<text x="960" y="964" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#0277bd">FK </tspan>selection_id: INT (Saved_Selection)</text>
+<text x="960" y="990" font-size="14" fill="#1b2733"><tspan font-weight="700" fill="#0277bd">FK </tspan>property_id: INT (Property)</text>
+<text x="960" y="1016" font-size="14" fill="#1b2733">min_value, max_value: DOUBLE</text>
+<text x="960" y="1040" font-size="14" fill="#1b2733">weight: DOUBLE, is_mandatory: BOOL</text>
+
+<path d="M 1030,820 L 1030,880" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#casc_arr)"/>
+<path d="M 840,650 L 890,650 L 890,990 L 940,990" stroke="#0066cc" stroke-width="2.5" marker-end="url(#fk_arr)"/>
+
+<!-- GROUP 4: CLOUD MIGRATION TABLES (BOTTOM) -->
+<rect x="50" y="1225" width="1500" height="95" rx="10" fill="#fafafa" stroke="#78909c" stroke-width="2.0"/>
+<text x="70" y="1255" font-size="16" font-weight="700" fill="#37474f">Cloud Migration &amp; Audit Support Tables (TiDB Staging):</text>
+<text x="70" y="1285" font-size="14" fill="#455a64">• <tspan font-weight="700">Catalog_Import_Progress</tspan> (import_id PK, source_key, file_byte_offset, row_count, md5_checksum, status) — Idempotent chunked resume.</text>
+<text x="70" y="1308" font-size="14" fill="#455a64">• <tspan font-weight="700">Contribution_Review</tspan> (review_id PK, material_id FK, user_id FK, status, review_notes) — Peer staging before public catalog promotion.</text>
+
+</svg>

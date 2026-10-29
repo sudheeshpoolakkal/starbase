@@ -81,6 +81,12 @@ def add_chapter_4(doc):
     add_h3(doc, "ACID Transaction Boundaries during Bulk Ingestion")
     add_p(doc, "Bulk loading millions of records requires strict transaction boundaries to prevent catalog corruption. In import-catalog.js, records are processed in bounded batches of 1,000 to 5,000 items. Each batch begins with START TRANSACTION, executes batch INSERT ... ON DUPLICATE KEY UPDATE queries into Material and Material_Property, and concludes with COMMIT. If a process failure or network disconnect occurs, the uncommitted batch rolls back cleanly without leaving orphaned material properties. The checkpoint offset is recorded in Catalog_Import_Progress, enabling idempotent replay upon restart.")
 
+    add_p(doc, "Figure 4.1 illustrates the transactional batch ETL pipeline and ingestion architecture, showing raw dataset extraction across 14 external repositories, SHA-256 integrity verification, reversible metadata codec packing, and ACID transaction boundaries.")
+
+    fig_etl = DIAGRAMS_DIR / "Fig4-1_ETL_Pipeline.png"
+    if fig_etl.exists():
+        add_figure(doc, fig_etl, "Figure 4.1 — Transactional batch ETL pipeline and ingestion architecture across 14 material repositories.", width_in=6.0)
+
     add_h2(doc, "4.4 SQL Queries, Operations, and Scalability Evidence")
     add_p(doc, "To achieve sub-second response times across 6.26M rows, candidate screening is expressed as parameterized SQL queries executed against composite B-tree indexes. Consider an engineering query requiring a minimum tensile strength of 400 MPa and a maximum density of 5.0 g/cm³:")
 

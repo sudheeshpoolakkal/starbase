@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1100" viewBox="0 0 1500 1100" font-family="Carlito, Calibri, Arial, sans-serif" role="img" aria-label="Starbase transactional batch ETL pipeline and ingestion architecture">
+<title>Starbase Transactional Batch ETL Ingestion Pipeline</title>
+<desc>High-throughput offline pipeline ingesting 6.26M materials from 14 repositories with cryptographic verification, reversible metadata codec packing, and ACID transaction boundaries.</desc>
+<defs>
+  <marker id="etl_ah" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto">
+    <path d="M1,1 L11,6 L1,11 Z" fill="#2a3846"/>
+  </marker>
+</defs>
+<rect width="1500" height="1100" fill="#ffffff"/>
+
+<!-- Title -->
+<text x="750" y="45" font-size="28" font-weight="700" fill="#1b2733" text-anchor="middle">Starbase Transactional Batch ETL Ingestion Architecture</text>
+<text x="750" y="75" font-size="18" font-weight="400" fill="#566473" text-anchor="middle">Scalable pipeline ingesting 6,265,691 records across 14 scientific repositories with ACID batch transactions</text>
+
+<!-- STAGE 1: RAW DATA HARVESTING (TOP) -->
+<rect x="50" y="105" width="1400" height="150" rx="12" fill="#eef3fa" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="50" y="105" width="1400" height="38" rx="12" fill="#c5d5ea" stroke="none"/>
+<text x="750" y="132" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">STAGE 1: MULTI-SOURCE SCIENTIFIC REPOSITORY HARVESTING (14 DATASETS)</text>
+
+<rect x="75" y="155" width="310" height="85" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.6"/>
+<text x="230" y="183" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Computational DFT Repositories</text>
+<text x="230" y="206" font-size="14" fill="#566473" text-anchor="middle">Alexandria (6.1M BZip2 tar.gz),</text>
+<text x="230" y="226" font-size="14" fill="#566473" text-anchor="middle">Materials Project, AFLOW, JARVIS, NOMAD</text>
+
+<rect x="420" y="155" width="310" height="85" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.6"/>
+<text x="575" y="183" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Empirical Literature Datasets</text>
+<text x="575" y="206" font-size="14" fill="#566473" text-anchor="middle">Borg et al. Multi-Element Alloys,</text>
+<text x="575" y="226" font-size="14" fill="#566473" text-anchor="middle">MaterialRegistry Curated Engineering Alloys</text>
+
+<rect x="765" y="155" width="310" height="85" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.6"/>
+<text x="920" y="183" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Aerospace Environmental Data</text>
+<text x="920" y="206" font-size="14" fill="#566473" text-anchor="middle">NASA Ames TPSX Thermal Materials,</text>
+<text x="920" y="226" font-size="14" fill="#566473" text-anchor="middle">NASA Goddard Spacecraft Outgassing (CVCM)</text>
+
+<rect x="1110" y="155" width="315" height="85" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.6"/>
+<text x="1267" y="183" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Manufacturer Catalogs</text>
+<text x="1267" y="206" font-size="14" fill="#566473" text-anchor="middle">Outokumpu Stainless Steel Technical</text>
+<text x="1267" y="226" font-size="14" fill="#566473" text-anchor="middle">Datasheets (Core, Supra, Forta Duplex)</text>
+
+<line x1="750" y1="255" x2="750" y2="290" stroke="#2a3846" stroke-width="2.8" marker-end="url(#etl_ah)"/>
+
+<!-- STAGE 2: VALIDATION, CONVERSION & PACKING -->
+<rect x="50" y="295" width="1400" height="150" rx="12" fill="#eff7f2" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="50" y="295" width="1400" height="38" rx="12" fill="#c6e0cf" stroke="none"/>
+<text x="750" y="322" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">STAGE 2: EXTRACTION, UNIT HARMONIZATION &amp; REVERSIBLE CODEC PACKING</text>
+
+<rect x="75" y="345" width="410" height="85" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.6"/>
+<text x="280" y="373" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Cryptographic Audit &amp; Provenance</text>
+<text x="280" y="396" font-size="14" fill="#566473" text-anchor="middle">Computes SHA-256 digest of source files.</text>
+<text x="280" y="416" font-size="14" fill="#566473" text-anchor="middle">Validates CC-BY-4.0 / Public Domain licenses.</text>
+
+<rect x="545" y="345" width="410" height="85" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.6"/>
+<text x="750" y="373" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Physical Unit Normalization to SI</text>
+<text x="750" y="396" font-size="14" fill="#566473" text-anchor="middle">Strength: GPa/psi $ightarrow$ MPa. Temp: K $ightarrow$ °C.</text>
+<text x="750" y="416" font-size="14" fill="#566473" text-anchor="middle">Thermal Cond: BTU/hr·ft·°F $ightarrow$ W/m·K.</text>
+
+<rect x="1015" y="345" width="410" height="85" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.6"/>
+<text x="1220" y="373" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Reversible Binary Metadata Codec</text>
+<text x="1220" y="396" font-size="14" fill="#566473" text-anchor="middle">Packs 3D crystal unit cells into compact strings.</text>
+<text x="1220" y="416" font-size="14" fill="#566473" text-anchor="middle">Preserves custom descriptions &amp; raw citations.</text>
+
+<line x1="750" y1="445" x2="750" y2="480" stroke="#2a3846" stroke-width="2.8" marker-end="url(#etl_ah)"/>
+
+<!-- STAGE 3: CHUNKED BATCH STREAMING -->
+<rect x="50" y="485" width="1400" height="230" rx="12" fill="#fcf3eb" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="50" y="485" width="1400" height="38" rx="12" fill="#fae3cf" stroke="none"/>
+<text x="750" y="512" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">STAGE 3: BOUNDED CHUNK BUFFER &amp; ACID TRANSACTION BOUNDARY</text>
+
+<rect x="75" y="535" width="310" height="160" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.6"/>
+<text x="230" y="565" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Chunk Streaming Buffer</text>
+<text x="95" y="595" font-size="14" fill="#1b2733">• Batches of 1,000–5,000 rows</text>
+<text x="95" y="620" font-size="14" fill="#1b2733">• Memory footprint &lt; 250 MB</text>
+<text x="95" y="645" font-size="14" fill="#1b2733">• Stream parser handles 100M+ lines</text>
+<text x="95" y="670" font-size="14" fill="#1b2733">• Zero-skip guaranteed on restart</text>
+
+<path d="M 385,615 L 450,615" stroke="#2a3846" stroke-width="2.8" marker-end="url(#etl_ah)"/>
+
+<!-- Atomic Transaction Block -->
+<rect x="460" y="535" width="580" height="160" rx="8" fill="#ffffff" stroke="#ff8f00" stroke-width="2.0"/>
+<text x="750" y="565" font-size="17" font-weight="700" fill="#b78103" text-anchor="middle">ACID Transaction Execution Block</text>
+<text x="480" y="595" font-size="14" font-family="Courier New, monospace" fill="#1b2733">1. START TRANSACTION;</text>
+<text x="480" y="620" font-size="14" font-family="Courier New, monospace" fill="#1b2733">2. INSERT INTO Material ... ON DUPLICATE KEY UPDATE;</text>
+<text x="480" y="645" font-size="14" font-family="Courier New, monospace" fill="#1b2733">3. INSERT INTO Material_Property ... (Bulk payload);</text>
+<text x="480" y="670" font-size="14" font-family="Courier New, monospace" fill="#1b2733">4. COMMIT;  /* Rollback on network/data error */</text>
+
+<path d="M 1040,615 L 1105,615" stroke="#2a3846" stroke-width="2.8" marker-end="url(#etl_ah)"/>
+
+<rect x="1115" y="535" width="310" height="160" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.6"/>
+<text x="1270" y="565" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Checkpoint Logging</text>
+<text x="1135" y="595" font-size="14" fill="#1b2733">• Writes to Catalog_Import_Progress</text>
+<text x="1135" y="620" font-size="14" fill="#1b2733">• Persists file byte offset &amp; row count</text>
+<text x="1135" y="645" font-size="14" fill="#1b2733">• Verifies MD5 digest of snapshot</text>
+<text x="1135" y="670" font-size="14" fill="#1b2733">• Guarantees idempotent replay</text>
+
+<line x1="750" y1="715" x2="750" y2="750" stroke="#2a3846" stroke-width="2.8" marker-end="url(#etl_ah)"/>
+
+<!-- STAGE 4: DATABASE PERSISTENCE -->
+<rect x="50" y="755" width="1400" height="280" rx="12" fill="#f9f0f9" stroke="#2a3846" stroke-width="2.2"/>
+<rect x="50" y="755" width="1400" height="38" rx="12" fill="#f2daf0" stroke="none"/>
+<text x="750" y="782" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">STAGE 4: DUAL DATABASE STORAGE TARGETS &amp; INDEX CONSOLIDATION</text>
+
+<rect x="120" y="810" width="560" height="200" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.0"/>
+<text x="400" y="845" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Local Primary Storage: MySQL 8.4</text>
+<text x="145" y="880" font-size="15" fill="#1b2733">• <tspan font-weight="700">6,265,691</tspan> materials &amp; 18 normalized schema tables</text>
+<text x="145" y="910" font-size="15" fill="#1b2733">• Total disk footprint: <tspan font-weight="700">5.48 GiB</tspan> in InnoDB tablespace</text>
+<text x="145" y="940" font-size="15" fill="#1b2733">• Consolidated composite indexes (removed single-key bloat)</text>
+<text x="145" y="970" font-size="15" fill="#1b2733">• Buffer pool allocation: 1.0 GB RAM for fast cache hits</text>
+
+<rect x="820" y="810" width="560" height="200" rx="10" fill="#ffffff" stroke="#2a3846" stroke-width="2.0"/>
+<text x="1100" y="845" font-size="18" font-weight="700" fill="#1b2733" text-anchor="middle">Cloud Distributed Staging: TiDB Serverless</text>
+<text x="845" y="880" font-size="15" fill="#1b2733">• <tspan font-weight="700">14 collections</tspan> transferred with certified TLS 1.3 encryption</text>
+<text x="845" y="910" font-size="15" fill="#1b2733">• Fully verified schema footprint: <tspan font-weight="700">20 tables</tspan> (including audit tables)</text>
+<text x="845" y="940" font-size="15" fill="#1b2733">• Distributed Raft-replicated storage regions across TiKV</text>
+<text x="845" y="970" font-size="15" fill="#1b2733">• Idempotent stream reconciliation verified via transfer-tidb.js</text>
+
+</svg>

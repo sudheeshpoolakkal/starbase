@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1350" viewBox="0 0 1500 1350" font-family="Carlito, Calibri, Arial, sans-serif" role="img" aria-label="Starbase material selection and multi-criteria scoring algorithm">
+<title>Starbase Selection &amp; Scoring Algorithm Flowchart</title>
+<desc>Two-phase hybrid evaluation: indexed SQL hard constraint screening followed by in-memory min-max normalization and weighted priority utility scoring without zero-imputation.</desc>
+<defs>
+  <marker id="ah" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto">
+    <path d="M1,1 L11,6 L1,11 Z" fill="#2a3846"/>
+  </marker>
+</defs>
+<rect width="1500" height="1350" fill="#ffffff"/>
+
+<!-- Title -->
+<text x="750" y="48" font-size="28" font-weight="700" fill="#1b2733" text-anchor="middle">Starbase Selection &amp; Multi-Attribute Scoring Algorithm Flowchart</text>
+<text x="750" y="80" font-size="18" font-weight="400" fill="#566473" text-anchor="middle">Hybrid execution: Indexed SQL constraint screening, non-imputing property validation, and min-max weighted ranking</text>
+
+<!-- PHASE 1: USER REQUIREMENTS SPECIFICATION -->
+<rect x="50" y="110" width="1400" height="170" rx="14" fill="#eef3fa" stroke="#2a3846" stroke-width="2.5"/>
+<rect x="50" y="110" width="1400" height="42" rx="14" fill="#c5d5ea" stroke="none"/>
+<text x="750" y="139" font-size="20" font-weight="700" fill="#1b2733" text-anchor="middle">STAGE 1: ENGINEERING REQUIREMENTS &amp; PRIORITY WEIGHT SPECIFICATION</text>
+
+<rect x="80" y="170" width="410" height="85" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
+<text x="285" y="200" font-size="17" font-weight="700" fill="#1b2733" text-anchor="middle">Hard Engineering Constraints</text>
+<text x="285" y="224" font-size="15" fill="#566473" text-anchor="middle">Tensile strength ≥ 400 MPa, Density ≤ 4.5 g/cm³,</text>
+<text x="285" y="244" font-size="15" fill="#566473" text-anchor="middle">Service temperature ≥ 300°C, Vacuum outgassing</text>
+
+<rect x="545" y="170" width="410" height="85" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
+<text x="750" y="200" font-size="17" font-weight="700" fill="#1b2733" text-anchor="middle">Multi-Objective Priority Weights</text>
+<text x="750" y="224" font-size="15" fill="#566473" text-anchor="middle">User-allocated weights: w_strength, w_lightness,</text>
+<text x="750" y="244" font-size="15" fill="#566473" text-anchor="middle">w_stiffness, w_thermal, w_cost (Σ w_i = 100)</text>
+
+<rect x="1010" y="170" width="410" height="85" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
+<text x="1215" y="200" font-size="17" font-weight="700" fill="#1b2733" text-anchor="middle">Component Context &amp; Scope</text>
+<text x="1215" y="224" font-size="15" fill="#566473" text-anchor="middle">Component volume V (for mass = V · ρ),</text>
+<text x="1215" y="244" font-size="15" fill="#566473" text-anchor="middle">category filter (Metal, Polymer, Ceramic, etc.)</text>
+
+<!-- Flow down arrow -->
+<line x1="750" y1="280" x2="750" y2="320" stroke="#2a3846" stroke-width="3" marker-end="url(#ah)"/>
+
+<!-- PHASE 2: DATABASE SCREENING (SQL ENGINE) -->
+<rect x="50" y="325" width="1400" height="340" rx="14" fill="#eff7f2" stroke="#2a3846" stroke-width="2.5"/>
+<rect x="50" y="325" width="1400" height="42" rx="14" fill="#c6e0cf" stroke="none"/>
+<text x="750" y="354" font-size="20" font-weight="700" fill="#1b2733" text-anchor="middle">STAGE 2: PARAMETERIZED SQL SCREENING &amp; COMPOSITE INDEX EVALUATION</text>
+
+<rect x="80" y="385" width="460" height="135" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
+<text x="310" y="415" font-size="17" font-weight="700" fill="#1b2733" text-anchor="middle">Parameterized SQL Query Construction</text>
+<text x="100" y="445" font-size="14" font-family="Courier New, monospace" fill="#1b2733">SELECT m.material_id, m.name, ...</text>
+<text x="100" y="468" font-size="14" font-family="Courier New, monospace" fill="#1b2733">JOIN Material_Property v_ts ON ...</text>
+<text x="100" y="491" font-size="14" font-family="Courier New, monospace" fill="#1b2733">WHERE v_ts.numeric_value &gt;= ? ...</text>
+
+<path d="M 540,452 L 610,452" stroke="#2a3846" stroke-width="2.5" marker-end="url(#ah)"/>
+
+<!-- Index Execution -->
+<rect x="620" y="385" width="410" height="135" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
+<text x="825" y="415" font-size="17" font-weight="700" fill="#1b2733" text-anchor="middle">B-Tree Composite Index Search</text>
+<text x="825" y="445" font-size="15" fill="#566473" text-anchor="middle">Leverages material_numeric_index on</text>
+<text x="825" y="468" font-size="15" font-family="Courier New, monospace" fill="#1b2733">(property_id, numeric_value)</text>
+<text x="825" y="495" font-size="14" font-weight="700" fill="#2e7d32" text-anchor="middle">Fast B-Tree Range Scan (&lt; 5 ms latency)</text>
+
+<path d="M 1030,452 L 1090,452" stroke="#2a3846" stroke-width="2.5" marker-end="url(#ah)"/>
+
+<!-- Decision Diamond -->
+<polygon points="1235,395 1365,452 1235,510 1105,452" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<text x="1235" y="447" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Meets All Hard</text>
+<text x="1235" y="468" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Constraints?</text>
+
+<!-- False branch -->
+<path d="M 1365,452 L 1420,452 L 1420,560 L 980,560" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#ah)"/>
+<text x="1390" y="442" font-size="15" font-weight="700" fill="#d32f2f">NO</text>
+
+<rect x="620" y="535" width="350" height="50" rx="8" fill="#ffebee" stroke="#d32f2f" stroke-width="1.8"/>
+<text x="795" y="565" font-size="15" font-weight="700" fill="#c62828" text-anchor="middle">Disqualify &amp; Record Exact Failure Reason</text>
+
+<!-- True branch -->
+<path d="M 1235,510 L 1235,605 L 750,605 L 750,630" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ah)"/>
+<text x="1245" y="535" font-size="15" font-weight="700" fill="#2e7d32">YES</text>
+
+<!-- Flow down arrow -->
+<line x1="750" y1="630" x2="750" y2="695" stroke="#2a3846" stroke-width="3" marker-end="url(#ah)"/>
+
+<!-- PHASE 3: MIN-MAX NORMALIZATION & SCORING -->
+<rect x="50" y="700" width="1400" height="340" rx="14" fill="#fcf3eb" stroke="#2a3846" stroke-width="2.5"/>
+<rect x="50" y="700" width="1400" height="42" rx="14" fill="#fae3cf" stroke="none"/>
+<text x="750" y="729" font-size="20" font-weight="700" fill="#1b2733" text-anchor="middle">STAGE 3: NON-IMPUTING VALIDATION &amp; WEIGHTED UTILITY AGGREGATION</text>
+
+<polygon points="310,760 440,817 310,875 180,817" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<text x="310" y="812" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Has Required</text>
+<text x="310" y="833" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Priority Properties?</text>
+
+<!-- Missing property -> Exclude -->
+<path d="M 310,875 L 310,925" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#ah)"/>
+<text x="320" y="900" font-size="15" font-weight="700" fill="#d32f2f">NO (Missing Data)</text>
+<rect x="150" y="930" width="320" height="50" rx="8" fill="#ffebee" stroke="#d32f2f" stroke-width="1.8"/>
+<text x="310" y="960" font-size="14" font-weight="700" fill="#c62828" text-anchor="middle">Exclude Candidate (Zero-Imputation Prohibited)</text>
+
+<!-- Has property -> Normalize -->
+<path d="M 440,817 L 530,817" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ah)"/>
+<text x="475" y="805" font-size="15" font-weight="700" fill="#2e7d32">YES</text>
+
+<rect x="540" y="765" width="410" height="105" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
+<text x="745" y="795" font-size="17" font-weight="700" fill="#1b2733" text-anchor="middle">Dimensionless Min–Max Normalization</text>
+<text x="745" y="825" font-size="15" fill="#1b2733" text-anchor="middle">Higher is better: s_norm = (x - x_min) / (x_max - x_min)</text>
+<text x="745" y="850" font-size="15" fill="#1b2733" text-anchor="middle">Lower is better: s_norm = (x_max - x) / (x_max - x_min)</text>
+
+<path d="M 950,817 L 1030,817" stroke="#2a3846" stroke-width="2.5" marker-end="url(#ah)"/>
+
+<rect x="1040" y="765" width="410" height="105" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
+<text x="1245" y="795" font-size="17" font-weight="700" fill="#1b2733" text-anchor="middle">Composite Weighted Scoring</text>
+<text x="1245" y="825" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Total Score S = Σ [ w_i · s_i,norm ]</text>
+<text x="1245" y="850" font-size="15" fill="#566473" text-anchor="middle">Applies density mass penalty: Mass = Volume · ρ</text>
+
+<rect x="540" y="900" width="910" height="60" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
+<text x="995" y="927" font-size="16" font-weight="700" fill="#1b2733" text-anchor="middle">Stable Rounded-Score Tie Breaking</text>
+<text x="995" y="948" font-size="14" fill="#566473" text-anchor="middle">Rounds composite score to 3 decimals; breaks ties by secondary criteria (yield strength $ightarrow$ lightness $ightarrow$ name)</text>
+
+<!-- Flow down arrow -->
+<line x1="750" y1="960" x2="750" y2="1010" stroke="#2a3846" stroke-width="3" marker-end="url(#ah)"/>
+
+<!-- PHASE 4: OUTPUT & WORKSPACE -->
+<rect x="50" y="1015" width="1400" height="280" rx="14" fill="#f9f0f9" stroke="#2a3846" stroke-width="2.5"/>
+<rect x="50" y="1015" width="1400" height="42" rx="14" fill="#f2daf0" stroke="none"/>
+<text x="750" y="1044" font-size="20" font-weight="700" fill="#1b2733" text-anchor="middle">STAGE 4: DELIVERABLE OUTPUT, EXPLANATIONS &amp; WORKSPACE PERSISTENCE</text>
+
+<rect x="80" y="1080" width="410" height="170" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
+<text x="285" y="1115" font-size="17" font-weight="700" fill="#1b2733" text-anchor="middle">Top-K Ranked Candidates</text>
+<text x="100" y="1145" font-size="15" fill="#1b2733">• Sorted candidate list (Limit 50)</text>
+<text x="100" y="1175" font-size="15" fill="#1b2733">• Normalized score breakdowns</text>
+<text x="100" y="1205" font-size="15" fill="#1b2733">• Computed mass &amp; cost indices</text>
+<text x="100" y="1235" font-size="15" fill="#1b2733">• Complete source provenance</text>
+
+<rect x="545" y="1080" width="410" height="170" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
+<text x="750" y="1115" font-size="17" font-weight="700" fill="#1b2733" text-anchor="middle">Audit Logs &amp; Explanations</text>
+<text x="565" y="1145" font-size="15" fill="#1b2733">• Detailed inclusion rationale</text>
+<text x="565" y="1175" font-size="15" fill="#1b2733">• Explicit disqualification causes</text>
+<text x="565" y="1205" font-size="15" fill="#1b2733">• Bound violation diagnostics</text>
+<text x="565" y="1235" font-size="15" fill="#1b2733">• Unmet testing standards</text>
+
+<rect x="1010" y="1080" width="410" height="170" rx="8" fill="#ffffff" stroke="#2a3846" stroke-width="1.8"/>
+<text x="1215" y="1115" font-size="17" font-weight="700" fill="#1b2733" text-anchor="middle">Workspace Actions</text>
+<text x="1030" y="1145" font-size="15" fill="#1b2733">• Shortlist to project workspace</text>
+<text x="1030" y="1175" font-size="15" fill="#1b2733">• 4-way side-by-side comparison</text>
+<text x="1030" y="1205" font-size="15" fill="#1b2733">• Share with team collaborators</text>
+<text x="1030" y="1235" font-size="15" fill="#1b2733">• Export requirements &amp; results</text>
+
+</svg>

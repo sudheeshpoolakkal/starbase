@@ -95,9 +95,14 @@ def add_chapter_2(doc):
     add_bullet(doc, "3. Min-Max Normalization: ", "For surviving candidates, each property value is normalized against global catalog extremes to generate dimensionless metrics between 0.0 and 1.0.")
     add_bullet(doc, "4. Composite Scoring & Ranking: ", "Normalized metrics are multiplied by user priority weights to produce an overall suitability score. Disqualified materials are categorized with explicit exclusion reasons.")
     add_bullet(doc, "5. Workspace Collaboration: ", "The resulting shortlist is persisted to the engineer's project workspace, enabling team-wide reviews, note additions, and side-by-side comparative trade-off studies.")
+    add_p(doc, "Figure 2.2 illustrates the detailed multi-criteria screening, property validation, min-max normalization, and weighted priority ranking algorithm flowchart implemented across the SQL query engine and Node.js application tier.")
+
+    fig_algo = DIAGRAMS_DIR / "Fig2-4_Selection_Algorithm.png"
+    if fig_algo.exists():
+        add_figure(doc, fig_algo, "Figure 2.2 — Multi-criteria screening and weighted priority ranking algorithm flowchart.", width_in=6.0)
 
     add_h2(doc, "2.6 Dataflow Diagrams")
-    add_p(doc, "The data interactions within Starbase are formalized through Level 0 and Level 1 Data Flow Diagrams (DFDs). Table 2.2 defines the functional processes and data store interactions.")
+    add_p(doc, "The data interactions within Starbase are formalized through Level 0 and Level 1 Data Flow Diagrams (DFDs) shown in Figure 2.3 and Figure 2.4. Table 2.2 defines the functional processes and data store interactions.")
 
     add_table_title(doc, "Table 2.2 — DFD Process Specifications and Data Store Interactions.")
     tbl_dfd = doc.add_table(rows=7, cols=4)
@@ -117,8 +122,8 @@ def add_chapter_2(doc):
 
     fig_dfd0 = DIAGRAMS_DIR / "Fig2-2_DFD_Level0.png"
     if fig_dfd0.exists():
-        add_figure(doc, fig_dfd0, "Figure 2.2 — Level 0 Data Flow Diagram (Context Analysis).", width_in=5.8)
+        add_figure(doc, fig_dfd0, "Figure 2.3 — Level 0 Data Flow Diagram (Context Analysis).", width_in=5.8)
 
     fig_dfd1 = DIAGRAMS_DIR / "Fig2-3_DFD_Level1.png"
     if fig_dfd1.exists():
-        add_figure(doc, fig_dfd1, "Figure 2.3 — Level 1 Data Flow Diagram (Decomposed Functional Modules).", width_in=5.5)
+        add_figure(doc, fig_dfd1, "Figure 2.4 — Level 1 Data Flow Diagram (Decomposed Functional Modules).", width_in=5.5)
