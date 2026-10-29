@@ -1,0 +1,256 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="1790" viewBox="0 0 1560 1790" font-family="Carlito, Calibri, Arial, sans-serif" role="img" aria-label="Starbase entity-relationship diagram">
+<title>Starbase entity-relationship diagram</title>
+<desc>Twelve entities in three groups with thirteen relationships; many-to-many relationships are resolved by association tables.</desc>
+<defs>
+<marker id="ah" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto">
+<path d="M1,1 L11,6 L1,11 Z" fill="#2a3846"/></marker>
+<marker id="ahs" viewBox="0 0 12 12" refX="1" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+<path d="M1,1 L11,6 L1,11 Z" fill="#2a3846"/></marker>
+</defs>
+<rect width="1560" height="1790" fill="#ffffff"/>
+<rect x="30.0" y="30.0" width="290.0" height="266.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
+<path d="M 30,76 L 30,30 L 320,30 L 320,76 Z" fill="#c5d5ea" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="30.0" y1="76.0" x2="320.0" y2="76.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
+<text x="175.0" y="62.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Users</text>
+<text x="48.0" y="110.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">user_id</text>
+<line x1="48.0" y1="112.9" x2="120.4" y2="112.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
+<text x="48.0" y="144.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">name</text>
+<text x="48.0" y="178.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">email</text>
+<text x="48.0" y="212.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">password_hash</text>
+<text x="48.0" y="246.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">role</text>
+<text x="48.0" y="280.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">created_at</text>
+<rect x="635.0" y="30.0" width="290.0" height="198.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
+<path d="M 635,76 L 635,30 L 925,30 L 925,76 Z" fill="#c5d5ea" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="635.0" y1="76.0" x2="925.0" y2="76.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
+<text x="780.0" y="62.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Projects</text>
+<text x="653.0" y="110.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">project_id</text>
+<line x1="653.0" y1="112.9" x2="752.2" y2="112.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
+<text x="653.0" y="144.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">name</text>
+<text x="653.0" y="178.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">application</text>
+<text x="653.0" y="212.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">created_at</text>
+<rect x="1240.0" y="30.0" width="290.0" height="198.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
+<path d="M 1240,76 L 1240,30 L 1530,30 L 1530,76 Z" fill="#c5d5ea" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="1240.0" y1="76.0" x2="1530.0" y2="76.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1385.0" y="62.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Material_Specs</text>
+<text x="1258.0" y="110.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">spec_id</text>
+<line x1="1258.0" y1="112.9" x2="1332.2" y2="112.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
+<text x="1258.0" y="144.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">max_weight</text>
+<text x="1258.0" y="178.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">target_cost</text>
+<text x="1258.0" y="212.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">created_at</text>
+<rect x="30.0" y="480.0" width="290.0" height="198.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
+<path d="M 30,526 L 30,480 L 320,480 L 320,526 Z" fill="#efdcae" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="30.0" y1="526.0" x2="320.0" y2="526.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
+<text x="175.0" y="512.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Search_History</text>
+<text x="48.0" y="560.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">search_id</text>
+<line x1="48.0" y1="562.9" x2="141.7" y2="562.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
+<text x="48.0" y="594.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">requirements</text>
+<text x="48.0" y="628.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">result_count</text>
+<text x="48.0" y="662.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">created_at</text>
+<rect x="635.0" y="480.0" width="290.0" height="130.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
+<path d="M 635,526 L 635,480 L 925,480 L 925,526 Z" fill="#efdcae" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="635.0" y1="526.0" x2="925.0" y2="526.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
+<text x="780.0" y="512.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Project_Requirement</text>
+<text x="653.0" y="560.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">requirement_key</text>
+<line x1="653.0" y1="562.9" x2="820.0" y2="562.9" stroke="#1b2733" stroke-width="1.5" stroke-dasharray="5 3" stroke-linecap="round"/>
+<text x="653.0" y="594.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">value</text>
+<rect x="628.0" y="473.0" width="304.0" height="144.0" rx="0" fill="none" stroke="#2a3846" stroke-width="2.6" />
+<rect x="1240.0" y="480.0" width="290.0" height="198.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
+<path d="M 1240,526 L 1240,480 L 1530,480 L 1530,526 Z" fill="#efdcae" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="1240.0" y1="526.0" x2="1530.0" y2="526.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1385.0" y="512.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Recommendation</text>
+<text x="1258.0" y="560.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">recommendation_id</text>
+<line x1="1258.0" y1="562.9" x2="1456.1" y2="562.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
+<text x="1258.0" y="594.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">score</text>
+<text x="1258.0" y="628.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">explanation</text>
+<text x="1258.0" y="662.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">created_at</text>
+<rect x="30.0" y="740.0" width="290.0" height="130.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
+<path d="M 30,786 L 30,740 L 320,740 L 320,786 Z" fill="#c6e0cf" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="30.0" y1="786.0" x2="320.0" y2="786.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
+<text x="175.0" y="772.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Material_Category</text>
+<text x="48.0" y="820.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">category_id</text>
+<line x1="48.0" y1="822.9" x2="162.2" y2="822.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
+<text x="48.0" y="854.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">name</text>
+<rect x="30.0" y="950.0" width="290.0" height="470.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
+<path d="M 30,996 L 30,950 L 320,950 L 320,996 Z" fill="#c6e0cf" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="30.0" y1="996.0" x2="320.0" y2="996.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
+<text x="175.0" y="982.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Data_Source</text>
+<text x="48.0" y="1030.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">source_id</text>
+<line x1="48.0" y1="1032.9" x2="142.9" y2="1032.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
+<text x="48.0" y="1064.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">source_key</text>
+<text x="48.0" y="1098.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">name</text>
+<text x="48.0" y="1132.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">note</text>
+<text x="48.0" y="1166.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">url</text>
+<text x="48.0" y="1200.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">license</text>
+<text x="48.0" y="1234.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">data_kind</text>
+<text x="48.0" y="1268.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">version</text>
+<text x="48.0" y="1302.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">checksum</text>
+<text x="48.0" y="1336.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">imported_at</text>
+<text x="48.0" y="1370.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">summary_json</text>
+<text x="48.0" y="1404.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">import_state</text>
+<rect x="635.0" y="810.0" width="290.0" height="300.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
+<path d="M 635,856 L 635,810 L 925,810 L 925,856 Z" fill="#c6e0cf" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="635.0" y1="856.0" x2="925.0" y2="856.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
+<text x="780.0" y="842.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Material</text>
+<text x="653.0" y="890.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">material_id</text>
+<line x1="653.0" y1="892.9" x2="764.2" y2="892.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
+<text x="653.0" y="924.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">name</text>
+<text x="653.0" y="958.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">description</text>
+<text x="653.0" y="992.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">external_id</text>
+<text x="653.0" y="1026.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">source_url</text>
+<text x="653.0" y="1060.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">metadata_json</text>
+<text x="653.0" y="1094.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">search_terms</text>
+<rect x="1240.0" y="850.0" width="290.0" height="130.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
+<path d="M 1240,896 L 1240,850 L 1530,850 L 1530,896 Z" fill="#c6e0cf" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="1240.0" y1="896.0" x2="1530.0" y2="896.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1385.0" y="882.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Manufacturing_Process</text>
+<text x="1258.0" y="930.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">process_id</text>
+<line x1="1258.0" y1="932.9" x2="1362.2" y2="932.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
+<text x="1258.0" y="964.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">name</text>
+<rect x="1240.0" y="1030.0" width="290.0" height="130.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
+<path d="M 1240,1076 L 1240,1030 L 1530,1030 L 1530,1076 Z" fill="#c6e0cf" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="1240.0" y1="1076.0" x2="1530.0" y2="1076.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1385.0" y="1062.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Application</text>
+<text x="1258.0" y="1110.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">application_id</text>
+<line x1="1258.0" y1="1112.9" x2="1395.7" y2="1112.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
+<text x="1258.0" y="1144.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">name</text>
+<rect x="635.0" y="1320.0" width="290.0" height="198.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" />
+<path d="M 635,1366 L 635,1320 L 925,1320 L 925,1366 Z" fill="#c6e0cf" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="635.0" y1="1366.0" x2="925.0" y2="1366.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
+<text x="780.0" y="1352.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Property</text>
+<text x="653.0" y="1400.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">property_id</text>
+<line x1="653.0" y1="1402.9" x2="768.2" y2="1402.9" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
+<text x="653.0" y="1434.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">property_key</text>
+<text x="653.0" y="1468.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">name</text>
+<text x="653.0" y="1502.0" font-size="24" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">unit</text>
+<polygon points="477.5,38.0 542.5,80.0 477.5,122.0 412.5,80.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
+<text x="477.5" y="81.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">owns</text>
+<path d="M 320.0,80.0 L 412.5,80.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 542.5,80.0 L 635.0,80.0" fill="none" stroke="#2a3846" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 542.5,80.0 L 635.0,80.0" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+<text x="338.0" y="70.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">1</text>
+<text x="615.0" y="70.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
+<polygon points="477.5,173.0 577.5,215.0 477.5,257.0 377.5,215.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
+<text x="477.5" y="216.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">collaborates</text>
+<path d="M 320.0,215.0 L 377.5,215.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 577.5,215.0 L 635.0,215.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<text x="338.0" y="205.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">M</text>
+<text x="615.0" y="205.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
+<path d="M 477.5,257.0 L 477.5,311.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<ellipse cx="477.5" cy="337.0" rx="97.4" ry="26.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<text x="477.5" y="338.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">permission_level</text>
+<text x="489.5" y="290.0" font-size="19" font-weight="400" font-style="italic" fill="#566473" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">via Collaborators</text>
+<polygon points="175.0,347.0 240.0,389.0 175.0,431.0 110.0,389.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
+<text x="175.0" y="390.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">has</text>
+<path d="M 175.0,296.0 L 175.0,347.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 175.0,431.0 L 175.0,480.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<text x="187.0" y="320.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">1</text>
+<text x="187.0" y="470.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
+<polygon points="1082.5,88.0 1147.5,130.0 1082.5,172.0 1017.5,130.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
+<text x="1082.5" y="131.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">has</text>
+<path d="M 925.0,130.0 L 1017.5,130.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 1147.5,130.0 L 1240.0,130.0" fill="none" stroke="#2a3846" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 1147.5,130.0 L 1240.0,130.0" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+<text x="943.0" y="120.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">1</text>
+<text x="1220.0" y="120.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
+<polygon points="780.0,313.0 855.0,355.0 780.0,397.0 705.0,355.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="780.0,321.0 840.7,355.0 780.0,389.0 719.3,355.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
+<text x="780.0" y="356.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">has</text>
+<path d="M 780.0,228.0 L 780.0,313.0" fill="none" stroke="#2a3846" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 780.0,228.0 L 780.0,313.0" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 780.0,397.0 L 780.0,473.0" fill="none" stroke="#2a3846" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 780.0,397.0 L 780.0,473.0" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+<text x="794.0" y="254.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">1</text>
+<text x="794.0" y="462.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
+<polygon points="1082.5,528.0 1147.5,570.0 1082.5,612.0 1017.5,570.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
+<text x="1082.5" y="571.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">has</text>
+<path d="M 925.0,215.0 L 960.0,215.0 L 960.0,570.0 L 1017.5,570.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 1147.5,570.0 L 1240.0,570.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<text x="943.0" y="205.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">1</text>
+<text x="1220.0" y="560.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
+<polygon points="1385.0,726.0 1480.0,768.0 1385.0,810.0 1290.0,768.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
+<text x="1385.0" y="769.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">appears in</text>
+<path d="M 1385.0,678.0 L 1385.0,726.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 1290.0,768.0 L 780.0,768.0 L 780.0,810.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<text x="1399.0" y="704.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
+<text x="794.0" y="798.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">1</text>
+<polygon points="477.5,788.0 552.5,830.0 477.5,872.0 402.5,830.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
+<text x="477.5" y="831.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">groups</text>
+<path d="M 320.0,830.0 L 402.5,830.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 552.5,830.0 L 635.0,830.0" fill="none" stroke="#2a3846" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 552.5,830.0 L 635.0,830.0" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+<text x="338.0" y="820.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">1</text>
+<text x="615.0" y="820.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
+<polygon points="477.5,958.0 557.5,1000.0 477.5,1042.0 397.5,1000.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
+<text x="477.5" y="1001.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">supplies</text>
+<path d="M 320.0,1000.0 L 397.5,1000.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 557.5,1000.0 L 635.0,1000.0" fill="none" stroke="#2a3846" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 557.5,1000.0 L 635.0,1000.0" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+<text x="338.0" y="990.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">1</text>
+<text x="615.0" y="990.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
+<polygon points="780.0,1174.0 845.0,1216.0 780.0,1258.0 715.0,1216.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
+<text x="780.0" y="1217.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">has</text>
+<path d="M 780.0,1110.0 L 780.0,1174.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 780.0,1258.0 L 780.0,1320.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<text x="794.0" y="1136.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">M</text>
+<text x="766.0" y="1308.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="end" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
+<ellipse cx="605.0" cy="1216.0" rx="88.2" ry="26.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<text x="605.0" y="1217.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">numeric_value</text>
+<path d="M 685.0,1216.0 L 715.0,1216.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<ellipse cx="943.7" cy="1216.0" rx="68.7" ry="26.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<text x="943.7" y="1217.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">text_value</text>
+<path d="M 845.0,1216.0 L 875.0,1216.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<text x="792.0" y="1300.0" font-size="19" font-weight="400" font-style="italic" fill="#566473" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">via Material_Property</text>
+<polygon points="1082.5,1048.0 1142.5,1090.0 1082.5,1132.0 1022.5,1090.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
+<text x="1082.5" y="1091.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">suits</text>
+<path d="M 925.0,1090.0 L 1022.5,1090.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 1142.5,1090.0 L 1240.0,1090.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<text x="943.0" y="1080.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">M</text>
+<text x="1220.0" y="1080.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
+<text x="1082.5" y="1156.0" font-size="19" font-weight="400" font-style="italic" fill="#566473" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">via Material_Application</text>
+<polygon points="1082.5,874.0 1142.5,916.0 1082.5,958.0 1022.5,916.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
+<text x="1082.5" y="917.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path d="M 925.0,916.0 L 1022.5,916.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 1142.5,916.0 L 1240.0,916.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<text x="943.0" y="906.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">M</text>
+<text x="1220.0" y="906.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
+<text x="1082.5" y="982.0" font-size="19" font-weight="400" font-style="italic" fill="#566473" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">via Material_Process</text>
+<polygon points="1082.5,1378.0 1157.5,1420.0 1082.5,1462.0 1007.5,1420.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round"/>
+<text x="1082.5" y="1421.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">weights</text>
+<path d="M 1385.0,1160.0 L 1385.0,1420.0 L 1157.5,1420.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 1007.5,1420.0 L 925.0,1420.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<text x="1399.0" y="1186.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">M</text>
+<text x="943.0" y="1410.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">N</text>
+<path d="M 1082.5,1378.0 L 1082.5,1360.0" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<ellipse cx="1082.5" cy="1335.0" rx="52.3" ry="26.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.2"/>
+<text x="1082.5" y="1336.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">weight</text>
+<text x="1082.5" y="1486.0" font-size="19" font-weight="400" font-style="italic" fill="#566473" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">via Application_Property</text>
+<rect x="20.0" y="1590.0" width="1520.0" height="176.0" rx="10" fill="#f7f8fa" stroke="#b8c0c8" stroke-width="1.6" />
+<rect x="44.0" y="1610.0" width="52.0" height="34.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2.2" />
+<text x="110.0" y="1635.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Entity</text>
+<rect x="189.0" y="1606.0" width="60.0" height="42.0" rx="0" fill="none" stroke="#2a3846" stroke-width="2" />
+<rect x="193.0" y="1610.0" width="52.0" height="34.0" rx="0" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="263.0" y="1635.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Weak entity</text>
+<polygon points="426.4,1609.0 456.4,1627.0 426.4,1645.0 396.4,1627.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="470.4" y="1635.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Relationship</text>
+<polygon points="636.5,1609.0 666.5,1627.0 636.5,1645.0 606.5,1627.0" fill="#ffffff" stroke="#2a3846" stroke-width="2.2" stroke-linejoin="round"/>
+<polygon points="636.5,1614.0 658.1,1627.0 636.5,1640.0 614.8,1627.0" fill="none" stroke="#2a3846" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="680.5" y="1635.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Identifying relationship</text>
+<ellipse cx="934.0" cy="1627.0" rx="30.0" ry="17.0" fill="#ffffff" stroke="#2a3846" stroke-width="2"/>
+<text x="978.0" y="1635.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Relationship attribute</text>
+<text x="44.0" y="1684.0" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">user_id</text>
+<line x1="44.0" y1="1686.4" x2="104.3" y2="1686.4" stroke="#1b2733" stroke-width="1.5" stroke-linecap="round"/>
+<text x="124.0" y="1684.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Primary key</text>
+<text x="259.4" y="1684.0" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">requirement_key</text>
+<line x1="259.4" y1="1686.4" x2="398.6" y2="1686.4" stroke="#1b2733" stroke-width="1.5" stroke-dasharray="5 3" stroke-linecap="round"/>
+<text x="410.6" y="1684.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Partial key of a weak entity</text>
+<path d="M 668.4,1674.0 L 724.4,1674.0" fill="none" stroke="#2a3846" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M 668.4,1674.0 L 724.4,1674.0" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+<text x="738.4" y="1684.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Total participation (NOT NULL foreign key)</text>
+<rect x="44.0" y="1712.0" width="36.0" height="24.0" rx="0" fill="#c5d5ea" stroke="#2a3846" stroke-width="2" />
+<text x="92.0" y="1731.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Accounts and collaboration</text>
+<rect x="348.7" y="1712.0" width="36.0" height="24.0" rx="0" fill="#c6e0cf" stroke="#2a3846" stroke-width="2" />
+<text x="396.7" y="1731.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Material catalog</text>
+<rect x="564.1" y="1712.0" width="36.0" height="24.0" rx="0" fill="#efdcae" stroke="#2a3846" stroke-width="2" />
+<text x="612.1" y="1731.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Selections</text>
+<text x="730.3" y="1731.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">1, N, M: cardinality.  Foreign keys are implied by the relationships (Section 3.4).</text>
+</svg>

@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1265" viewBox="0 0 1500 1265" font-family="Carlito, Calibri, Arial, sans-serif" role="img" aria-label="Starbase system architecture">
+<title>Starbase system architecture</title>
+<desc>Presentation tier (React 18), application tier (Express 5 REST API), data tier (MySQL 8.4 or TiDB Cloud) and an offline data pipeline that feeds the database.</desc>
+<defs>
+<marker id="ah" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto">
+<path d="M1,1 L11,6 L1,11 Z" fill="#2a3846"/></marker>
+<marker id="ahs" viewBox="0 0 12 12" refX="1" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+<path d="M1,1 L11,6 L1,11 Z" fill="#2a3846"/></marker>
+</defs>
+<rect width="1500" height="1265" fill="#ffffff"/>
+<rect x="20.0" y="30.0" width="380.0" height="738.0" rx="16" fill="#eef3fa" stroke="#2a3846" stroke-width="2.6" />
+<path d="M 20,114 L 20,46 Q 20,30 36,30 L 384,30 Q 400,30 400,46 L 400,114 Z" fill="#c5d5ea" stroke="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="20.0" y1="114.0" x2="400.0" y2="114.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
+<rect x="20.0" y="30.0" width="380.0" height="738.0" rx="16" fill="none" stroke="#2a3846" stroke-width="2.6" />
+<text x="210.0" y="68.0" font-size="27" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Presentation tier</text>
+<text x="210.0" y="98.0" font-size="21" font-weight="400" font-style="normal" fill="#566473" text-anchor="middle" dominant-baseline="alphabetic">React 18 single-page application</text>
+<rect x="38.0" y="132.0" width="344.0" height="125.6" rx="9" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="52.0" y="162.4" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Pages</text>
+<text x="52.0" y="189.4" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Material library, Selection studio,</text>
+<text x="52.0" y="213.8" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Compare, Projects dashboard, Account</text>
+<text x="52.0" y="238.2" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">and methodology</text>
+<rect x="38.0" y="275.6" width="344.0" height="76.8" rx="9" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="52.0" y="306.0" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Routing and HTTP client</text>
+<text x="52.0" y="333.0" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">React Router 6, Axios</text>
+<rect x="38.0" y="370.4" width="344.0" height="125.6" rx="9" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="52.0" y="400.8" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Application state</text>
+<text x="52.0" y="427.8" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">AuthContext: user and token.</text>
+<text x="52.0" y="452.2" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">WorkspaceContext: catalog summary,</text>
+<text x="52.0" y="476.6" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">comparison list, current requirements</text>
+<rect x="38.0" y="514.0" width="344.0" height="101.2" rx="9" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="52.0" y="544.4" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Interface</text>
+<text x="52.0" y="571.4" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Responsive layout, skip link, visible</text>
+<text x="52.0" y="595.8" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">focus states</text>
+<rect x="560.0" y="30.0" width="380.0" height="738.0" rx="16" fill="#eff7f2" stroke="#2a3846" stroke-width="2.6" />
+<path d="M 560,114 L 560,46 Q 560,30 576,30 L 924,30 Q 940,30 940,46 L 940,114 Z" fill="#c6e0cf" stroke="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="560.0" y1="114.0" x2="940.0" y2="114.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
+<rect x="560.0" y="30.0" width="380.0" height="738.0" rx="16" fill="none" stroke="#2a3846" stroke-width="2.6" />
+<text x="750.0" y="68.0" font-size="27" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Application tier</text>
+<text x="750.0" y="98.0" font-size="21" font-weight="400" font-style="normal" fill="#566473" text-anchor="middle" dominant-baseline="alphabetic">Node.js / Express 5 REST API</text>
+<rect x="578.0" y="132.0" width="344.0" height="101.2" rx="9" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="592.0" y="162.4" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Middleware</text>
+<text x="592.0" y="189.4" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">JWT bearer-token check, CORS, 64 KB</text>
+<text x="592.0" y="213.8" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">JSON limit</text>
+<path d="M 750.0,234.2 L 750.0,249.2" fill="none" stroke="#2a3846" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<rect x="578.0" y="251.2" width="344.0" height="76.8" rx="9" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="592.0" y="281.6" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Routers</text>
+<text x="592.0" y="308.6" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">auth, materials, projects, selections</text>
+<path d="M 750.0,329.0 L 750.0,344.0" fill="none" stroke="#2a3846" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<rect x="578.0" y="346.0" width="344.0" height="48.4" rx="9" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="592.0" y="376.4" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Controllers</text>
+<path d="M 750.0,395.4 L 750.0,410.4" fill="none" stroke="#2a3846" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<rect x="578.0" y="412.4" width="344.0" height="101.2" rx="9" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="592.0" y="442.8" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Services</text>
+<text x="592.0" y="469.8" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">catalog and recommendation: validate</text>
+<text x="592.0" y="494.2" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">requirements, build SQL</text>
+<path d="M 750.0,514.6 L 750.0,529.6" fill="none" stroke="#2a3846" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<rect x="578.0" y="531.6" width="344.0" height="101.2" rx="9" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="592.0" y="562.0" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Connection pool</text>
+<text x="592.0" y="589.0" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">mysql2: 10 connections, prepared</text>
+<text x="592.0" y="613.4" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">statements, transactions</text>
+<text x="750.0" y="670.8" font-size="19" font-weight="400" font-style="italic" fill="#566473" text-anchor="middle" dominant-baseline="alphabetic">Also serves the built React bundle</text>
+<rect x="1100.0" y="30.0" width="380.0" height="738.0" rx="16" fill="#fbf5e5" stroke="#2a3846" stroke-width="2.6" />
+<path d="M 1100,114 L 1100,46 Q 1100,30 1116,30 L 1464,30 Q 1480,30 1480,46 L 1480,114 Z" fill="#efdcae" stroke="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="1100.0" y1="114.0" x2="1480.0" y2="114.0" stroke="#2a3846" stroke-width="2.6" stroke-linecap="round"/>
+<rect x="1100.0" y="30.0" width="380.0" height="738.0" rx="16" fill="none" stroke="#2a3846" stroke-width="2.6" />
+<text x="1290.0" y="68.0" font-size="27" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Data tier</text>
+<text x="1290.0" y="98.0" font-size="21" font-weight="400" font-style="normal" fill="#566473" text-anchor="middle" dominant-baseline="alphabetic">MySQL 8.4 or TiDB Cloud Starter</text>
+<rect x="1118.0" y="132.0" width="344.0" height="125.6" rx="9" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="1132.0" y="162.4" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Relational schema</text>
+<text x="1132.0" y="189.4" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">18 tables in three groups: accounts</text>
+<text x="1132.0" y="213.8" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">and collaboration, material catalog,</text>
+<text x="1132.0" y="238.2" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">selections</text>
+<rect x="1118.0" y="275.6" width="344.0" height="101.2" rx="9" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="1132.0" y="306.0" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Material catalog</text>
+<text x="1132.0" y="333.0" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">6,265,691 source records from 14</text>
+<text x="1132.0" y="357.4" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">sources</text>
+<rect x="1118.0" y="394.8" width="344.0" height="125.6" rx="9" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="1132.0" y="425.2" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Provenance</text>
+<text x="1132.0" y="452.2" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Data_Source holds key, URL, licence,</text>
+<text x="1132.0" y="476.6" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">evidence kind, version, SHA-256</text>
+<text x="1132.0" y="501.0" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">checksum and import state</text>
+<rect x="1118.0" y="538.4" width="344.0" height="150.0" rx="9" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="1132.0" y="568.8" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Key indexes</text>
+<text x="1132.0" y="595.8" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">material_numeric_index (property_id,</text>
+<text x="1132.0" y="620.2" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">numeric_value);</text>
+<text x="1132.0" y="644.6" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">material_external_unique (source_id,</text>
+<text x="1132.0" y="669.0" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">external_id)</text>
+<rect x="38.0" y="706.0" width="344.0" height="44.0" rx="22" fill="#ffffff" stroke="#2a3846" stroke-width="2" stroke-dasharray="6 4" />
+<text x="210.0" y="735.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="middle" dominant-baseline="middle">Target: Vercel static site</text>
+<rect x="578.0" y="706.0" width="344.0" height="44.0" rx="22" fill="#ffffff" stroke="#2a3846" stroke-width="2" stroke-dasharray="6 4" />
+<text x="750.0" y="735.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="middle" dominant-baseline="middle">Target: Vercel Node function</text>
+<rect x="1118.0" y="706.0" width="344.0" height="44.0" rx="22" fill="#ffffff" stroke="#2a3846" stroke-width="2" stroke-dasharray="6 4" />
+<text x="1290.0" y="735.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="middle" dominant-baseline="middle">Target: TiDB Cloud Starter (TLS)</text>
+<path d="M 406.0,370.0 L 554.0,370.0" fill="none" stroke="#2a3846" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)" marker-start="url(#ahs)"/>
+<text x="480.0" y="330.0" font-size="21" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">REST /api,</text>
+<text x="480.0" y="356.0" font-size="21" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">HTTPS, JSON</text>
+<text x="480.0" y="401.0" font-size="21" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Bearer JWT</text>
+<path d="M 946.0,370.0 L 1094.0,370.0" fill="none" stroke="#2a3846" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)" marker-start="url(#ahs)"/>
+<text x="1020.0" y="330.0" font-size="21" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Parameterised</text>
+<text x="1020.0" y="356.0" font-size="21" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">SQL</text>
+<text x="1020.0" y="401.0" font-size="21" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">mysql2 pool</text>
+<rect x="20.0" y="868.0" width="1460.0" height="270.4" rx="16" fill="#f3f5f7" stroke="#2a3846" stroke-width="2.4" stroke-dasharray="10 6" />
+<text x="44.0" y="904.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Offline data pipeline</text>
+<text x="277.9" y="904.0" font-size="21" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">run by an administrator, separate from the web request path</text>
+<rect x="63.0" y="934.0" width="300.0" height="174.4" rx="9" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="77.0" y="964.4" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Data publishers</text>
+<text x="77.0" y="991.4" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">14 open or authorised sources:</text>
+<text x="77.0" y="1015.8" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">computed, experimental and</text>
+<text x="77.0" y="1040.2" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">literature-extracted</text>
+<rect x="421.0" y="934.0" width="300.0" height="174.4" rx="9" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="435.0" y="964.4" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Python scripts</text>
+<text x="435.0" y="991.4" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Download publisher files and</text>
+<text x="435.0" y="1015.8" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">verify SHA-256 digests against a</text>
+<text x="435.0" y="1040.2" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">pinned manifest</text>
+<rect x="779.0" y="934.0" width="300.0" height="174.4" rx="9" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="793.0" y="964.4" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Normalisers</text>
+<text x="793.0" y="991.4" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Write JSON or JSONL snapshots,</text>
+<text x="793.0" y="1015.8" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">one record per material, with</text>
+<text x="793.0" y="1040.2" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">SHA-256 manifests</text>
+<rect x="1137.0" y="934.0" width="300.0" height="174.4" rx="9" fill="#ffffff" stroke="#2a3846" stroke-width="2" />
+<text x="1151.0" y="964.4" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Node importer</text>
+<text x="1151.0" y="991.4" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">import-catalog.js validates each</text>
+<text x="1151.0" y="1015.8" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">bundle, then upserts in</text>
+<text x="1151.0" y="1040.2" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">25,000-record transactional</text>
+<text x="1151.0" y="1064.6" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">chunks with a resumable</text>
+<text x="1151.0" y="1089.0" font-size="20" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">checkpoint</text>
+<path d="M 366.0,1021.2 L 418.0,1021.2" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<path d="M 724.0,1021.2 L 776.0,1021.2" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<path d="M 1082.0,1021.2 L 1134.0,1021.2" fill="none" stroke="#2a3846" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<path d="M 1287.0,930.0 L 1287.0,774.0" fill="none" stroke="#2a3846" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="1269.0" y="812.0" font-size="21" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="end" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Batched upserts</text>
+<text x="1269.0" y="838.0" font-size="21" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="end" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">into the catalog tables</text>
+<rect x="20.0" y="1166.4" width="1460.0" height="74.0" rx="12" fill="#ffffff" stroke="#2a3846" stroke-width="2" stroke-dasharray="6 4" />
+<text x="40.0" y="1197.4" font-size="22" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Local development</text>
+<text x="226.4" y="1197.4" font-size="21" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">npm run dev starts the React development server, which proxies /api to the API on port 5000.</text>
+<text x="40.0" y="1226.4" font-size="21" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">MySQL 8.4 runs on 127.0.0.1:3307. SQLite exists only as a test double inside server/tests.</text>
+</svg>

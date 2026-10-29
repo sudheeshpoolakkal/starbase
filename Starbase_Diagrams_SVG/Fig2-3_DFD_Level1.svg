@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1690" viewBox="0 0 1500 1690" font-family="Carlito, Calibri, Arial, sans-serif" role="img" aria-label="Level 1 dataflow diagram of Starbase">
+<title>Level 1 dataflow diagram of Starbase</title>
+<desc>Six processes (authenticate, browse, screen and rank, compare, manage projects, import data) and four data stores D1 to D4.</desc>
+<defs>
+<marker id="ah" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto">
+<path d="M1,1 L11,6 L1,11 Z" fill="#2a3846"/></marker>
+<marker id="ahs" viewBox="0 0 12 12" refX="1" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+<path d="M1,1 L11,6 L1,11 Z" fill="#2a3846"/></marker>
+</defs>
+<rect width="1500" height="1690" fill="#ffffff"/>
+<rect x="25.0" y="45.0" width="180.0" height="1330.0" rx="0" fill="#c9cfd5" stroke="none" stroke-width="0" />
+<rect x="20.0" y="40.0" width="180.0" height="1330.0" rx="0" fill="#f3f5f7" stroke="#2a3846" stroke-width="2.6" />
+<text x="110.0" y="80.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Engineer</text>
+<rect x="1205.0" y="45.0" width="280.0" height="530.0" rx="0" fill="#c9cfd5" stroke="none" stroke-width="0" />
+<rect x="1200.0" y="40.0" width="280.0" height="530.0" rx="0" fill="#f3f5f7" stroke="#2a3846" stroke-width="2.6" />
+<text x="1340.0" y="80.0" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Collaborator</text>
+<rect x="25.0" y="1455.0" width="180.0" height="120.0" rx="0" fill="#c9cfd5" stroke="none" stroke-width="0" />
+<rect x="20.0" y="1450.0" width="180.0" height="120.0" rx="0" fill="#f3f5f7" stroke="#2a3846" stroke-width="2.6" />
+<text x="110.0" y="1501.2" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Data</text>
+<text x="110.0" y="1531.8" font-size="26" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">publishers</text>
+<rect x="540.0" y="60.0" width="300.0" height="120.0" rx="14" fill="#eef3fa" stroke="#2a3846" stroke-width="2.4" />
+<path d="M 540,94 L 840,94" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" />
+<text x="690.0" y="78.0" font-size="23" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">1.0</text>
+<text x="690.0" y="128.5" font-size="25" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Authenticate and manage</text>
+<text x="690.0" y="158.0" font-size="25" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">account</text>
+<rect x="540.0" y="420.0" width="300.0" height="120.0" rx="14" fill="#eef3fa" stroke="#2a3846" stroke-width="2.4" />
+<path d="M 540,454 L 840,454" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" />
+<text x="690.0" y="438.0" font-size="23" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">5.0</text>
+<text x="690.0" y="488.5" font-size="25" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Manage projects and</text>
+<text x="690.0" y="518.0" font-size="25" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">collaboration</text>
+<rect x="540.0" y="810.0" width="300.0" height="120.0" rx="14" fill="#eef3fa" stroke="#2a3846" stroke-width="2.4" />
+<path d="M 540,844 L 840,844" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" />
+<text x="690.0" y="828.0" font-size="23" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">2.0</text>
+<text x="690.0" y="878.5" font-size="25" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Browse and search</text>
+<text x="690.0" y="908.0" font-size="25" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">catalog</text>
+<rect x="540.0" y="1020.0" width="300.0" height="120.0" rx="14" fill="#eef3fa" stroke="#2a3846" stroke-width="2.4" />
+<path d="M 540,1054 L 840,1054" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" />
+<text x="690.0" y="1038.0" font-size="23" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">3.0</text>
+<text x="690.0" y="1103.2" font-size="25" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Screen and rank materials</text>
+<rect x="540.0" y="1230.0" width="300.0" height="120.0" rx="14" fill="#eef3fa" stroke="#2a3846" stroke-width="2.4" />
+<path d="M 540,1264 L 840,1264" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" />
+<text x="690.0" y="1248.0" font-size="23" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">4.0</text>
+<text x="690.0" y="1313.2" font-size="25" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Compare materials</text>
+<rect x="540.0" y="1450.0" width="300.0" height="120.0" rx="14" fill="#eef3fa" stroke="#2a3846" stroke-width="2.4" />
+<path d="M 540,1484 L 840,1484" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" />
+<text x="690.0" y="1468.0" font-size="23" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">6.0</text>
+<text x="690.0" y="1518.5" font-size="25" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">Acquire and import</text>
+<text x="690.0" y="1548.0" font-size="25" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic">source data</text>
+<rect x="540.0" y="265.0" width="300.0" height="70.0" rx="0" fill="#fbf5e5" stroke="#2a3846" stroke-width="2.4" />
+<line x1="602.0" y1="265.0" x2="602.0" y2="335.0" stroke="#2a3846" stroke-width="2.4" stroke-linecap="round"/>
+<text x="571.0" y="301.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">D1</text>
+<text x="616.0" y="308.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Users</text>
+<rect x="350.0" y="625.0" width="340.0" height="105.0" rx="0" fill="#fbf5e5" stroke="#2a3846" stroke-width="2.4" />
+<line x1="412.0" y1="625.0" x2="412.0" y2="730.0" stroke="#2a3846" stroke-width="2.4" stroke-linecap="round"/>
+<text x="381.0" y="678.5" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">D2</text>
+<text x="426.0" y="662.5" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Projects</text>
+<text x="426.0" y="688.5" font-size="19" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Projects, Collaborators,</text>
+<text x="426.0" y="711.5" font-size="19" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Material_Specs</text>
+<rect x="720.0" y="625.0" width="340.0" height="105.0" rx="0" fill="#fbf5e5" stroke="#2a3846" stroke-width="2.4" />
+<line x1="782.0" y1="625.0" x2="782.0" y2="730.0" stroke="#2a3846" stroke-width="2.4" stroke-linecap="round"/>
+<text x="751.0" y="678.5" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">D4</text>
+<text x="796.0" y="651.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Selections</text>
+<text x="796.0" y="677.0" font-size="19" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Project_Requirement,</text>
+<text x="796.0" y="700.0" font-size="19" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Recommendation,</text>
+<text x="796.0" y="723.0" font-size="19" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Search_History</text>
+<rect x="1200.0" y="790.0" width="280.0" height="790.0" rx="0" fill="#fbf5e5" stroke="#2a3846" stroke-width="2.4" />
+<line x1="1262.0" y1="790.0" x2="1262.0" y2="1580.0" stroke="#2a3846" stroke-width="2.4" stroke-linecap="round"/>
+<text x="1231.0" y="826.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="middle">D3</text>
+<text x="1276.0" y="830.0" font-size="24" font-weight="700" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic">Material catalog</text>
+<text x="1276.0" y="856.0" font-size="19" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Material,</text>
+<text x="1276.0" y="879.0" font-size="19" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Material_Category,</text>
+<text x="1276.0" y="902.0" font-size="19" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Property,</text>
+<text x="1276.0" y="925.0" font-size="19" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Material_Property,</text>
+<text x="1276.0" y="948.0" font-size="19" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Data_Source</text>
+<path d="M 208.0,98.0 L 532.0,98.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="370.0" y="86.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Credentials, profile changes</text>
+<path d="M 532.0,142.0 L 208.0,142.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="370.0" y="171.2" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">JWT, profile</text>
+<path d="M 208.0,458.0 L 532.0,458.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="370.0" y="419.5" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Project data, requirements,</text>
+<text x="370.0" y="446.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">collaborator emails</text>
+<path d="M 532.0,502.0 L 208.0,502.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="370.0" y="531.2" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Projects, saved selections</text>
+<path d="M 208.0,848.0 L 532.0,848.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="370.0" y="836.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Search query, filters, page</text>
+<path d="M 532.0,892.0 L 208.0,892.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="370.0" y="921.2" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Material pages, summary, details</text>
+<path d="M 208.0,1058.0 L 532.0,1058.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="370.0" y="1046.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Constraints, priority weights</text>
+<path d="M 532.0,1102.0 L 208.0,1102.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="370.0" y="1131.2" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Ranked list, scores, exclusions</text>
+<path d="M 208.0,1268.0 L 532.0,1268.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="370.0" y="1256.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Selected material IDs</text>
+<path d="M 532.0,1312.0 L 208.0,1312.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="370.0" y="1341.2" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Comparison table, CSV</text>
+<path d="M 1192.0,98.0 L 848.0,98.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="1020.0" y="86.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Credentials</text>
+<path d="M 848.0,142.0 L 1192.0,142.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="1020.0" y="171.2" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">JWT</text>
+<path d="M 1192.0,458.0 L 848.0,458.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="1020.0" y="419.5" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Saved-selection updates</text>
+<text x="1020.0" y="446.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">(write or admin)</text>
+<path d="M 848.0,502.0 L 1192.0,502.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="1020.0" y="531.2" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Shared projects, saved selections</text>
+<path d="M 690.0,186.0 L 690.0,259.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)" marker-start="url(#ahs)"/>
+<text x="704.0" y="229.5" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Account data</text>
+<path d="M 690.0,341.0 L 690.0,414.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)" marker-start="url(#ahs)"/>
+<text x="704.0" y="384.5" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">User look-up</text>
+<path d="M 615.0,546.0 L 615.0,619.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)" marker-start="url(#ahs)"/>
+<text x="601.0" y="589.5" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="end" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Project data</text>
+<path d="M 780.0,546.0 L 780.0,619.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)" marker-start="url(#ahs)"/>
+<text x="794.0" y="589.5" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="start" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Saved selections</text>
+<path d="M 1192.0,870.0 L 848.0,870.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="1020.0" y="858.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Material records</text>
+<path d="M 1192.0,1080.0 L 848.0,1080.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="1020.0" y="1068.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Property values, global bounds</text>
+<path d="M 1192.0,1290.0 L 848.0,1290.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="1020.0" y="1278.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Material records</text>
+<path d="M 848.0,1510.0 L 1192.0,1510.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="1020.0" y="1498.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Normalised records, summaries</text>
+<path d="M 208.0,1510.0 L 532.0,1510.0" fill="none" stroke="#2a3846" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="370.0" y="1498.0" font-size="22" font-weight="400" font-style="normal" fill="#1b2733" text-anchor="middle" dominant-baseline="alphabetic" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Publisher files, manifests</text>
+<rect x="20.0" y="1640.0" width="46.0" height="30.0" rx="0" fill="#f3f5f7" stroke="#2a3846" stroke-width="2.2" />
+<text x="78.0" y="1662.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">External entity</text>
+<rect x="234.3" y="1640.0" width="46.0" height="30.0" rx="7" fill="#eef3fa" stroke="#2a3846" stroke-width="2.2" />
+<line x1="234.3" y1="1650.0" x2="280.3" y2="1650.0" stroke="#2a3846" stroke-width="2.2" stroke-linecap="round"/>
+<text x="292.3" y="1662.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Process</text>
+<rect x="391.8" y="1640.0" width="46.0" height="30.0" rx="0" fill="#fbf5e5" stroke="#2a3846" stroke-width="2.2" />
+<line x1="403.8" y1="1640.0" x2="403.8" y2="1670.0" stroke="#2a3846" stroke-width="2.2" stroke-linecap="round"/>
+<text x="449.8" y="1662.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Data store</text>
+<path d="M 571.4,1655.0 L 617.4,1655.0" fill="none" stroke="#2a3846" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#ah)"/>
+<text x="629.4" y="1662.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="start" dominant-baseline="alphabetic">Data flow</text>
+<text x="1480.0" y="1662.0" font-size="20" font-weight="400" font-style="normal" fill="#566473" text-anchor="end" dominant-baseline="alphabetic">Double-headed arrows: read and write</text>
+</svg>
