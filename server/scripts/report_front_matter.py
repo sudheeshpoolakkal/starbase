@@ -5,7 +5,7 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 
 from generate_academic_report import (
-    CREST_PATH, add_p, add_leader_line, style_table, set_cell_background
+    CREST_PATH, add_p, add_leader_line
 )
 
 def add_cover_page(doc):
@@ -17,94 +17,102 @@ def add_cover_page(doc):
     sec.top_margin = Inches(1.0)
     sec.bottom_margin = Inches(1.0)
 
-    # Crest
+    # Crest / Emblem at top
     if CREST_PATH.exists():
         p_logo = doc.add_paragraph()
         p_logo.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p_logo.paragraph_format.space_before = Pt(10)
-        p_logo.paragraph_format.space_after = Pt(14)
+        p_logo.paragraph_format.space_before = Pt(0)
+        p_logo.paragraph_format.space_after = Pt(12)
         p_logo.add_run().add_picture(str(CREST_PATH), width=Inches(1.15))
 
-    # Title
+    # PROJECT TITLE (Bold, Italic, 24pt, Uppercase)
     p_title = doc.add_paragraph()
     p_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_title.paragraph_format.space_before = Pt(4)
-    p_title.paragraph_format.space_after = Pt(6)
+    p_title.paragraph_format.space_before = Pt(0)
+    p_title.paragraph_format.space_after = Pt(10)
     p_title.paragraph_format.line_spacing = 1.15
     r_title = p_title.add_run("STARBASE MATERIAL SELECTION SYSTEM")
     r_title.font.name = 'Times New Roman'
-    r_title.font.size = Pt(22)
+    r_title.font.size = Pt(24)
     r_title.bold = True
+    r_title.italic = True
 
-    # Subtitle
+    # PROJECT REPORT (Bold, 16pt, Uppercase)
     p_sub = doc.add_paragraph()
     p_sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_sub.paragraph_format.space_before = Pt(0)
-    p_sub.paragraph_format.space_after = Pt(16)
+    p_sub.paragraph_format.space_after = Pt(12)
     r_sub = p_sub.add_run("PROJECT REPORT")
     r_sub.font.name = 'Times New Roman'
-    r_sub.font.size = Pt(15)
+    r_sub.font.size = Pt(16)
     r_sub.bold = True
 
-    # Submitted by
+    # Submitted by (Italic, 12pt)
     p_by = doc.add_paragraph()
     p_by.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_by.paragraph_format.space_before = Pt(6)
-    p_by.paragraph_format.space_after = Pt(8)
+    p_by.paragraph_format.space_before = Pt(0)
+    p_by.paragraph_format.space_after = Pt(10)
     r_by = p_by.add_run("Submitted by")
     r_by.font.name = 'Times New Roman'
     r_by.font.size = Pt(12)
     r_by.italic = True
 
-    # Roster Table
-    tbl = doc.add_table(rows=5, cols=3)
-    tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
-    col_widths = [2.6, 1.4, 2.02]
-    headers = ["Student Name", "Roll No.", "University ID"]
-    for j, h in enumerate(headers):
-        tbl.cell(0, j).text = h
-    
-    roster_data = [
-        ("Babithosh EB", "18", "LTVE24EL069"),
-        ("Minna Antony", "47", "TVE24EL044"),
-        ("Sebin Xavier", "60", "TVE24EL056"),
-        ("Sudheesh P", "64", "LTVE24EL071")
+    # Members list with Sudheesh P on top
+    members = [
+        ("SUDHEESH P", "64", "LTVE24EL071"),
+        ("BABITHOSH EB", "18", "LTVE24EL069"),
+        ("MINNA ANTONY", "47", "TVE24EL044"),
+        ("SEBIN XAVIER", "60", "TVE24EL056")
     ]
-    for i, row in enumerate(roster_data):
-        for j, val in enumerate(row):
-            tbl.cell(i+1, j).text = val
-    style_table(tbl, col_widths)
 
-    # Course & College Info
-    p_req = doc.add_paragraph()
-    p_req.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_req.paragraph_format.space_before = Pt(18)
-    p_req.paragraph_format.space_after = Pt(4)
-    p_req.paragraph_format.line_spacing = 1.15
-    r_req = p_req.add_run("Submitted as part of the Project-Based Learning requirement for\nDatabase Management System (PBEOT504)")
-    r_req.font.name = 'Times New Roman'
-    r_req.font.size = Pt(11)
+    for name, roll, uid in members:
+        p_m = doc.add_paragraph()
+        p_m.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p_m.paragraph_format.space_before = Pt(0)
+        p_m.paragraph_format.space_after = Pt(8)
+        p_m.paragraph_format.line_spacing = 1.15
 
-    p_deg = doc.add_paragraph()
-    p_deg.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_deg.paragraph_format.space_before = Pt(6)
-    p_deg.paragraph_format.space_after = Pt(2)
-    r_deg = p_deg.add_run("B.Tech Electrical and Computer Engineering")
+        r_n = p_m.add_run(f"{name}\n")
+        r_n.font.name = 'Times New Roman'
+        r_n.font.size = Pt(12)
+        r_n.bold = True
+
+        r_r = p_m.add_run(f"Roll No: {roll}\n")
+        r_r.font.name = 'Times New Roman'
+        r_r.font.size = Pt(12)
+        r_r.bold = True
+
+        r_u = p_m.add_run(f"University ID: {uid}")
+        r_u.font.name = 'Times New Roman'
+        r_u.font.size = Pt(12)
+        r_u.bold = True
+
+    # Affiliation block
+    p_dept = doc.add_paragraph()
+    p_dept.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_dept.paragraph_format.space_before = Pt(10)
+    p_dept.paragraph_format.space_after = Pt(12)
+    p_dept.paragraph_format.line_spacing = 1.15
+
+    r_deg = p_dept.add_run("B.Tech Electrical and Computer Engineering\n")
     r_deg.font.name = 'Times New Roman'
     r_deg.font.size = Pt(12)
     r_deg.bold = True
 
-    p_dept = doc.add_paragraph()
-    p_dept.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_dept.paragraph_format.space_before = Pt(2)
-    p_dept.paragraph_format.space_after = Pt(2)
-    r_dept = p_dept.add_run("Department of Electrical Engineering\nCollege of Engineering Trivandrum")
-    r_dept.font.name = 'Times New Roman'
-    r_dept.font.size = Pt(12)
+    r_dp = p_dept.add_run("Department of Electrical Engineering\n")
+    r_dp.font.name = 'Times New Roman'
+    r_dp.font.size = Pt(12)
+    r_dp.bold = True
 
+    r_col = p_dept.add_run("College of Engineering Trivandrum")
+    r_col.font.name = 'Times New Roman'
+    r_col.font.size = Pt(12)
+    r_col.bold = True
+
+    # Academic Year
     p_yr = doc.add_paragraph()
     p_yr.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_yr.paragraph_format.space_before = Pt(6)
+    p_yr.paragraph_format.space_before = Pt(0)
     p_yr.paragraph_format.space_after = Pt(0)
     r_yr = p_yr.add_run("Academic Year 2026–2027")
     r_yr.font.name = 'Times New Roman'
@@ -121,7 +129,7 @@ def add_certificate(doc):
     r_h.font.size = Pt(16)
     r_h.bold = True
 
-    add_p(doc, "This is to certify that Babithosh EB (Roll No. 18), Minna Antony (Roll No. 47), Sebin Xavier (Roll No. 60), and Sudheesh P (Roll No. 64), B.Tech Electrical and Computer Engineering students of College of Engineering Trivandrum, have completed the work presented in the report titled “Starbase Material Selection System” at College of Engineering Trivandrum, as part of the Database Management System (PBEOT504) Project-Based Learning (PBL) curriculum. This is a bonafide record of their original work carried out under our supervision and guidance.", space_after=24)
+    add_p(doc, "This is to certify that Sudheesh P (Roll No. 64), Babithosh EB (Roll No. 18), Minna Antony (Roll No. 47), and Sebin Xavier (Roll No. 60), B.Tech Electrical and Computer Engineering students of College of Engineering Trivandrum, have completed the work presented in the report titled “Starbase Material Selection System” at College of Engineering Trivandrum, as part of the Database Management System (PBEOT504) Project-Based Learning (PBL) curriculum. This is a bonafide record of their original work carried out under our supervision and guidance.", space_after=24)
 
     # Guides Signatures
     p_sig1 = doc.add_paragraph()
@@ -159,7 +167,7 @@ def add_declaration(doc):
     add_p(doc, "We further declare that this report has been prepared as part of the academic requirements of the B.Tech degree programme and that the work presented herein has not been submitted, either in whole or in part, to any other institution for the award of any degree or diploma.", space_after=8)
     add_p(doc, "We have duly acknowledged all sources of information used in the preparation of this report.", space_after=20)
 
-    # Student Signatures
+    # Student Signatures with Sudheesh on top
     p_place = doc.add_paragraph()
     p_place.paragraph_format.space_before = Pt(12)
     p_place.paragraph_format.space_after = Pt(16)
@@ -170,10 +178,10 @@ def add_declaration(doc):
     p_sigs.paragraph_format.space_before = Pt(12)
     p_sigs.paragraph_format.line_spacing = 1.6
     sigs = [
+        "Sudheesh P   (Roll No. 64, TVE ID: LTVE24EL071)     Signature: ___________________",
         "Babithosh EB (Roll No. 18, TVE ID: LTVE24EL069)     Signature: ___________________",
         "Minna Antony (Roll No. 47, TVE ID: TVE24EL044)     Signature: ___________________",
-        "Sebin Xavier (Roll No. 60, TVE ID: TVE24EL056)     Signature: ___________________",
-        "Sudheesh P   (Roll No. 64, TVE ID: LTVE24EL071)     Signature: ___________________"
+        "Sebin Xavier (Roll No. 60, TVE ID: TVE24EL056)     Signature: ___________________"
     ]
     for s in sigs:
         r = p_sigs.add_run(s + "\n")
